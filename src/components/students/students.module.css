@@ -1,0 +1,36 @@
+@value annesNavy,annesPink,annesBabyPink,annesNavyBlack from '../../common/colors.css';
+
+
+.students{
+  flex-basis: 50%;
+  border-right: 1px solid lightgrey;
+  text-align: center;
+  position: relative;
+}
+
+.title{
+  font-size: 1em;
+  color: annesNavy;
+}
+
+li{
+  list-style: none;
+}
+
+.addStudents{
+  position:absolute;
+  right: 1em;
+  top: 0.5em;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  border-style: none;
+  background-color: annesNavy;
+  font-size: 1em;
+  color:white;
+  cursor: pointer;
+}
+
+.addStudents:hover{
+  opacity: 0.8;
+}

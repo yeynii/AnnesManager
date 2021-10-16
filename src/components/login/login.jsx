@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect }  from "react";
 import styles from "./login.module.css";
 import { useHistory } from "react-router";
 
@@ -11,6 +11,12 @@ const Login = ({authService}) => {
     history.push({pathname: '/home', state: {id:userId}});
   }
   
+  useEffect(()=>{
+    authService.onAuthChange(user => {
+      user && goHome(user.id);
+    });
+  });
+
   return (
     <div className={styles.container}>
       <h3 className={styles.header}>🎁 Annes manager 💝</h3>

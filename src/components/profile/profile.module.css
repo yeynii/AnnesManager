@@ -1,0 +1,12 @@
+@value annesNavy,annesPink,annesBabyPink,annesNavyBlack from '../../common/colors.css';
+
+
+.profile{
+  
+  flex-basis: 50%;
+  text-align: center;
+}
+.title{
+  font-size: 1em;
+  color: annesNavy;
+}

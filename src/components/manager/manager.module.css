@@ -1,29 +1,51 @@
 @value annesNavy,annesPink,annesBabyPink,annesNavyBlack from '../../common/colors.css';
 
 .manager{
-  display: flex;
-  background-color: white;
-  flex-direction: column;
-  width: 100%;
+  width: 80%;
   height: 100%;
-  max-width: 80rem;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
 }
 .header{
   width: 100%;
   display: flex;
-  flex-direction: column;
   background-color: annesBabyPink;
   padding: 0.5em;
   position: relative;
   text-align: center;
+  color: annesNavyBlack;
+  justify-content: center;
+}
+.logOut{
+  position: absolute;
+  right: 0.5em;
+  top: 0.5em;
+  background-color: annesPink;
+  border-radius: 0.5em;
+  border-style: none;
+  border-color: white;
+  color: white;
+  cursor: pointer;
+  padding: 0.2em 0.5em;
+}
+
+.logOut:hover{
+  opacity: 0.8;
 }
 
 .container{
   display: flex;
-  flex: 1;
+  flex: 1 1;
   min-height: 0;
+  margin-top:0.5em;
+  margin-bottom:0.5em;
 }
 
 .footer{
-  
+  background-color: annesBabyPink;
+  text-align: center;
+  font-size: 0.5em;
+  padding: 0.5em;
+  color: annesNavyBlack;
 }
