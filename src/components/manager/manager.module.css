@@ -1,0 +1,29 @@
+@value annesNavy,annesPink,annesBabyPink,annesNavyBlack from '../../common/colors.css';
+
+.manager{
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 80rem;
+}
+.header{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: annesBabyPink;
+  padding: 0.5em;
+  position: relative;
+  text-align: center;
+}
+
+.container{
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.footer{
+  
+}

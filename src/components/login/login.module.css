@@ -1,0 +1,47 @@
+@value annesBabyPink,annesPink,annesNavy,annesNavyBlack from '../../common/colors.css';
+h3{margin:0;}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  min-width: 20rem;
+  height:auto;
+  background-color: white;
+  top:50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  justify-content:space-between;
+  align-items: center;
+}
+
+.header{
+  padding:0.5em;
+  width: 100%;
+  background-color: annesBabyPink;
+  text-align: center;
+  color: annesNavyBlack;
+}
+
+.loginButtons{
+  padding:1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.googleLogin{
+  border-style:solid;
+  border-radius: 1rem;
+  padding:0.4em;
+  margin: 0.3em;
+  cursor: pointer;
+  width: 15em;
+  background-color: white;
+  color:annesNavyBlack;
+  border-color: annesBabyPink;
+}
+
+.googleLogin:hover{
+  opacity: 0.8;
+  
+}
