@@ -14,13 +14,13 @@ const Manager = ({authService, studentRepository}) => {
     authService.logout();
   },[authService]);
 
-  const createStudent = (student) => {
+  const createStudent = student => {
     setStudents((student) => {
       const updated = { ...students };
       updated[student.id] = student;
       return updated;
     });
-    studentRepository.saveCard(userId, student);
+    studentRepository.saveStudent(userId, student);
   };
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const Manager = ({authService, studentRepository}) => {
         <button className={styles.logOut} onClick={onLogout}>로그아웃</button>
       </header>
       <div className={styles.container}>
-        <Students/>
+        <Students onAdd={createStudent}/>
         <Profile/>
       </div>
       <footer className={styles.footer}>Believe in yourself</footer>

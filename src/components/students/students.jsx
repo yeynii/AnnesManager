@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./students.module.css";
 import AddModal from "../add_modal/add_modal";
 
-const Students = (props) => {
+const Students = ({onAdd}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
@@ -20,7 +20,7 @@ const Students = (props) => {
       >
         +
       </button>
-      <AddModal modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen}/>
+      <AddModal modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} onAdd={onAdd}/>
     </section>
   );
 };
