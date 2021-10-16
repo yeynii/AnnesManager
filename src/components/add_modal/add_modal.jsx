@@ -18,7 +18,7 @@ const AddModal = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
       checkedSubjects.delete(id);
       setCheckedSubjects(checkedSubjects);
     }
-    console.log(checkedSubjects);
+    console.log([...checkedSubjects]);
   };
 
   const checkHandler = ({target}) => {
@@ -33,9 +33,12 @@ const AddModal = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
       grade: gradeRef.current.value || '',
       address: addressRef.current.value || '',
       date: dateRef.current.value || '',
-      subjects: checkedSubjects
+      subjects: [...checkedSubjects] || ''
     };
+    console.log(checkedSubjects);
+    checkedSubjects.clear();
     onAdd(newStudent);
+    setModalIsOpen(false);
   };
 
   return (
@@ -147,7 +150,7 @@ const AddModal = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
           </button>
           <button
             className={`${styles.button} ${styles.grey}`}
-            onClick={() => setModalIsOpen(false)}
+            onClick={event => {event.preventDefault();setModalIsOpen(false);}}
           >
             취소
           </button>

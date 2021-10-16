@@ -34,6 +34,14 @@ const Manager = ({authService, studentRepository}) => {
     });
   },[history, authService]);
 
+  useEffect(() =>{
+    if(!userId){
+      return;
+    }
+    const stopSync = studentRepository.syncStudents(userId, students => setStudents(students));
+    return () => stopSync();
+  },[userId, studentRepository]);
+
   return(
     <section className={styles.manager}>
       <header className={styles.header}>
@@ -41,7 +49,7 @@ const Manager = ({authService, studentRepository}) => {
         <button className={styles.logOut} onClick={onLogout}>로그아웃</button>
       </header>
       <div className={styles.container}>
-        <Students onAdd={createStudent}/>
+        <Students onAdd={createStudent} students={students}/>
         <Profile/>
       </div>
       <footer className={styles.footer}>Believe in yourself</footer>

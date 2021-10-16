@@ -14,7 +14,7 @@ class StudentRepository{
     remove(dbRef, student);
   }
 
-  syncstudents(userId, onUpdate){
+  syncStudents(userId, onUpdate){
     const dbRef = ref(this.db, `${userId}/students`);
     onValue(dbRef, snapshot => {
       const value = snapshot.val();
