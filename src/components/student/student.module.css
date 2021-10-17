@@ -1,0 +1,30 @@
+@value annesLightGrey,annesBabyPink from '../../common/colors.css';
+
+.student{
+  font-size:0.8em;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3em;
+  cursor: pointer;
+  border-bottom: 1px dotted rgb(201, 201, 201);
+}
+
+.selected{
+  box-sizing: content-box; 
+  background-color: white;
+
+}
+
+.student:hover{
+  background-color: white;
+}
+
+.grade {
+  flex-basis: 20%;
+  font-size: 0.3em;
+}
+
+.name {
+  flex-basis: 80%;
+}

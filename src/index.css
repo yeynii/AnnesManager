@@ -12,7 +12,6 @@ body,#root {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color:#c2c2c2;
   justify-content: center;
   display: flex;
   
@@ -21,4 +20,15 @@ body,#root {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+ul{
+  padding:0;
+}
+
+button{
+  cursor: pointer;
+}
+li{
+  list-style: none;
 }

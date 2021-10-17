@@ -1,20 +1,25 @@
-@value annesNavy,annesPink,annesBabyPink,annesNavyBlack from '../../common/colors.css';
+@value annesLightGrey, annesNavy,annesPink,annesBabyPink,annesNavyBlack from '../../common/colors.css';
 
 
 .students{
-  flex-basis: 50%;
-  border-right: 1px solid lightgrey;
+  flex-basis: 20%;
+  background-color: #f8f8f8;
   text-align: center;
   position: relative;
+  -webkit-box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.1); 
+  box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.1);
 }
 
 .title{
-  font-size: 1em;
+  margin:0;
+  font-size: 0.9em;
   color: annesNavy;
+  background-color: annesBabyPink;
+  padding:0.7em;
 }
 
-li{
-  list-style: none;
+.studentList{
+  margin: 1em;
 }
 
 .addStudents{

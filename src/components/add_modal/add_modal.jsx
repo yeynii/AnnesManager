@@ -106,7 +106,7 @@ const AddModal = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
               국어
               <input
                 type="checkbox"
-                value="korean"
+                value="국어"
                 onChange={event => checkHandler(event)}
                 className={styles.input}/>
             </label>
@@ -114,7 +114,7 @@ const AddModal = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
               영어
               <input
                 type="checkbox"
-                value="english"
+                value="영어"
                 onChange={event => checkHandler(event)}
                 className={styles.input}/>
             </label>
@@ -122,7 +122,7 @@ const AddModal = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
               수학
               <input
                 type="checkbox"
-                value="math"
+                value="수학"
                 onChange={event => checkHandler(event)}
                 className={styles.input}/>
             </label>
@@ -130,7 +130,7 @@ const AddModal = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
               역사
               <input
                 type="checkbox"
-                value="history"
+                value="역사"
                 onChange={event => checkHandler(event)}
                 className={styles.input}/>
             </label>
@@ -138,7 +138,7 @@ const AddModal = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
               독서
               <input
                 type="checkbox"
-                value="book"
+                value="독서"
                 onChange={event => checkHandler(event)}
                 className={styles.input}/>
             </label>

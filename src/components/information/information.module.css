@@ -1,0 +1,57 @@
+@value annesNavy,annesPink,annesBabyPink,annesNavyBlack from '../../common/colors.css';
+
+
+.profile{
+  display: flex;
+  flex-basis: 80%;
+  background-color: white;
+  margin: 0.7em;
+  border-radius: 0.5em;
+  padding: 1em;
+  -webkit-box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.1); 
+  box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.1);
+  flex-direction: column;
+}
+.infoBox{
+  margin:1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.title{
+  font-size: 1em;
+  color: annesNavy;
+}
+
+.profileimg{
+  width: 130px;
+  height: 130px;
+  background-color: annesPink;
+  border-radius: 50%;
+  margin: 0em 2em;
+  display: flex;
+  border: 3px solid annesPink;
+}
+
+.info{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.name{
+  font-size:2em;
+  font-weight: bold;
+}
+
+
+.grade {
+  font-size: 1em;
+  color: annesPink;
+
+}
+.date, .subject, .address{
+  font-size: 0.7em;
+  color: grey;
+}
