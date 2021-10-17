@@ -18,9 +18,9 @@ h3{margin:0;}
 .header{
   padding:0.5em;
   width: 100%;
-  background-color: annesBabyPink;
+  background-color: annesNavy;
   text-align: center;
-  color: annesNavyBlack;
+  color: white;
 }
 
 .loginButtons{
@@ -38,7 +38,7 @@ h3{margin:0;}
   width: 15em;
   background-color: white;
   color:annesNavyBlack;
-  border-color: annesBabyPink;
+  border-color: annesNavy;
 }
 
 .googleLogin:hover{

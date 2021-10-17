@@ -1,0 +1,46 @@
+@value annesLightGrey,annesBabyPink, annesNavy, annesNavyBlack from '../../../../common/colors.css';
+
+
+.course{
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content:space-between;
+  padding: 0.2em 1em;
+  margin: 0.5em;
+  border-radius: 1em;
+  color: annesNavyBlack;
+  transition: ease-in-out 50ms;
+}
+.course:hover{
+}
+.info{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-basis: 80%;
+}
+.buttons{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  flex-basis: 20%;
+}
+.subject, .time, .teacher{
+  margin: 0 0.3em;
+  border-radius: 1em;
+  border-style: none;
+}
+
+.modify, .delete{
+  margin: 0 0.3em;
+  border-radius: 1em;
+  border-style: none;
+}
+
+.delete{
+  color: white;
+  background-color: annesNavy;
+}
+button:hover{
+  opacity: 0.8;
+}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./students.module.css";
 import AddModal from "../add_modal/add_modal";
-import Student from "./../student/student";
+import Student from "./student/student";
 
 const Students = ({ onAdd, students, openInformation, selectedId }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);

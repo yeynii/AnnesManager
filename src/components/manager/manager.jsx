@@ -21,12 +21,36 @@ const Manager = ({ authService, studentRepository }) => {
       updated[studentId] = student;
       return updated;
     });
+    console.log(studentId);
     studentRepository.saveStudent(userId, student);
   };
+
+  const createCourse = (student, course) => {
+    const updated = { ...student["courses"] };
+    updated[course.id] = course;
+    createStudent({...student, courses:updated});
+  };
+
+  const removeStudent = (student) => {
+    setStudents((student) => {
+      const updated = { ...students };
+      delete updated[studentId];
+      return updated;
+    });
+    setStudentId();
+    studentRepository.removeStudent(userId, student);
+  };
+
+  const removeCourse = (student, course) => {
+    const updated = { ...student["courses"] };
+    delete updated[course.id];
+    createStudent({...student, courses:updated});
+    studentRepository.removeCourse(userId, student, course);
+  };
+
   const openInformation = (id) => {
     setStudentId(id);
   };
-
   useEffect(() => {
     authService.onAuthChange((user) => {
       if (user) {
@@ -46,7 +70,7 @@ const Manager = ({ authService, studentRepository }) => {
     );
     return () => stopSync();
   }, [userId, studentRepository]);
-  
+
   return (
     <section className={styles.manager}>
       <header className={styles.header}>
@@ -62,7 +86,9 @@ const Manager = ({ authService, studentRepository }) => {
           openInformation={openInformation}
           selectedId={studentId}
         />
-        <Information student={students[studentId]}/>
+        {studentId && (
+          <Information student={students[studentId]} onAdd={createCourse} onStudentDelete={removeStudent} onCourseDelete={removeCourse}/>
+        )}
       </div>
       <footer className={styles.footer}>Believe in yourself</footer>
     </section>

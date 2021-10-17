@@ -14,6 +14,7 @@ body,#root {
   -moz-osx-font-smoothing: grayscale;
   justify-content: center;
   display: flex;
+  background-color: #e9e9e9;
   
 }
 

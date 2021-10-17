@@ -2,6 +2,9 @@
 
 
 .students{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   flex-basis: 20%;
   background-color: #f8f8f8;
   text-align: center;
@@ -11,6 +14,9 @@
 }
 
 .title{
+  justify-content: center;
+  flex-basis: 5%;
+  display: flex;
   margin:0;
   font-size: 0.9em;
   color: annesNavy;
@@ -19,9 +25,20 @@
 }
 
 .studentList{
+  flex-basis: 90%;
+  display: flex;
+  flex-direction: column;
+  overflow-y:scroll;
   margin: 1em;
 }
+.studentList::-webkit-scrollbar{
+  width:8px;
+}
 
+.studentList::-webkit-scrollbar-thumb{
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.11);
+}
 .addStudents{
   position:absolute;
   right: 1rem;

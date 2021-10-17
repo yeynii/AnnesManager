@@ -8,23 +8,6 @@ const AddModal = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
   const addressRef = useRef();
   const dateRef = useRef();
 
-  const [checkedSubjects, setCheckedSubjects] = useState(new Set());
-
-  const checkedSubjectsHandler = (id, isChecked) => {
-    if (isChecked) {
-      checkedSubjects.add(id);
-      setCheckedSubjects(checkedSubjects);
-    } else if (!isChecked && checkedSubjects.has(id)) {
-      checkedSubjects.delete(id);
-      setCheckedSubjects(checkedSubjects);
-    }
-    console.log([...checkedSubjects]);
-  };
-
-  const checkHandler = ({target}) => {
-    checkedSubjectsHandler(target.value, target.checked);
-  };
-
   const onClick = event => {
     event.preventDefault();
     const newStudent = {
@@ -32,11 +15,8 @@ const AddModal = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
       name: nameRef.current.value || '',
       grade: gradeRef.current.value || '',
       address: addressRef.current.value || '',
-      date: dateRef.current.value || '',
-      subjects: [...checkedSubjects] || ''
+      date: dateRef.current.value || ''
     };
-    console.log(checkedSubjects);
-    checkedSubjects.clear();
     onAdd(newStudent);
     setModalIsOpen(false);
   };
@@ -54,7 +34,7 @@ const AddModal = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
           left: "50%",
           transform: "translate(-50%,-50%)",
           width: "500px",
-          height: "300px",
+          height: "250px",
           background: "white",
           overflow: "auto",
           WebkitOverflowScrolling: "touch",
@@ -99,58 +79,13 @@ const AddModal = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
           <label htmlFor="date">입원일 </label>
           <input ref={dateRef} id="date" type="date" className={styles.input} />
         </div>
-        <div className={styles.contents}>
-          <div className={styles.subject}>과목</div>
-          <div className={styles.subjects}>
-            <label>
-              국어
-              <input
-                type="checkbox"
-                value="국어"
-                onChange={event => checkHandler(event)}
-                className={styles.input}/>
-            </label>
-            <label>
-              영어
-              <input
-                type="checkbox"
-                value="영어"
-                onChange={event => checkHandler(event)}
-                className={styles.input}/>
-            </label>
-            <label>
-              수학
-              <input
-                type="checkbox"
-                value="수학"
-                onChange={event => checkHandler(event)}
-                className={styles.input}/>
-            </label>
-            <label>
-              역사
-              <input
-                type="checkbox"
-                value="역사"
-                onChange={event => checkHandler(event)}
-                className={styles.input}/>
-            </label>
-            <label>
-              독서
-              <input
-                type="checkbox"
-                value="독서"
-                onChange={event => checkHandler(event)}
-                className={styles.input}/>
-            </label>
-          </div>
-        </div>
         <div className={styles.buttons}>
-          <button className={styles.button} onClick={onClick}>
+          <button className={styles.button} onClick={onClick} >
             저장
           </button>
           <button
             className={`${styles.button} ${styles.grey}`}
-            onClick={event => {event.preventDefault();setModalIsOpen(false);}}
+            onClick={event => {event.preventDefault(); setModalIsOpen(false);}}
           >
             취소
           </button>

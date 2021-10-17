@@ -1,4 +1,4 @@
-@value annesLightGrey,annesBabyPink from '../../common/colors.css';
+@value annesLightGrey,annesBabyPink from '../../../common/colors.css';
 
 .student{
   font-size:0.8em;
