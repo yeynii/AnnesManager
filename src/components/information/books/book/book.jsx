@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./book.module.css";
-import { BsFillCheckCircleFill } from "react-icons/bs";
 
 const Book = ({ student, book, onDeleteBook, onChangeBookStatus }) => {
   const { payment, title, completion } = book;
-  const onClick = clicked => {
+  const onClick = (clicked, event) => {
+    event.preventDefault();
     onChangeBookStatus(student, book, clicked);
   };
   return (
@@ -12,13 +12,13 @@ const Book = ({ student, book, onDeleteBook, onChangeBookStatus }) => {
       <div className={styles.status}>
         <button
           className={`${styles.button} ${getPaymentStyles(payment)}`}
-          onClick={() => onClick('payment')}
+          onClick={(event) => onClick("payment", event)}
         >
           {payment ? "결제완료✔" : "미결제"}
         </button>
         <button
           className={`${styles.button} ${getCompletionStyles(completion)}`}
-          onClick={() => onClick('completion')}
+          onClick={(event) => onClick("completion", event)}
         >
           {completion ? "진행완료✔" : "진행중"}
         </button>
@@ -26,7 +26,10 @@ const Book = ({ student, book, onDeleteBook, onChangeBookStatus }) => {
       <div className={styles.name}>{title}</div>
       <div className={styles.buttons}>
         <button className={`${styles.button} ${styles.edit}`}>수정</button>
-        <button className={`${styles.button} ${styles.delete}`} onClick={() => onDeleteBook(student, book)}>
+        <button
+          className={`${styles.button} ${styles.delete}`}
+          onClick={() => onDeleteBook(student, book)}
+        >
           삭제
         </button>
       </div>

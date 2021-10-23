@@ -15,13 +15,26 @@ const Manager = ({ authService, studentRepository }) => {
     authService.logout();
   }, [authService]);
 
+  const openInformation = (id) => {
+    setStudentId(id);
+  };
+  useEffect(() => {
+    authService.onAuthChange((user) => {
+      if (user) {
+        setUserId(user.uid);
+      } else {
+        history.push("/");
+      }
+    });
+  }, [history, authService]);
+
   const createStudent = (student) => {
     setStudents(() => {
       const updated = { ...students };
       updated[student.id] = student;
       return updated;
     });
-    studentRepository.saveStudent(userId, student);
+    studentRepository.saveStudent(student);
   };
 
   const createCourse = (student, course) => {
@@ -43,47 +56,42 @@ const Manager = ({ authService, studentRepository }) => {
       return updated;
     });
     setStudentId();
-    studentRepository.removeStudent(userId, student);
+    studentRepository.removeStudent(student);
   };
 
   const removeCourse = (student, course) => {
     const updated = { ...student["courses"] };
     delete updated[course.id];
     createStudent({ ...student, courses: updated });
-    studentRepository.removeCourse(userId, student, course);
+    studentRepository.removeCourse(student, course);
   };
 
   const removeBook = (student, book) => {
     const updated = { ...student["books"] };
     delete updated[book.id];
     createStudent({ ...student, books: updated });
-    studentRepository.removeBook(userId, student, book);
+    studentRepository.removeBook(student, book);
   };
 
   const changeBookStatus = (student, book, clicked) => {
     const updated = { ...student["books"] };
     updated[book.id][clicked] = !updated[book.id][clicked];
     createStudent({ ...student, books: updated });    
-  }
-  
-  const openInformation = (id) => {
-    setStudentId(id);
   };
-  useEffect(() => {
-    authService.onAuthChange((user) => {
-      if (user) {
-        setUserId(user.uid);
-      } else {
-        history.push("/");
-      }
-    });
-  }, [history, authService]);
+
+  const createConsulting = () => {
+
+  };
+
+  const deleteConsulting = () => {
+
+  };
 
   useEffect(() => {
     if (!userId) {
       return;
     }
-    const stopSync = studentRepository.syncStudents(userId, (students) =>
+    const stopSync = studentRepository.syncStudents((students) =>
       setStudents(students)
     );
     return () => stopSync();
@@ -113,6 +121,8 @@ const Manager = ({ authService, studentRepository }) => {
             onDeleteCourse={removeCourse}
             onDeleteBook={removeBook}
             onChangeBookStatus={changeBookStatus}
+            onCreateConsulting={createConsulting}
+            onDeleteConsulting={deleteConsulting}
           />
         )}
       </div>

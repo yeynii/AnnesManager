@@ -3,7 +3,6 @@
 .book{
   background-color: #f0f0f0;
   display: flex;
-  justify-content:space-between;
   padding: 0.2em 1em;
   margin: 0.5em;
   border-radius: 1em;
@@ -12,6 +11,7 @@
   background-color: rgb(224, 224, 224);
 }
 .name{
+  flex-basis: 70%;
 }
 
 .button{
@@ -21,9 +21,19 @@
   color: white;
 }
 
-.status, .buttons{
+.status{
   display: flex;
   align-items: center;
+  flex-basis: 20%;
+  min-width: 11em;
+  justify-content: flex-start;
+}
+.buttons{
+  display: flex;
+  align-items: center;
+  flex-basis: 10%;
+  min-width: 6em;
+  justify-content: flex-end;
 }
 
 .edit{
@@ -32,15 +42,9 @@
 .delete{
   background-color: annesNavy;
 }
-.paid{
+.paid, .completed{
   background-color: green;
 }
-.unpaid{
-  background-color: annesPink;
-}
-.completed{
-  background-color: green;
-}
-.uncompleted{
+.unpaid, .uncompleted{
   background-color: annesPink;
 }

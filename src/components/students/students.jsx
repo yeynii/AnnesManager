@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./students.module.css";
-import AddModal from "../add_modal/add_modal";
+import StudentAddForm from "./student_add_form/student_add_form";
 import Student from "./student/student";
 
 const Students = ({ onAdd, students, openInformation, selectedId }) => {
@@ -24,7 +24,7 @@ const Students = ({ onAdd, students, openInformation, selectedId }) => {
       >
         +
       </button>
-      <AddModal
+      <StudentAddForm
         modalIsOpen={modalIsOpen}
         setModalIsOpen={setModalIsOpen}
         onAdd={onAdd}

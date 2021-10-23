@@ -4,27 +4,27 @@ import { firebaseApp } from "./firebase";
 class StudentRepository{
   db = getDatabase(firebaseApp);
 
-  saveStudent(userId, student) {
-    const dbRef = ref(this.db, `${userId}/students/${student.id}`);
+  saveStudent(student) {
+    const dbRef = ref(this.db, `students/${student.id}`);
     set(dbRef, student);
   }
 
-  removeStudent(userId, student){
-    const dbRef = ref(this.db, `${userId}/students/${student.id}`);
+  removeStudent(student){
+    const dbRef = ref(this.db, `students/${student.id}`);
     remove(dbRef, student);
   }
 
-  removeCourse(userId, student, course){
-    const dbRef = ref(this.db, `${userId}/students/${student.id}/courses/${course.id}`);
+  removeCourse(student, course){
+    const dbRef = ref(this.db, `students/${student.id}/courses/${course.id}`);
     remove(dbRef, student);
   }
-  removeBook(userId, student, book){
-    const dbRef = ref(this.db, `${userId}/students/${student.id}/books/${book.id}`);
+  removeBook(student, book){
+    const dbRef = ref(this.db, `students/${student.id}/books/${book.id}`);
     remove(dbRef, student);
   }
 
-  syncStudents(userId, onUpdate){
-    const dbRef = ref(this.db, `${userId}/students`);
+  syncStudents(onUpdate){
+    const dbRef = ref(this.db, `students`);
     onValue(dbRef, snapshot => {
       const value = snapshot.val();
       value && onUpdate(value);

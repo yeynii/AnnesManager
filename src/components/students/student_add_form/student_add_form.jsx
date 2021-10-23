@@ -1,12 +1,13 @@
 import React, { useRef } from "react";
 import Modal from "react-modal";
-import styles from "./add_modal.module.css";
+import styles from "./student_add_form.module.css";
 
-const AddModal = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
+const StudentAddForm = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
   const nameRef = useRef();
   const gradeRef = useRef();
   const addressRef = useRef();
   const dateRef = useRef();
+  const hpRef = useRef();
 
   const onClick = event => {
     event.preventDefault();
@@ -15,7 +16,8 @@ const AddModal = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
       name: nameRef.current.value || '',
       grade: gradeRef.current.value || '',
       address: addressRef.current.value || '',
-      date: dateRef.current.value || ''
+      date: dateRef.current.value || '',
+      hp: hpRef.current.value || ''
     };
     onAdd(newStudent);
     setModalIsOpen(false);
@@ -76,8 +78,12 @@ const AddModal = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
           />
         </div>
         <div className={styles.contents}>
-          <label htmlFor="date">입원일 </label>
+          <label htmlFor="date">등록일</label>
           <input ref={dateRef} id="date" type="date" className={styles.input} />
+        </div>
+        <div className={styles.contents}>
+          <label htmlFor="hp">전화번호</label>
+          <input ref={hpRef} id="hp" type="input" className={styles.input} />
         </div>
         <div className={styles.buttons}>
           <button className={styles.button} onClick={onClick} >
@@ -95,4 +101,4 @@ const AddModal = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
   );
 };
 
-export default AddModal;
+export default StudentAddForm;

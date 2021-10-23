@@ -5,6 +5,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
 import Courses from "./courses/courses";
+import ConsultingLists from "./consulting_lists/consulting_lists";
 
 const Information = ({
   student,
@@ -14,14 +15,17 @@ const Information = ({
   onCreateBook,
   onDeleteBook,
   onChangeBookStatus,
+  onCreateConsulting,
+  onDeleteConsulting,
 }) => {
-  const onClick = () => {
-    onDeleteStudent(student);
-  };
+  const { name, grade, address, date, hp } = student;
   return (
     <section className={styles.profile}>
-      <div className={styles.delete} onClick={onClick}>
-        삭제
+      <div className={styles.buttons}>
+        <div className={styles.button}>수정</div>
+        <div className={styles.button} onClick={() => onDeleteStudent(student)}>
+          삭제
+        </div>
       </div>
       <div className={styles.infoBox}>
         <div className={styles.imgbox}>
@@ -32,10 +36,12 @@ const Information = ({
           />
         </div>
         <div className={styles.info}>
-          <div className={styles.name}>{student && student.name}</div>
-          <div className={styles.grade}>{student && student.grade}</div>
-          <div className={styles.address}>{student && student.address}</div>
-          <div className={styles.date}>{student && student.date}</div>
+          <div className={styles.name}>{name}</div>
+          <div className={styles.grade}>{grade}</div>
+          <div className={styles.address}>주소 : {address}</div>
+          <div className={styles.hp}>전화번호: {hp}</div>
+          <div className={styles.date}>등록일 : {date}</div>
+          <div className={styles.date}>퇴원일 : {date}</div>
         </div>
       </div>
       <Tabs>
@@ -60,7 +66,13 @@ const Information = ({
             onChangeBookStatus={onChangeBookStatus}
           />
         </TabPanel>
-        <TabPanel></TabPanel>
+        <TabPanel>
+          <ConsultingLists
+            student={student}
+            onCreateConsulting={onCreateConsulting}
+            onDeleteConsulting={onDeleteConsulting}
+          />
+        </TabPanel>
         <TabPanel></TabPanel>
       </Tabs>
     </section>
