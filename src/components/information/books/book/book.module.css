@@ -1,0 +1,46 @@
+@value annesPink, annesLightGrey,annesBabyPink, annesNavy, annesNavyBlack from '../../../../common/colors.css';
+
+.book{
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content:space-between;
+  padding: 0.2em 1em;
+  margin: 0.5em;
+  border-radius: 1em;
+}
+.book:hover{
+  background-color: rgb(224, 224, 224);
+}
+.name{
+}
+
+.button{
+  margin: 0 0.3em;
+  border-radius: 1em;
+  border-style: none;
+  color: white;
+}
+
+.status, .buttons{
+  display: flex;
+  align-items: center;
+}
+
+.edit{
+  background-color: #818181;
+}
+.delete{
+  background-color: annesNavy;
+}
+.paid{
+  background-color: green;
+}
+.unpaid{
+  background-color: annesPink;
+}
+.completed{
+  background-color: green;
+}
+.uncompleted{
+  background-color: annesPink;
+}

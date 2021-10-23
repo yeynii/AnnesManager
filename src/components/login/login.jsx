@@ -19,18 +19,18 @@ const Login = ({authService}) => {
 
   return (
     <div className={styles.container}>
-      <img className={styles.loginImg} src="/anne_login.png"/>
+      <img className={styles.loginImg} src="/anne_login.png" alt="anne"/>
       <h1 className={styles.header}>Annes Manager</h1>
       <div className={styles.signInWith}>sign in with</div>
       <div className={styles.loginButtons}>
         <button className={styles.loginButton} onClick={onLogin}>
-          <img src="/google.png" alt="" className={styles.google} />
+          <img src="/google.png" alt="google" className={styles.google} />
         </button>
         <button className={styles.loginButton}>
-          <img src="/facebook.png" alt="" className={styles.facebook} />
+          <img src="/facebook.png" alt="facebook" className={styles.facebook} />
         </button>
         <button className={styles.loginButton}>
-          <img src="/twitter.png" alt="" className={styles.facebook} />
+          <img src="/twitter.png" alt="twitter" className={styles.facebook} />
         </button>
       </div>
     </div>

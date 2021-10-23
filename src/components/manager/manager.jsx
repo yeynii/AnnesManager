@@ -16,25 +16,30 @@ const Manager = ({ authService, studentRepository }) => {
   }, [authService]);
 
   const createStudent = (student) => {
-    setStudents((student) => {
+    setStudents(() => {
       const updated = { ...students };
-      updated[studentId] = student;
+      updated[student.id] = student;
       return updated;
     });
-    console.log(studentId);
     studentRepository.saveStudent(userId, student);
   };
 
   const createCourse = (student, course) => {
     const updated = { ...student["courses"] };
     updated[course.id] = course;
-    createStudent({...student, courses:updated});
+    createStudent({ ...student, courses: updated });
+  };
+
+  const createBook = (student, book) => {
+    const updated = { ...student["books"] };
+    updated[book.id] = book;
+    createStudent({ ...student, books: updated });
   };
 
   const removeStudent = (student) => {
-    setStudents((student) => {
+    setStudents(() => {
       const updated = { ...students };
-      delete updated[studentId];
+      delete updated[student.id];
       return updated;
     });
     setStudentId();
@@ -44,10 +49,23 @@ const Manager = ({ authService, studentRepository }) => {
   const removeCourse = (student, course) => {
     const updated = { ...student["courses"] };
     delete updated[course.id];
-    createStudent({...student, courses:updated});
+    createStudent({ ...student, courses: updated });
     studentRepository.removeCourse(userId, student, course);
   };
 
+  const removeBook = (student, book) => {
+    const updated = { ...student["books"] };
+    delete updated[book.id];
+    createStudent({ ...student, books: updated });
+    studentRepository.removeBook(userId, student, book);
+  };
+
+  const changeBookStatus = (student, book, clicked) => {
+    const updated = { ...student["books"] };
+    updated[book.id][clicked] = !updated[book.id][clicked];
+    createStudent({ ...student, books: updated });    
+  }
+  
   const openInformation = (id) => {
     setStudentId(id);
   };
@@ -87,7 +105,15 @@ const Manager = ({ authService, studentRepository }) => {
           selectedId={studentId}
         />
         {studentId && (
-          <Information student={students[studentId]} onAdd={createCourse} onStudentDelete={removeStudent} onCourseDelete={removeCourse}/>
+          <Information
+            student={students[studentId]}
+            onDeleteStudent={removeStudent}
+            onCreateCourse={createCourse}
+            onCreateBook={createBook}
+            onDeleteCourse={removeCourse}
+            onDeleteBook={removeBook}
+            onChangeBookStatus={changeBookStatus}
+          />
         )}
       </div>
     </section>

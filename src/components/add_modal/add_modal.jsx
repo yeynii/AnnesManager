@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import Modal from "react-modal";
 import styles from "./add_modal.module.css";
 

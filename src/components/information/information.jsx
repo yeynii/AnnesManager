@@ -3,17 +3,26 @@ import styles from "./information.module.css";
 import Books from "./books/books";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import { FaTrashAlt } from "react-icons/fa";
 
 import Courses from "./courses/courses";
 
-const Information = ({ student, onAdd, onStudentDelete, onCourseDelete }) => {
+const Information = ({
+  student,
+  onCreateCourse,
+  onDeleteStudent,
+  onDeleteCourse,
+  onCreateBook,
+  onDeleteBook,
+  onChangeBookStatus,
+}) => {
   const onClick = () => {
-    onStudentDelete(student);
-  }
+    onDeleteStudent(student);
+  };
   return (
     <section className={styles.profile}>
-    <div className={styles.delete} onClick={onClick}>삭제</div>
+      <div className={styles.delete} onClick={onClick}>
+        삭제
+      </div>
       <div className={styles.infoBox}>
         <div className={styles.imgbox}>
           <img
@@ -37,10 +46,19 @@ const Information = ({ student, onAdd, onStudentDelete, onCourseDelete }) => {
           <Tab>메모</Tab>
         </TabList>
         <TabPanel>
-          <Courses student={student} onAdd={onAdd} onCourseDelete={onCourseDelete} />
+          <Courses
+            student={student}
+            onCreateCourse={onCreateCourse}
+            onDeleteCourse={onDeleteCourse}
+          />
         </TabPanel>
         <TabPanel>
-          <Books />
+          <Books
+            student={student}
+            onCreateBook={onCreateBook}
+            onDeleteBook={onDeleteBook}
+            onChangeBookStatus={onChangeBookStatus}
+          />
         </TabPanel>
         <TabPanel></TabPanel>
         <TabPanel></TabPanel>

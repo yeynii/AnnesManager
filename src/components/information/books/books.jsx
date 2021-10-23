@@ -1,29 +1,22 @@
-import React from 'react';
-import styles from './books.module.css';
+import React from "react";
+import styles from "./books.module.css";
+import Book from './book/book';
+import BookAddForm from './book_add_form/book_add_form';
 
-const Books = (props) => {
-  return(
+const Books = ({student, onCreateBook, onDeleteBook, onChangeBookStatus}) => {
+  return (
     <ul className={styles.books}>
-      <li className={styles.book}>
-        <div className={styles.status}>
-          <button className={styles.button}>
-            미결제
-          </button>
-          <button className={styles.button}>
-            진행중
-          </button>
-
-        </div>
-        <div className={styles.name}>뉴런 1-2</div>
-        <div className={styles.buttons}>
-          <button className={styles.button}>
-            수정
-          </button>
-          <button className={styles.button}>
-            삭제
-          </button>
-        </div>
-      </li>
+      {student.books &&
+        Object.keys(student.books).map((key) => (
+          <Book
+            student={student}
+            key={key}
+            book={student.books[key]}
+            onDeleteBook={onDeleteBook}
+            onChangeBookStatus={onChangeBookStatus}
+          />
+        ))}
+        <BookAddForm student={student} onCreateBook={onCreateBook} />
     </ul>
   );
 };

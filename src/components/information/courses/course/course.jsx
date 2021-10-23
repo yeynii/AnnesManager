@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from "./course.module.css";
 
-const Course = ({student, course, onCourseDelete}) => {
+const Course = ({student, course, onDeleteCourse}) => {
   const onClick = () => {
-    onCourseDelete(student, course);
+    onDeleteCourse(student, course);
   }
   return(
     <li className={styles.course}>

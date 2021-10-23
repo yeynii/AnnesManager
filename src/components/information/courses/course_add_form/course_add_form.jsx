@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import styles from "./course_add_form.module.css";
 import { BsPlusLg } from "react-icons/bs";
 import Modal from "react-modal";
 
-const CourseAddForm = ({onAdd, student}) => {
+const CourseAddForm = ({onCreateCourse, student}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const subjectRef = useRef();
   const teacherRef = useRef();
@@ -11,7 +11,7 @@ const CourseAddForm = ({onAdd, student}) => {
 
   const onClick = (event) => {
     event.preventDefault();
-    onAdd(student, {
+    onCreateCourse(student, {
       id: Date.now(),
       subject: subjectRef.current.value || '',
       teacher: teacherRef.current.value || '',
