@@ -28,3 +28,9 @@
 .name {
   flex-basis: 80%;
 }
+
+@media all and (max-width:768px) {
+  .grade{
+    visibility: hidden;
+}
+}

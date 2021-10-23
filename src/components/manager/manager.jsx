@@ -76,7 +76,7 @@ const Manager = ({ authService, studentRepository }) => {
       <header className={styles.header}>
         <div className={styles.headerText}>Annes Manager</div>
         <button className={styles.logOut} onClick={onLogout}>
-          로그아웃
+          logout
         </button>
       </header>
       <div className={styles.container}>
@@ -90,7 +90,6 @@ const Manager = ({ authService, studentRepository }) => {
           <Information student={students[studentId]} onAdd={createCourse} onStudentDelete={removeStudent} onCourseDelete={removeCourse}/>
         )}
       </div>
-      <footer className={styles.footer}>Believe in yourself</footer>
     </section>
   );
 };
