@@ -1,5 +1,6 @@
 .consultingList{
   display: flex;
   flex-direction: column;
-  padding: 0em 1em;
+  padding: 0.5em;
+  margin:0;
 }

@@ -1,45 +1,57 @@
 import React, { useRef, useEffect, useState } from "react";
 import Modal from "react-modal";
-import styles from "./student_add_form.module.css";
+import styles from "./student_edit_form.module.css";
 
-const StudentAddForm = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
-  const nameRef = useRef();
-  const gradeRef = useRef();
-  const addressRef = useRef();
-  const dateRef = useRef();
-  const [hp, setHp] = useState();
+const StudentEditForm = ({
+  student,
+  modalIsOpen,
+  setModalIsOpen,
+  onUpdateStudent,
+}) => {
+  const { name, grade, address, date, hp } = student;
 
-  const onClick = event => {
+  const nameRef = useRef(null);
+  const gradeRef = useRef(null);
+  const addressRef = useRef(null);
+  const dateRef = useRef(null);
+  const [hpVal, setHpVal] = useState();
+
+  const onClick = (event) => {
     event.preventDefault();
-    const newStudent = {
-      id: Date.now(),
-      name: nameRef.current.value || '',
-      grade: gradeRef.current.value || '',
-      address: addressRef.current.value || '',
-      date: dateRef.current.value || '',
-      hp: hp || ''
-    };
-    onAdd(newStudent);
+    onUpdateStudent({
+      ...student,
+      [event.currentTarget.name]: event.currentTarget.value,
+    });
     setModalIsOpen(false);
-    setHp();
+    setHpVal();
   };
 
   const handleChange = (e) => {
     const regex = /^[0-9\b -]{0,13}$/;
     if (regex.test(e.target.value)) {
-      setHp(e.target.value);
+      setHpVal(e.target.value);
     }
-  }
+  };
 
   useEffect(() => {
-    var hpLen = hp && hp.length;
-    if ( hpLen === 10 ) {
-      setHp(hp.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
+      // nameRef.current.value = name;
+      // gradeRef.current.value = grade;
+      // addressRef.current.value = address;
+      // dateRef.current.value = date;
+      // hpVal.current.value = hp;
+  }, []);
+
+  useEffect(() => {
+    var hpLen = hpVal && hpVal.length;
+    if (hpLen === 10) {
+      setHpVal(hpVal.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
     }
-    if ( hpLen === 13) {
-      setHp(hp.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'));
+    if (hpLen === 13) {
+      setHpVal(
+        hpVal.replace(/-/g, "").replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3")
+      );
     }
-  }, [hp]);
+  }, [hpVal]);
 
   return (
     <Modal
@@ -64,11 +76,9 @@ const StudentAddForm = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
       }}
     >
       <form className={styles.form}>
-        <h3 className={styles.title}>학생 정보 입력</h3>
+        <h3 className={styles.title}>학생 정보 수정</h3>
         <div className={styles.contents}>
-          <label htmlFor="name">
-            이름
-          </label>
+          <label htmlFor="name">이름</label>
           <input ref={nameRef} id="name" type="text" className={styles.input} />
         </div>
         <div className={styles.contents}>
@@ -101,15 +111,24 @@ const StudentAddForm = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
         </div>
         <div className={styles.contents}>
           <label htmlFor="hp">전화번호</label>
-          <input value={hp} id="hp" className={styles.input} type='text' onChange={handleChange}/>
+          <input
+            value={hpVal}
+            id="hp"
+            className={styles.input}
+            type="text"
+            onChange={handleChange}
+          />
         </div>
         <div className={styles.buttons}>
-          <button className={styles.button} onClick={onClick} >
+          <button className={styles.button} onClick={onClick}>
             저장
           </button>
           <button
             className={`${styles.button} ${styles.grey}`}
-            onClick={event => {event.preventDefault(); setModalIsOpen(false);}}
+            onClick={(event) => {
+              event.preventDefault();
+              setModalIsOpen(false);
+            }}
           >
             취소
           </button>
@@ -119,4 +138,4 @@ const StudentAddForm = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
   );
 };
 
-export default StudentAddForm;
+export default StudentEditForm;

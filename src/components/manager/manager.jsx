@@ -49,6 +49,12 @@ const Manager = ({ authService, studentRepository }) => {
     createStudent({ ...student, books: updated });
   };
 
+  const createMemo = (student, memo) => {
+    const updated = { ...student["memos"] };
+    updated[memo.id] = memo;
+    createStudent({ ...student, memos: updated });
+  };
+
   const removeStudent = (student) => {
     setStudents(() => {
       const updated = { ...students };
@@ -78,6 +84,8 @@ const Manager = ({ authService, studentRepository }) => {
     updated[book.id][clicked] = !updated[book.id][clicked];
     createStudent({ ...student, books: updated });    
   };
+  
+  const UpdateStudent = () =>{};
 
   const createConsulting = (student, consulting) => {
     const updated = { ...student["consultings"] };
@@ -90,7 +98,13 @@ const Manager = ({ authService, studentRepository }) => {
     delete updated[consulting.id];
     createStudent({ ...student, consultings: updated });
     studentRepository.removeConsulting(student, consulting);
+  };
 
+  const removeMemo = (student, memo)=> {
+    const updated = { ...student["memos"] };
+    delete updated[memo.id];
+    createStudent({ ...student, memos: updated });
+    studentRepository.removeMemo(student, memo);
   };
 
   useEffect(() => {
@@ -121,6 +135,7 @@ const Manager = ({ authService, studentRepository }) => {
         {studentId && (
           <Information
             student={students[studentId]}
+            onUpdateStudent={createStudent}
             onDeleteStudent={removeStudent}
             onCreateCourse={createCourse}
             onCreateBook={createBook}
@@ -130,6 +145,8 @@ const Manager = ({ authService, studentRepository }) => {
             onCreateConsulting={createConsulting}
             onDeleteConsulting={removeConsulting}
             onUpdateConsulting={createConsulting}
+            onCreateMemo={createMemo}
+            onDeleteMemo={removeMemo}
           />
         )}
       </div>

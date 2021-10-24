@@ -8,7 +8,7 @@ function App({authService, studentRepository}) {
   return (
 		<BrowserRouter>
 		  <Switch>
-		    <Route path={["/login","/"]} exact>
+		    <Route path={["/login", "/"]} exact>
           <Login authService={authService}/>
 		    </Route>
 		    <Route path="/home">

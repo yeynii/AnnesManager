@@ -9,9 +9,17 @@
   overflow-y: scroll;
 }
 
+.information::-webkit-scrollbar{
+  width:8px;
+}
+
+.information::-webkit-scrollbar-thumb{
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.11);
+}
 .profile{
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   width: 100%;
   margin-bottom: 0.51em;
 }
@@ -19,6 +27,7 @@
 .buttons{
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
 }
 .button{
   color: grey;
@@ -83,4 +92,16 @@
 .myselected{
   overflow-y: scroll;
   display: block;
+}
+@media all and (max-width:768px) {
+  .infoBox {
+    flex-direction: column;
+  }
+  .profileInfo{
+    margin-top:1em;
+    text-align: center;
+  }
+  .profile{
+    flex-direction: column;
+  }
 }

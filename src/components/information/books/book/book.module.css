@@ -6,21 +6,23 @@
   padding: 0.2em 1em;
   margin: 0.5em;
   border-radius: 1em;
-}
-.book:hover{
-  background-color: rgb(224, 224, 224);
+  flex-wrap: wrap;
+  transition: ease-in-out 50ms;
 }
 .name{
-  flex-basis: 70%;
+  display: flex;
+  flex: 1 1 60%;
+  justify-content: center;
 }
 
-.button{
+.delete{
   font-size: 1rem;
-  margin: 0 0.3em;
   border-style: none;
   display: flex;
   color: annesNavy;
-  background-color: #00000000;
+  background-color: #ffffff00;
+  flex: 1 1 10%;
+  justify-content: flex-end;
 }
 
 .button:hover{
@@ -30,22 +32,14 @@
 .status{
   display: flex;
   align-items: center;
-  flex-basis: 20%;
-  min-width: 11em;
   justify-content: flex-start;
+  flex: 1 1 10%;
 }
 .buttons{
   display: flex;
   align-items: center;
   flex-basis: 10%;
   justify-content: flex-end;
-}
-
-.delete{
-  color: annesNavy;
-  font-size: 1em;
-  display: flex;
-  border-style: none;
 }
 
 .paid, .completed, .unpaid, .uncompleted{
@@ -60,4 +54,24 @@
 }
 .unpaid, .uncompleted{
   background-color: annesPink;
+}
+
+@media all and (max-width:768px) {
+  .status{
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+  .name{
+    flex: 1 1 100%;
+    margin-top:0.4em;
+  }
+  .buttons{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0.5em;
+  }
+  .book{
+    position: relative;
+  }
 }

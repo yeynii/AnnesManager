@@ -1,0 +1,9 @@
+.memos{
+  display: flex;
+  flex-wrap: wrap;
+}
+@media all and (max-width:768px) {
+  .memos{
+    justify-content: center;
+  }
+}

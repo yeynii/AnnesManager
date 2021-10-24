@@ -11,8 +11,6 @@
   color: annesNavyBlack;
   transition: ease-in-out 50ms;
 }
-.course:hover{
-}
 .info{
   display: flex;
   align-items: center;
@@ -35,12 +33,27 @@
 }
 
 .delete{
-  color: annesNavy;
-  font-size: 1em;
-  display: flex;
+  font-size: 1rem;
   border-style: none;
+  display: flex;
+  color: annesNavy;
+  background-color: #ffffff00;
+  flex: 1 1 10%;
+  justify-content: flex-end;
 }
 
 button:hover{
   opacity: 0.8;
+}
+
+@media all and (max-width:768px) {
+  .buttons{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0.5em;
+  }
+  .course{
+    position: relative;
+  }
 }
