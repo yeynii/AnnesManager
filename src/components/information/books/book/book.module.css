@@ -12,7 +12,6 @@
 .name{
   display: flex;
   flex: 1 1 60%;
-  justify-content: center;
 }
 
 .delete{
@@ -64,6 +63,7 @@
   .name{
     flex: 1 1 100%;
     margin-top:0.4em;
+    justify-content: center;
   }
   .buttons{
     position: absolute;

@@ -11,7 +11,7 @@ const ConsultingList = ({ student, consulting, onDeleteConsulting, onUpdateConsu
       return;
     }
     event.preventDefault();
-    onUpdateConsulting(student, {
+    onUpdateConsulting(student,{
       ...consulting, [event.currentTarget.name]: event.currentTarget.value,
     });
   };
@@ -28,7 +28,7 @@ const ConsultingList = ({ student, consulting, onDeleteConsulting, onUpdateConsu
   return (
     <li className={styles.note}>
       <div className={styles.date}>
-        <input ref={dateRef} name="date" type="date" className={styles.dateInput} />
+        <input ref={dateRef} name="date" type="date" className={styles.dateInput} onChange={onChange}/>
         <button className={styles.delete} onClick={onClick}>
           <BiX />
         </button>
