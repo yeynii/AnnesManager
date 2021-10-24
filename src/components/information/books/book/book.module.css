@@ -15,10 +15,16 @@
 }
 
 .button{
+  font-size: 1rem;
   margin: 0 0.3em;
-  border-radius: 1em;
   border-style: none;
-  color: white;
+  display: flex;
+  color: annesNavy;
+  background-color: #00000000;
+}
+
+.button:hover{
+  color: red;
 }
 
 .status{
@@ -32,18 +38,25 @@
   display: flex;
   align-items: center;
   flex-basis: 10%;
-  min-width: 6em;
   justify-content: flex-end;
 }
 
-.edit{
-  background-color: #818181;
-}
 .delete{
-  background-color: annesNavy;
+  color: annesNavy;
+  font-size: 1em;
+  display: flex;
+  border-style: none;
+}
+
+.paid, .completed, .unpaid, .uncompleted{
+  margin: 0 0.3em;
+  border-radius: 1em;
+  border-style: none;
+  color: white;
 }
 .paid, .completed{
   background-color: green;
+  
 }
 .unpaid, .uncompleted{
   background-color: annesPink;

@@ -23,24 +23,24 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  flex-basis: 20%;
+  flex-basis: 10%;
 }
 .subject, .time, .teacher{
+  font-size: 1rem;
   margin: 0 0.3em;
+  display: flex;
   border-radius: 1em;
   border-style: none;
-}
-
-.modify, .delete{
-  margin: 0 0.3em;
-  border-radius: 1em;
-  border-style: none;
+  padding:1px;
 }
 
 .delete{
-  color: white;
-  background-color: annesNavy;
+  color: annesNavy;
+  font-size: 1em;
+  display: flex;
+  border-style: none;
 }
+
 button:hover{
   opacity: 0.8;
 }

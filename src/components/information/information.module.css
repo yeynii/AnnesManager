@@ -1,25 +1,31 @@
 @value annesNavy,annesPink,annesBabyPink,annesNavyBlack from '../../common/colors.css';
 
+.information{
+  width: 80%;
+  display: flex;
+  background-color: white;
+  padding: 1em;
+  flex-direction: column;
+  overflow-y: scroll;
+}
 
 .profile{
   display: flex;
-  flex-basis: 80%;
-  background-color: white;
-  padding: 1em;
-  -webkit-box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.1); 
-  box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.1);
-  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 0.51em;
 }
+
 .buttons{
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
 }
 .button{
   color: grey;
   cursor: pointer;
   font-size: 0.7em;
   margin-left: 1em;
+  min-width: 2em;
 }
 .button:hover{
   color:black;
@@ -47,7 +53,8 @@
   border: 3px solid annesPink;
 }
 
-.info{
+.profileInfo{
+  min-width: 9em;
   flex-basis: 80%;
   display: flex;
   flex-direction: column;
@@ -70,4 +77,10 @@
   font-size: 0.7em;
   color: grey;
   margin-bottom: 0.1rem;
+}
+.tabs{
+}
+.myselected{
+  overflow-y: scroll;
+  display: block;
 }

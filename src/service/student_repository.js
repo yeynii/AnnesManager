@@ -22,6 +22,10 @@ class StudentRepository{
     const dbRef = ref(this.db, `students/${student.id}/books/${book.id}`);
     remove(dbRef, student);
   }
+  removeConsulting(student, consulting){
+    const dbRef = ref(this.db, `students/${student.id}/consultings/${consulting.id}`);
+    remove(dbRef, student);
+  }
 
   syncStudents(onUpdate){
     const dbRef = ref(this.db, `students`);

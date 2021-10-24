@@ -6,8 +6,9 @@ import BookAddForm from './book_add_form/book_add_form';
 const Books = ({student, onCreateBook, onDeleteBook, onChangeBookStatus}) => {
   return (
     <ul className={styles.books}>
+    <BookAddForm student={student} onCreateBook={onCreateBook} />
       {student.books &&
-        Object.keys(student.books).map((key) => (
+        Object.keys(student.books).reverse().map((key) => (
           <Book
             student={student}
             key={key}
@@ -16,7 +17,6 @@ const Books = ({student, onCreateBook, onDeleteBook, onChangeBookStatus}) => {
             onChangeBookStatus={onChangeBookStatus}
           />
         ))}
-        <BookAddForm student={student} onCreateBook={onCreateBook} />
     </ul>
   );
 };

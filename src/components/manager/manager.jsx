@@ -79,11 +79,17 @@ const Manager = ({ authService, studentRepository }) => {
     createStudent({ ...student, books: updated });    
   };
 
-  const createConsulting = () => {
-
+  const createConsulting = (student, consulting) => {
+    const updated = { ...student["consultings"] };
+    updated[consulting.id] = consulting;
+    createStudent({ ...student, consultings: updated });
   };
 
-  const deleteConsulting = () => {
+  const removeConsulting = (student, consulting) => {
+    const updated = { ...student["consultings"] };
+    delete updated[consulting.id];
+    createStudent({ ...student, consultings: updated });
+    studentRepository.removeConsulting(student, consulting);
 
   };
 
@@ -122,7 +128,8 @@ const Manager = ({ authService, studentRepository }) => {
             onDeleteBook={removeBook}
             onChangeBookStatus={changeBookStatus}
             onCreateConsulting={createConsulting}
-            onDeleteConsulting={deleteConsulting}
+            onDeleteConsulting={removeConsulting}
+            onUpdateConsulting={createConsulting}
           />
         )}
       </div>

@@ -1,6 +1,8 @@
+.container{
+  margin-bottom: 0.5em;
+}
 .date{
   display: flex;
-  justify-content: space-between;
   padding: 0.2em 0.5em;
 }
 
@@ -13,7 +15,7 @@
 .textarea{
   font-family: 'Nanum Gothic', sans-serif;
   width: 100%;
-  margin-bottom: 0.5em;
+  height: 100%;
   border: 1px solid gray;
   font-size: 0.8em;
   background-attachment:local;
@@ -23,14 +25,25 @@
     repeating-linear-gradient(rgb(255, 249, 218), rgb(255, 249, 218) 30px, grey 31px,rgb(255, 249, 218) 32px);
   line-height:32px;
   padding: 8px 10px;
-  resize: none;    
-  overflow: visible;
+  resize: none;
+  overflow:visible;
+  margin:0;
+  display: flex;
+  border-bottom: whitesmoke;
 }
 
-.delete{
-  border-style: none;
+.plus{
+  width: 100%;
   display: flex;
-  align-items: center;
-  background-color: white;
-  font-size: 1em;
+  justify-content: center;
+  background-color: whitesmoke;
+  padding: 0.5em;
+  border: 1px solid gray;
+  border-top:0;
+  cursor: pointer;
+  color:gray;
+}
+
+.plus:hover{
+  opacity: 0.8;
 }

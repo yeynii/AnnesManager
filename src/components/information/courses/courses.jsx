@@ -6,6 +6,7 @@ import CourseAddForm from "./course_add_form/course_add_form";
 const Courses = ({ onCreateCourse, student, onDeleteCourse }) => {
   return (
     <ul className={styles.courses}>
+    <CourseAddForm student={student} onCreateCourse={onCreateCourse} />
       {student.courses &&
         Object.keys(student.courses).map((key) => (
           <Course
@@ -15,7 +16,6 @@ const Courses = ({ onCreateCourse, student, onDeleteCourse }) => {
             onDeleteCourse={onDeleteCourse}
           />
         ))}
-      <CourseAddForm student={student} onCreateCourse={onCreateCourse} />
     </ul>
   );
 };

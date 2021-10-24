@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from "./course.module.css";
+import { AiOutlineEdit, AiFillDelete } from "react-icons/ai";
 
 const Course = ({student, course, onDeleteCourse}) => {
   const onClick = () => {
@@ -13,7 +14,8 @@ const Course = ({student, course, onDeleteCourse}) => {
         <div className={styles.teacher}>{course && course.teacher}</div>
       </div>
       <div className={styles.buttons}>
-        <button className={styles.delete} onClick={onClick}>삭제</button>
+        <button className={styles.delete} onClick={onClick}>
+          <AiFillDelete /></button>
       </div>
     </li>
   );

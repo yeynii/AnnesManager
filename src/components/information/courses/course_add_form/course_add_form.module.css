@@ -18,6 +18,9 @@
   transform: scale(1.01);
 }
 
+.plus{
+  display: flex;
+}
 .form{
   display: flex;
   justify-content: space-around;

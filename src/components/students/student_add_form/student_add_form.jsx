@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Modal from "react-modal";
 import styles from "./student_add_form.module.css";
 
@@ -8,6 +8,7 @@ const StudentAddForm = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
   const addressRef = useRef();
   const dateRef = useRef();
   const hpRef = useRef();
+  const [hp, setHp] = useState();
 
   const onClick = event => {
     event.preventDefault();
@@ -17,11 +18,29 @@ const StudentAddForm = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
       grade: gradeRef.current.value || '',
       address: addressRef.current.value || '',
       date: dateRef.current.value || '',
-      hp: hpRef.current.value || ''
+      hp: hp || ''
     };
     onAdd(newStudent);
     setModalIsOpen(false);
+    setHp();
   };
+
+  const handleChange = (e) => {
+    const regex = /^[0-9\b -]{0,13}$/;
+    if (regex.test(e.target.value)) {
+      setHp(e.target.value);
+    }
+  }
+
+  useEffect(() => {
+    var hpLen = hp && hp.length;
+    if ( hpLen === 10 ) {
+      setHp(hp.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
+    }
+    if ( hpLen === 13) {
+      setHp(hp.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'));
+    }
+  }, [hp]);
 
   return (
     <Modal
@@ -83,7 +102,7 @@ const StudentAddForm = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
         </div>
         <div className={styles.contents}>
           <label htmlFor="hp">전화번호</label>
-          <input ref={hpRef} id="hp" type="input" className={styles.input} />
+          <input value={hp} id="hp" className={styles.input} type='text' onChange={handleChange}/>
         </div>
         <div className={styles.buttons}>
           <button className={styles.button} onClick={onClick} >

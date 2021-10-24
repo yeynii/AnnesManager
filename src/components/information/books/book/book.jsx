@@ -1,36 +1,42 @@
 import React from "react";
 import styles from "./book.module.css";
+import { AiOutlineEdit, AiFillDelete } from "react-icons/ai";
 
 const Book = ({ student, book, onDeleteBook, onChangeBookStatus }) => {
   const { payment, title, completion } = book;
-  const onClick = (clicked, event) => {
+  const changeBookStatus = (clicked, event) => {
     event.preventDefault();
     onChangeBookStatus(student, book, clicked);
   };
+
+  const deleteBook = (event) => {
+    event.preventDefault();
+    onDeleteBook(student, book);
+  };
+
   return (
     <li className={styles.book}>
       <div className={styles.status}>
         <button
-          className={`${styles.button} ${getPaymentStyles(payment)}`}
-          onClick={(event) => onClick("payment", event)}
+          className={`${getPaymentStyles(payment)}`}
+          onClick={(event) => changeBookStatus("payment", event)}
         >
           {payment ? "결제완료✔" : "미결제"}
         </button>
         <button
-          className={`${styles.button} ${getCompletionStyles(completion)}`}
-          onClick={(event) => onClick("completion", event)}
+          className={`${getCompletionStyles(completion)}`}
+          onClick={(event) => changeBookStatus("completion", event)}
         >
           {completion ? "진행완료✔" : "진행중"}
         </button>
       </div>
       <div className={styles.name}>{title}</div>
       <div className={styles.buttons}>
-        <button className={`${styles.button} ${styles.edit}`}>수정</button>
         <button
-          className={`${styles.button} ${styles.delete}`}
-          onClick={() => onDeleteBook(student, book)}
+          className={styles.delete}
+          onClick={(event) => deleteBook(event)}
         >
-          삭제
+          <AiFillDelete />
         </button>
       </div>
     </li>
