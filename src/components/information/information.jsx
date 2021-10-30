@@ -8,10 +8,15 @@ import ConsultingLists from "./consulting_lists/consulting_lists";
 import StudentEditForm from "./student_edit_form/student_edit_form";
 import Memos from "./memos/memos";
 
-const Information = ({ student, onUpdateStudent,
+const Information = ({ student, createOrUpdateStudent,
   removeStudent, createOrUpdateInformation, removeInformation }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const { name, grade, address, date, hp } = student;
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  }
+
   return (
     <div className={styles.information}>
       <section className={styles.profile}>
@@ -86,8 +91,8 @@ const Information = ({ student, onUpdateStudent,
         <StudentEditForm
           student={student}
           modalIsOpen={modalIsOpen}
-          setModalIsOpen={setModalIsOpen}
-          onUpdateStudent={onUpdateStudent}
+          closeModal={closeModal}
+          createOrUpdateStudent={createOrUpdateStudent}
         />
       )}
     </div>

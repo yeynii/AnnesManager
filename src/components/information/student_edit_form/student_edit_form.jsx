@@ -1,39 +1,23 @@
-import React, { useRef, useEffect } from "react";
+import React, { useState } from "react";
 import Modal from "react-modal";
 import styles from "./student_edit_form.module.css";
 
-const StudentEditForm = ({
-  student,
-  modalIsOpen,
-  setModalIsOpen,
-  onUpdateStudent,
-}) => {
-  const { name, grade, address, date, hp } = student;
-  const nameRef = useRef();
-  const gradeRef = useRef();
-  const addressRef = useRef();
-  const dateRef = useRef();
-  const hpRef = useRef();
+const StudentEditForm = ({ student, modalIsOpen, closeModal, createOrUpdateStudent }) => {
+  const [name, setName] = useState(student.name);
+  const [grade, setGrade] = useState(student.grade);
+  const [address, setAddress] = useState(student.address);
+  const [date, setDate] = useState(student.date);
+  const [hp, setHp] = useState(student.hp);
 
-  const onClick = (event) => {
+  const onChange = (event, setFn) => {
     event.preventDefault();
-    onUpdateStudent({
-      ...student,
-      [event.currentTarget.name]: event.currentTarget.value,
-    });
-    setModalIsOpen(false);
-    hpRef.current.value='';
+    setFn(event.currentTarget.value);
+  }
+  const onClick = event => {
+    event.preventDefault();
+    createOrUpdateStudent({ ...student, name, grade, address, date, hp });
+    closeModal();
   };
-
-
-  useEffect(() => {
-    nameRef.current.value = name;
-    gradeRef.current.value = grade;
-    addressRef.current.value = address;
-    dateRef.current.value = date;
-    hpRef.current.value = hp;
-  });
-
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -60,11 +44,11 @@ const StudentEditForm = ({
         <h3 className={styles.title}>학생 정보 수정</h3>
         <div className={styles.contents}>
           <label htmlFor="name">이름</label>
-          <input ref={nameRef} name="name" type="text" className={styles.input} />
+          <input defaultValue={name} name="name" type="text" className={styles.input} onChange={(event) => onChange(event, setName)} />
         </div>
         <div className={styles.contents}>
           <label htmlFor="grade">학년</label>
-          <select name="grade" ref={gradeRef} className={styles.input}>
+          <select name="grade" defaultValue={grade} className={styles.input} onChange={(event) => onChange(event, setGrade)}>
             <option value="none">선택</option>
             <option value="초1">초1</option>
             <option value="초2">초2</option>
@@ -80,36 +64,32 @@ const StudentEditForm = ({
         <div className={styles.contents}>
           <label htmlFor="address">주소 </label>
           <input
-            ref={addressRef}
+            defaultValue={address}
             name="address"
             type="text"
             className={styles.input}
+            onChange={(event) => onChange(event, setAddress)}
           />
         </div>
         <div className={styles.contents}>
           <label htmlFor="date">등록일</label>
-          <input ref={dateRef} name="date" type="date" className={styles.input} />
+          <input defaultValue={date} name="date" type="date" className={styles.input} onChange={(event) => onChange(event, setDate)} />
         </div>
         <div className={styles.contents}>
           <label htmlFor="hp">전화번호</label>
           <input
-            ref={hpRef}
+            defaultValue={hp}
             name="hp"
             className={styles.input}
             type="text"
+            onChange={(event) => onChange(event, setHp)}
           />
         </div>
         <div className={styles.buttons}>
           <button className={styles.button} onClick={onClick}>
             저장
           </button>
-          <button
-            className={`${styles.button} ${styles.grey}`}
-            onClick={(event) => {
-              event.preventDefault();
-              setModalIsOpen(false);
-            }}
-          >
+          <button className={`${styles.button} ${styles.grey}`} onClick={closeModal}>
             취소
           </button>
         </div>

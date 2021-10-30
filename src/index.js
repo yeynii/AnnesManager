@@ -9,8 +9,6 @@ const authService = new AuthService();
 const studentRepository = new StudentRepository();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App authService={authService} studentRepository={studentRepository}/>
-  </React.StrictMode>,
+    <App authService={authService} studentRepository={studentRepository}/>,
   document.getElementById('root')
 );
