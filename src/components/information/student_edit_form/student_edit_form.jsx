@@ -3,21 +3,22 @@ import Modal from "react-modal";
 import styles from "./student_edit_form.module.css";
 
 const StudentEditForm = ({ student, modalIsOpen, closeModal, createOrUpdateStudent }) => {
-  const [name, setName] = useState(student.name);
-  const [grade, setGrade] = useState(student.grade);
-  const [address, setAddress] = useState(student.address);
-  const [date, setDate] = useState(student.date);
-  const [hp, setHp] = useState(student.hp);
-
-  const onChange = (event, setFn) => {
+  const {name, grade, address, date, hp} = student;
+  const [updated, setUpdated] = useState(student);
+  const onChange = event => {
+    if (event.currentTarget == null) {
+      return;
+    }
     event.preventDefault();
-    setFn(event.currentTarget.value);
+    setUpdated({...updated, [event.currentTarget.name]:event.currentTarget.value});
   }
+
   const onClick = event => {
     event.preventDefault();
-    createOrUpdateStudent({ ...student, name, grade, address, date, hp });
+    createOrUpdateStudent(updated);
     closeModal();
   };
+
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -44,11 +45,11 @@ const StudentEditForm = ({ student, modalIsOpen, closeModal, createOrUpdateStude
         <h3 className={styles.title}>학생 정보 수정</h3>
         <div className={styles.contents}>
           <label htmlFor="name">이름</label>
-          <input defaultValue={name} name="name" type="text" className={styles.input} onChange={(event) => onChange(event, setName)} />
+          <input defaultValue={name} name="name" type="text" className={styles.input} onChange={onChange} />
         </div>
         <div className={styles.contents}>
           <label htmlFor="grade">학년</label>
-          <select name="grade" defaultValue={grade} className={styles.input} onChange={(event) => onChange(event, setGrade)}>
+          <select defaultValue={grade} name="grade" className={styles.input} onChange={onChange}>
             <option value="none">선택</option>
             <option value="초1">초1</option>
             <option value="초2">초2</option>
@@ -63,27 +64,15 @@ const StudentEditForm = ({ student, modalIsOpen, closeModal, createOrUpdateStude
         </div>
         <div className={styles.contents}>
           <label htmlFor="address">주소 </label>
-          <input
-            defaultValue={address}
-            name="address"
-            type="text"
-            className={styles.input}
-            onChange={(event) => onChange(event, setAddress)}
-          />
+          <input defaultValue={address} name="address" type="text" className={styles.input} onChange={onChange}/>
         </div>
         <div className={styles.contents}>
           <label htmlFor="date">등록일</label>
-          <input defaultValue={date} name="date" type="date" className={styles.input} onChange={(event) => onChange(event, setDate)} />
+          <input defaultValue={date} name="date" type="date" className={styles.input} onChange={onChange}/>
         </div>
         <div className={styles.contents}>
           <label htmlFor="hp">전화번호</label>
-          <input
-            defaultValue={hp}
-            name="hp"
-            className={styles.input}
-            type="text"
-            onChange={(event) => onChange(event, setHp)}
-          />
+          <input defaultValue={hp} name="hp" className={styles.input} type="text" onChange={onChange}/>
         </div>
         <div className={styles.buttons}>
           <button className={styles.button} onClick={onClick}>

@@ -1,22 +1,35 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { BsPlusLg } from "react-icons/bs";
 import Modal from "react-modal";
 import styles from "./book_add_form.module.css";
 
 const BookAddForm = ({ createOrUpdateInformation, student }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const titleRef = useRef();
+  const [title, setTitle] = useState();
 
   const onClick = (event) => {
     event.preventDefault();
     createOrUpdateInformation(student, {
       id: Date.now(),
-      title: titleRef.current.value || '',
+      title,
       payment: false,
       completion: false,
     },'book');
     setModalIsOpen(false);
   };
+
+  const onChange = event => {
+    if (event.currentTarget == null) {
+      return;
+    }
+    event.preventDefault();
+    setTitle(event.currentTarget.value);
+  }
+
+  const closeModal = event => {
+    event.preventDefault();
+    setModalIsOpen(false);
+  }
 
   return (
     <>
@@ -48,8 +61,8 @@ const BookAddForm = ({ createOrUpdateInformation, student }) => {
       >
         <form className={styles.form}>
           <div className={styles.contents}>
-            <label htmlFor="subject">책 이름</label>
-            <input ref={titleRef} className={styles.title}>
+            <label htmlFor="title">책 이름</label>
+            <input name="title" className={styles.title} onChange={onChange} required>
             </input>
           </div>
           <div className={styles.buttons}>
@@ -58,11 +71,7 @@ const BookAddForm = ({ createOrUpdateInformation, student }) => {
             </button>
             <button
               className={`${styles.button} ${styles.grey}`}
-              onClick={(event) => {
-                event.preventDefault();
-                setModalIsOpen(false);
-              }}
-            >
+              onClick={closeModal}>
               취소
             </button>
           </div>

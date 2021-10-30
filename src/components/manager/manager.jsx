@@ -28,10 +28,14 @@ const Manager = ({ authService, studentRepository }) => {
     studentRepository.saveStudent(student);
   };
   const removeStudent = (student) => {
+    setStudents(() => {
+      const updated = { ...students };
+      delete updated[student.id];
+      return updated;
+    });
     setStudentId();
     studentRepository.removeStudent(student);
   };
-
 
   const createOrUpdateInformation = (student, info, infoStr) => {
     const updated = { ...student[`${infoStr}s`] };
@@ -39,6 +43,11 @@ const Manager = ({ authService, studentRepository }) => {
     createOrUpdateStudent({ ...student, [`${infoStr}s`]: updated });
   };
   const removeInformation = (student, info, infoStr) => {
+    setStudents(() => {
+      const updated = { ...student[`${infoStr}s`] };
+      delete updated[info.id];
+      return updated;
+    });
     studentRepository.removeInformation(student, info, infoStr);
   };
 

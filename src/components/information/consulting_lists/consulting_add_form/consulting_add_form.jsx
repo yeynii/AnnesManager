@@ -13,16 +13,16 @@ const ConsultingAddForm = ({ createOrUpdateInformation, student }) => {
     event.preventDefault();
     createOrUpdateInformation(student, {
       id: Date.now(),
-      date: dateRef.current.value || "",
-      content: contentRef.current.value || "",
+      date: dateRef.current.value,
+      content: contentRef.current.value,
     },'consulting');
     contentRef.current.value='';
-    dateRef.current.value = todayDate || '';
+    dateRef.current.value = todayDate;
   };
 
   useEffect(() => {
-    dateRef.current.value = todayDate || '';
-  },[todayDate]);
+    dateRef.current.value = todayDate;
+  },[]);
 
   return (
     <div className={styles.container}>
