@@ -3,7 +3,7 @@ import styles from "./course_add_form.module.css";
 import { BsPlusLg } from "react-icons/bs";
 import Modal from "react-modal";
 
-const CourseAddForm = ({onCreateCourse, student}) => {
+const CourseAddForm = ({createOrUpdateInformation, student}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const subjectRef = useRef();
   const teacherRef = useRef();
@@ -11,11 +11,11 @@ const CourseAddForm = ({onCreateCourse, student}) => {
 
   const onClick = (event) => {
     event.preventDefault();
-    onCreateCourse(student, {
+    createOrUpdateInformation(student, {
       id: Date.now(),
       subject: subjectRef.current.value || '',
       teacher: teacherRef.current.value || '',
-      time: timeRef.current.value || ''});
+      time: timeRef.current.value || ''},'course');
     setModalIsOpen(false);
   };
 

@@ -3,18 +3,18 @@ import { BsPlusLg } from "react-icons/bs";
 import Modal from "react-modal";
 import styles from "./book_add_form.module.css";
 
-const BookAddForm = ({ onCreateBook, student }) => {
+const BookAddForm = ({ createOrUpdateInformation, student }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const titleRef = useRef();
 
   const onClick = (event) => {
     event.preventDefault();
-    onCreateBook(student, {
+    createOrUpdateInformation(student, {
       id: Date.now(),
       title: titleRef.current.value || '',
       payment: false,
       completion: false,
-    });
+    },'book');
     setModalIsOpen(false);
   };
 

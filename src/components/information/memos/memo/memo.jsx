@@ -1,13 +1,12 @@
 import React, { useRef, useEffect } from "react";
-import Memos from "../memos";
 import styles from "./memo.module.css";
 
-const Memo = ({ student, memo, onDeleteMemo, onUpdateMemo }) => {
+const Memo = ({ student, memo, removeInformation, createOrUpdateInformation }) => {
   const content = memo.content;
   const contentRef = useRef();
   const onClick = (event) => {
     event.preventDefault();
-    onDeleteMemo(student, memo);
+    removeInformation(student, memo, 'memo');
   };
 
   const onChange = event => {
@@ -15,11 +14,12 @@ const Memo = ({ student, memo, onDeleteMemo, onUpdateMemo }) => {
       return;
     }
     event.preventDefault();
-    onUpdateMemo(student, {...memo, content: contentRef.current.value});
+    createOrUpdateInformation(student, {...memo, content: contentRef.current.value},'memo');
   }
   useEffect(() => {
     contentRef.current.value = content;
-  }, []);
+    console.log(contentRef);
+  }, [content]);
   return (
     <li className={styles.memo}>
       <button className={styles.delete} onClick={onClick}>

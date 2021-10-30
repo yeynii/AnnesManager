@@ -3,7 +3,7 @@ import styles from "./students.module.css";
 import StudentAddForm from "./student_add_form/student_add_form";
 import Student from "./student/student";
 
-const Students = ({ onAdd, students, openInformation, selectedId }) => {
+const Students = ({ createOrUpdateStudent, students, openInformation, selectedId }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   return (
     <section className={styles.students}>
@@ -27,7 +27,7 @@ const Students = ({ onAdd, students, openInformation, selectedId }) => {
       <StudentAddForm
         modalIsOpen={modalIsOpen}
         setModalIsOpen={setModalIsOpen}
-        onAdd={onAdd}
+        createOrUpdateStudent={createOrUpdateStudent}
       />
     </section>
   );

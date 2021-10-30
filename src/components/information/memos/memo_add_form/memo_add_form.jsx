@@ -1,13 +1,13 @@
-import React, { useRef, useEffect, useState } from "react";
+import React from "react";
 import styles from "./memo_add_form.module.css";
 
-const MemoAddForm = ({student, onCreateMemo}) => {
+const MemoAddForm = ({student, createOrUpdateInformation}) => {
   const onClick = event => {
     event.preventDefault();
-    onCreateMemo(student, {
+    createOrUpdateInformation(student, {
       id: Date.now(),
       content: ''
-    });
+    },'memo');
   };
 
   return(

@@ -14,23 +14,11 @@ class StudentRepository{
     remove(dbRef, student);
   }
 
-  removeCourse(student, course){
-    const dbRef = ref(this.db, `students/${student.id}/courses/${course.id}`);
+  removeInformation(student, info, infoStr){
+    const dbRef = ref(this.db, `students/${student.id}/${infoStr}s/${info.id}`);
     remove(dbRef, student);
   }
-  removeBook(student, book){
-    const dbRef = ref(this.db, `students/${student.id}/books/${book.id}`);
-    remove(dbRef, student);
-  }
-  removeConsulting(student, consulting){
-    const dbRef = ref(this.db, `students/${student.id}/consultings/${consulting.id}`);
-    remove(dbRef, student);
-  }
-  removeMemo(student, memo){
-    const dbRef = ref(this.db, `students/${student.id}/memos/${memo.id}`);
-    remove(dbRef, student);
-  }
-
+  
   syncStudents(onUpdate){
     const dbRef = ref(this.db, `students`);
     onValue(dbRef, snapshot => {

@@ -16,7 +16,6 @@
 
 .title{
   justify-content: center;
-  flex-basis: 5%;
   display: flex;
   margin:0;
   font-size: 0.9em;
@@ -26,7 +25,6 @@
 }
 
 .studentList{
-  flex-basis: 90%;
   display: flex;
   flex-direction: column;
   overflow-y:scroll;

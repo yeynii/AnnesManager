@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from "./course.module.css";
-import { AiOutlineEdit, AiFillDelete } from "react-icons/ai";
+import { AiFillDelete } from "react-icons/ai";
 
-const Course = ({student, course, onDeleteCourse}) => {
+const Course = ({student, course, removeInformation}) => {
   const onClick = () => {
-    onDeleteCourse(student, course);
+    removeInformation(student, course, 'course');
   }
   return(
     <li className={styles.course}>

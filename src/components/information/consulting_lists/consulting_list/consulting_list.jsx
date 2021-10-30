@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import styles from "./consulting_list.module.css";
 import { BiX } from "react-icons/bi";
 
-const ConsultingList = ({ student, consulting, onDeleteConsulting, onUpdateConsulting }) => {
+const ConsultingList = ({ student, consulting, removeInformation, createOrUpdateInformation }) => {
   const { date, content } = consulting;
   const contentRef = useRef();
   const dateRef = useRef();
@@ -11,14 +11,14 @@ const ConsultingList = ({ student, consulting, onDeleteConsulting, onUpdateConsu
       return;
     }
     event.preventDefault();
-    onUpdateConsulting(student,{
+    createOrUpdateInformation(student,{
       ...consulting, [event.currentTarget.name]: event.currentTarget.value,
-    });
+    },'consulting');
   };
 
   const onClick = event => {
     event.preventDefault();
-    onDeleteConsulting(student, consulting);
+    removeInformation(student, consulting, 'consulting');
   }
 
   useEffect(() => {

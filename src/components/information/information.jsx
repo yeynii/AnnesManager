@@ -9,21 +9,8 @@ import ConsultingLists from "./consulting_lists/consulting_lists";
 import StudentEditForm from "./student_edit_form/student_edit_form";
 import Memos from "./memos/memos";
 
-const Information = ({
-  student,
-  onUpdateStudent,
-  onCreateCourse,
-  onDeleteStudent,
-  onDeleteCourse,
-  onCreateBook,
-  onDeleteBook,
-  onChangeBookStatus,
-  onCreateConsulting,
-  onDeleteConsulting,
-  onUpdateConsulting,
-  onCreateMemo,
-  onDeleteMemo,
-}) => {
+const Information = ({ student, onUpdateStudent,
+  removeStudent, createOrUpdateInformation, removeInformation }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const { name, grade, address, date, hp } = student;
   return (
@@ -35,7 +22,7 @@ const Information = ({
           </div>
           <div
             className={styles.button}
-            onClick={() => onDeleteStudent(student)}
+            onClick={() => removeStudent(student)}
           >
             삭제
           </div>
@@ -54,12 +41,12 @@ const Information = ({
             <div className={styles.address}>주소 : {address}</div>
             <div className={styles.hp}>전화번호: {hp}</div>
             <div className={styles.date}>등록일 : {date}</div>
-            <div className={styles.date}>퇴원일 : {}</div>
+            <div className={styles.date}>퇴원일 : { }</div>
           </div>
         </div>
       </section>
       <div className={styles.tabs}>
-        <Tabs forceRenderTabPanel={styles.myselected}>
+        <Tabs>
           <TabList>
             <Tab>수업</Tab>
             <Tab>책</Tab>
@@ -69,31 +56,29 @@ const Information = ({
           <TabPanel>
             <Courses
               student={student}
-              onCreateCourse={onCreateCourse}
-              onDeleteCourse={onDeleteCourse}
+              createOrUpdateInformation={createOrUpdateInformation}
+              removeInformation={removeInformation}
             />
           </TabPanel>
           <TabPanel>
             <Books
               student={student}
-              onCreateBook={onCreateBook}
-              onDeleteBook={onDeleteBook}
-              onChangeBookStatus={onChangeBookStatus}
+              createOrUpdateInformation={createOrUpdateInformation}
+              removeInformation={removeInformation}
             />
           </TabPanel>
           <TabPanel>
             <ConsultingLists
               student={student}
-              onCreateConsulting={onCreateConsulting}
-              onDeleteConsulting={onDeleteConsulting}
-              onUpdateConsulting={onUpdateConsulting}
+              createOrUpdateInformation={createOrUpdateInformation}
+              removeInformation={removeInformation}
             />
           </TabPanel>
           <TabPanel>
             <Memos
               student={student}
-              onCreateMemo={onCreateMemo}
-              onDeleteMemo={onDeleteMemo}
+              createOrUpdateInformation={createOrUpdateInformation}
+              removeInformation={removeInformation}
             />
           </TabPanel>
         </Tabs>

@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import Modal from "react-modal";
 import styles from "./student_add_form.module.css";
 
-const StudentAddForm = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
+const StudentAddForm = ({ modalIsOpen, setModalIsOpen, createOrUpdateStudent }) => {
   const nameRef = useRef();
   const gradeRef = useRef();
   const addressRef = useRef();
@@ -19,7 +19,7 @@ const StudentAddForm = ({ modalIsOpen, setModalIsOpen, onAdd }) => {
       date: dateRef.current.value || '',
       hp: hp || ''
     };
-    onAdd(newStudent);
+    createOrUpdateStudent(newStudent);
     setModalIsOpen(false);
     setHp();
   };

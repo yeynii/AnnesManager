@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import Modal from "react-modal";
 import styles from "./student_edit_form.module.css";
 
@@ -9,12 +9,11 @@ const StudentEditForm = ({
   onUpdateStudent,
 }) => {
   const { name, grade, address, date, hp } = student;
-
-  const nameRef = useRef(null);
-  const gradeRef = useRef(null);
-  const addressRef = useRef(null);
-  const dateRef = useRef(null);
-  const [hpVal, setHpVal] = useState();
+  const nameRef = useRef();
+  const gradeRef = useRef();
+  const addressRef = useRef();
+  const dateRef = useRef();
+  const hpRef = useRef();
 
   const onClick = (event) => {
     event.preventDefault();
@@ -23,35 +22,17 @@ const StudentEditForm = ({
       [event.currentTarget.name]: event.currentTarget.value,
     });
     setModalIsOpen(false);
-    setHpVal();
+    hpRef.current.value='';
   };
 
-  const handleChange = (e) => {
-    const regex = /^[0-9\b -]{0,13}$/;
-    if (regex.test(e.target.value)) {
-      setHpVal(e.target.value);
-    }
-  };
 
   useEffect(() => {
-      // nameRef.current.value = name;
-      // gradeRef.current.value = grade;
-      // addressRef.current.value = address;
-      // dateRef.current.value = date;
-      // hpVal.current.value = hp;
-  }, []);
-
-  useEffect(() => {
-    var hpLen = hpVal && hpVal.length;
-    if (hpLen === 10) {
-      setHpVal(hpVal.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
-    }
-    if (hpLen === 13) {
-      setHpVal(
-        hpVal.replace(/-/g, "").replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3")
-      );
-    }
-  }, [hpVal]);
+    nameRef.current.value = name;
+    gradeRef.current.value = grade;
+    addressRef.current.value = address;
+    dateRef.current.value = date;
+    hpRef.current.value = hp;
+  });
 
   return (
     <Modal
@@ -79,11 +60,11 @@ const StudentEditForm = ({
         <h3 className={styles.title}>학생 정보 수정</h3>
         <div className={styles.contents}>
           <label htmlFor="name">이름</label>
-          <input ref={nameRef} id="name" type="text" className={styles.input} />
+          <input ref={nameRef} name="name" type="text" className={styles.input} />
         </div>
         <div className={styles.contents}>
           <label htmlFor="grade">학년</label>
-          <select ref={gradeRef} className={styles.input}>
+          <select name="grade" ref={gradeRef} className={styles.input}>
             <option value="none">선택</option>
             <option value="초1">초1</option>
             <option value="초2">초2</option>
@@ -100,23 +81,22 @@ const StudentEditForm = ({
           <label htmlFor="address">주소 </label>
           <input
             ref={addressRef}
-            id="address"
+            name="address"
             type="text"
             className={styles.input}
           />
         </div>
         <div className={styles.contents}>
           <label htmlFor="date">등록일</label>
-          <input ref={dateRef} id="date" type="date" className={styles.input} />
+          <input ref={dateRef} name="date" type="date" className={styles.input} />
         </div>
         <div className={styles.contents}>
           <label htmlFor="hp">전화번호</label>
           <input
-            value={hpVal}
-            id="hp"
+            ref={hpRef}
+            name="hp"
             className={styles.input}
             type="text"
-            onChange={handleChange}
           />
         </div>
         <div className={styles.buttons}>

@@ -15,9 +15,33 @@ const Manager = ({ authService, studentRepository }) => {
     authService.logout();
   }, [authService]);
 
-  const openInformation = (id) => {
+  const openInformation = id => {
     setStudentId(id);
   };
+
+  const createOrUpdateStudent = student => {
+    setStudents(() => {
+      const updated = { ...students };
+      updated[student.id] = student;
+      return updated;
+    });
+    studentRepository.saveStudent(student);
+  };
+  const removeStudent = (student) => {
+    setStudentId();
+    studentRepository.removeStudent(student);
+  };
+
+
+  const createOrUpdateInformation = (student, info, infoStr) => {
+    const updated = { ...student[`${infoStr}s`] };
+    updated[info.id] = info;
+    createOrUpdateStudent({ ...student, [`${infoStr}s`]: updated });
+  };
+  const removeInformation = (student, info, infoStr) => {
+    studentRepository.removeInformation(student, info, infoStr);
+  };
+
   useEffect(() => {
     authService.onAuthChange((user) => {
       if (user) {
@@ -27,85 +51,6 @@ const Manager = ({ authService, studentRepository }) => {
       }
     });
   }, [history, authService]);
-
-  const createStudent = (student) => {
-    setStudents(() => {
-      const updated = { ...students };
-      updated[student.id] = student;
-      return updated;
-    });
-    studentRepository.saveStudent(student);
-  };
-
-  const createCourse = (student, course) => {
-    const updated = { ...student["courses"] };
-    updated[course.id] = course;
-    createStudent({ ...student, courses: updated });
-  };
-
-  const createBook = (student, book) => {
-    const updated = { ...student["books"] };
-    updated[book.id] = book;
-    createStudent({ ...student, books: updated });
-  };
-
-  const createMemo = (student, memo) => {
-    const updated = { ...student["memos"] };
-    updated[memo.id] = memo;
-    createStudent({ ...student, memos: updated });
-  };
-
-  const removeStudent = (student) => {
-    setStudents(() => {
-      const updated = { ...students };
-      delete updated[student.id];
-      return updated;
-    });
-    setStudentId();
-    studentRepository.removeStudent(student);
-  };
-
-  const removeCourse = (student, course) => {
-    const updated = { ...student["courses"] };
-    delete updated[course.id];
-    createStudent({ ...student, courses: updated });
-    studentRepository.removeCourse(student, course);
-  };
-
-  const removeBook = (student, book) => {
-    const updated = { ...student["books"] };
-    delete updated[book.id];
-    createStudent({ ...student, books: updated });
-    studentRepository.removeBook(student, book);
-  };
-
-  const changeBookStatus = (student, book, clicked) => {
-    const updated = { ...student["books"] };
-    updated[book.id][clicked] = !updated[book.id][clicked];
-    createStudent({ ...student, books: updated });    
-  };
-  
-  const UpdateStudent = () =>{};
-
-  const createConsulting = (student, consulting) => {
-    const updated = { ...student["consultings"] };
-    updated[consulting.id] = consulting;
-    createStudent({ ...student, consultings: updated });
-  };
-
-  const removeConsulting = (student, consulting) => {
-    const updated = { ...student["consultings"] };
-    delete updated[consulting.id];
-    createStudent({ ...student, consultings: updated });
-    studentRepository.removeConsulting(student, consulting);
-  };
-
-  const removeMemo = (student, memo)=> {
-    const updated = { ...student["memos"] };
-    delete updated[memo.id];
-    createStudent({ ...student, memos: updated });
-    studentRepository.removeMemo(student, memo);
-  };
 
   useEffect(() => {
     if (!userId) {
@@ -127,7 +72,7 @@ const Manager = ({ authService, studentRepository }) => {
       </header>
       <div className={styles.container}>
         <Students
-          onAdd={createStudent}
+          createOrUpdateStudent={createOrUpdateStudent}
           students={students}
           openInformation={openInformation}
           selectedId={studentId}
@@ -135,18 +80,10 @@ const Manager = ({ authService, studentRepository }) => {
         {studentId && (
           <Information
             student={students[studentId]}
-            onUpdateStudent={createStudent}
-            onDeleteStudent={removeStudent}
-            onCreateCourse={createCourse}
-            onCreateBook={createBook}
-            onDeleteCourse={removeCourse}
-            onDeleteBook={removeBook}
-            onChangeBookStatus={changeBookStatus}
-            onCreateConsulting={createConsulting}
-            onDeleteConsulting={removeConsulting}
-            onUpdateConsulting={createConsulting}
-            onCreateMemo={createMemo}
-            onDeleteMemo={removeMemo}
+            createOrUpdateStudent={createOrUpdateStudent}
+            removeStudent={removeStudent}
+            createOrUpdateInformation={createOrUpdateInformation}
+            removeInformation={removeInformation}
           />
         )}
       </div>

@@ -3,7 +3,7 @@ import styles from "./memos.module.css";
 import Memo from "./memo/memo";
 import MemoAddForm from "./memo_add_form/memo_add_form";
 
-const Memos = ({student, onCreateMemo, onDeleteMemo}) => {
+const Memos = ({student, createOrUpdateInformation, removeInformation}) => {
   return (
     <>
       <ul className={styles.memos}>
@@ -13,11 +13,11 @@ const Memos = ({student, onCreateMemo, onDeleteMemo}) => {
             student={student}
             key={key}
             memo={student.memos[key]}
-            onDeleteMemo={onDeleteMemo}
-            onUpdateMemo={onCreateMemo}
+            removeInformation={removeInformation}
+            createOrUpdateInformation={createOrUpdateInformation}
           />
         ))}
-        <MemoAddForm student={student} onCreateMemo={onCreateMemo}/>
+        <MemoAddForm student={student} createOrUpdateInformation={createOrUpdateInformation}/>
       </ul>
     </>
   );

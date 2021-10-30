@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import styles from "./consulting_add_form.module.css";
 import { BsPlusLg } from "react-icons/bs";
 
-const ConsultingAddForm = ({ onCreateConsulting, student }) => {
+const ConsultingAddForm = ({ createOrUpdateInformation, student }) => {
   const contentRef = useRef();
   const dateRef = useRef();
   const today = new Date();
@@ -11,18 +11,18 @@ const ConsultingAddForm = ({ onCreateConsulting, student }) => {
 
   const onClick = (event) => {
     event.preventDefault();
-    onCreateConsulting(student, {
+    createOrUpdateInformation(student, {
       id: Date.now(),
       date: dateRef.current.value || "",
       content: contentRef.current.value || "",
-    });
+    },'consulting');
     contentRef.current.value='';
     dateRef.current.value = todayDate || '';
   };
 
   useEffect(() => {
     dateRef.current.value = todayDate || '';
-  },[]);
+  },[todayDate]);
 
   return (
     <div className={styles.container}>
