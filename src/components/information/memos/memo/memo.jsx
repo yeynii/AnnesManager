@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import styles from "./memo.module.css";
+import useConfirm from "../../../use_confirme";
 
 const Memo = ({ student, memo, removeInformation, createOrUpdateInformation }) => {
   const {content} = memo;
   const [updated, setUpdated] = useState(memo);
-  const onClick = event => {
-    event.preventDefault();
-    removeInformation(student, memo, 'memo');
-  };
-
   const onChange = event => {
     if (event.currentTarget == null) {
       return;
@@ -17,9 +13,12 @@ const Memo = ({ student, memo, removeInformation, createOrUpdateInformation }) =
     setUpdated({...updated, content : event.currentTarget.value});
     createOrUpdateInformation(student, updated, 'memo');
   }
+
+  const onRemove = useConfirm("삭제하시겠습니까?", () => removeInformation(student, memo, "memo"));
+
   return (
     <li className={styles.memo}>
-      <button className={styles.delete} onClick={onClick}>
+      <button className={styles.delete} onClick={onRemove}>
         X
       </button>
       <textarea

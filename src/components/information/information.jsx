@@ -7,15 +7,23 @@ import Courses from "./courses/courses";
 import ConsultingLists from "./consulting_lists/consulting_lists";
 import StudentEditForm from "./student_edit_form/student_edit_form";
 import Memos from "./memos/memos";
+import useConfirm from "../use_confirme";
 
-const Information = ({ student, createOrUpdateStudent,
-  removeStudent, createOrUpdateInformation, removeInformation }) => {
+const Information = ({
+  student,
+  createOrUpdateStudent,
+  removeStudent,
+  createOrUpdateInformation,
+  removeInformation,
+}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const { name, grade, address, startDate, endDate, phone } = student;
 
   const closeModal = () => {
     setModalIsOpen(false);
-  }
+  };
+
+  const onRemove = useConfirm("삭제하시겠습니까?", () => removeStudent(student));
 
   return (
     <div className={styles.information}>
@@ -24,10 +32,7 @@ const Information = ({ student, createOrUpdateStudent,
           <div className={styles.button} onClick={() => setModalIsOpen(true)}>
             수정
           </div>
-          <div
-            className={styles.button}
-            onClick={() => removeStudent(student)}
-          >
+          <div className={styles.button} onClick={onRemove}>
             삭제
           </div>
         </div>

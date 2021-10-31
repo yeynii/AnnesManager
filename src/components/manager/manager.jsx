@@ -3,6 +3,7 @@ import { useHistory } from "react-router";
 import styles from "./manager.module.css";
 import Students from "./../students/students";
 import Information from "../information/information";
+import useConfirm from "../use_confirme";
 
 const Manager = ({ authService, studentRepository }) => {
   const historyState = useHistory().state;
@@ -51,6 +52,8 @@ const Manager = ({ authService, studentRepository }) => {
     studentRepository.removeInformation(student, info, infoStr);
   };
 
+  const logOut = useConfirm("로그아웃 하시겠습니까?", onLogout);
+
   useEffect(() => {
     authService.onAuthChange((user) => {
       if (user) {
@@ -75,7 +78,7 @@ const Manager = ({ authService, studentRepository }) => {
     <section className={styles.manager}>
       <header className={styles.header}>
         <div className={styles.headerText}>Annes Manager</div>
-        <button className={styles.logOut} onClick={onLogout}>
+        <button className={styles.logOut} onClick={logOut}>
           logout
         </button>
       </header>

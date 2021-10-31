@@ -1,21 +1,45 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import styles from "./course_add_form.module.css";
 import { BsPlusLg } from "react-icons/bs";
 import Modal from "react-modal";
 
-const CourseAddForm = ({createOrUpdateInformation, student}) => {
+const CourseAddForm = ({ createOrUpdateInformation, student }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const subjectRef = useRef();
-  const teacherRef = useRef();
-  const timeRef = useRef();
+  const [subject, setSubject] = useState();
+  const [teacher, setTeacher] = useState();
+  const [time, setTime] = useState();
 
   const onClick = (event) => {
     event.preventDefault();
-    createOrUpdateInformation(student, {
-      id: Date.now(),
-      subject: subjectRef.current.value || '',
-      teacher: teacherRef.current.value || '',
-      time: timeRef.current.value || ''},'course');
+    if (subject == null || subject.length === 0) {
+      alert("과목을 입력하지 않았습니다");
+      return;
+    }
+    if (teacher == null || teacher.length === 0) {
+      alert("선생님을 입력하지 않았습니다");
+      return;
+    }
+    if (time == null || time.length === 0) {
+      alert("시간을 입력하지 않았습니다");
+      return;
+    }
+    createOrUpdateInformation(student, { id: Date.now(), subject, teacher, time }, "course");
+    setSubject();
+    setTeacher();
+    setTime();
+    setModalIsOpen(false);
+  };
+
+  const onChange = (event, setFn) => {
+    if (event.currentTarget == null) {
+      return;
+    }
+    event.preventDefault();
+    setFn(event.currentTarget.value);
+  };
+
+  const onCancel = (event) => {
+    event.preventDefault();
     setModalIsOpen(false);
   };
 
@@ -49,9 +73,21 @@ const CourseAddForm = ({createOrUpdateInformation, student}) => {
       >
         <form className={styles.form}>
           <div className={styles.contents}>
+            <label htmlFor="time">시간</label>
+            <select className={styles.select} onChange={(event) => onChange(event, setTime)}>
+              <option value="">선택</option>
+              <option value="2">2시</option>
+              <option value="3">3시</option>
+              <option value="4">4시</option>
+              <option value="5">5시</option>
+              <option value="6">6시</option>
+              <option value="7">7시</option>
+            </select>
+          </div>
+          <div className={styles.contents}>
             <label htmlFor="subject">과목</label>
-            <select ref={subjectRef} className={styles.select}>
-              <option value="none">선택</option>
+            <select className={styles.select} onChange={(event) => onChange(event, setSubject)}>
+              <option value="">선택</option>
               <option value="국어">국어</option>
               <option value="수학">수학</option>
               <option value="영어">영어</option>
@@ -60,21 +96,9 @@ const CourseAddForm = ({createOrUpdateInformation, student}) => {
             </select>
           </div>
           <div className={styles.contents}>
-            <label htmlFor="time">시간</label>
-            <select ref={timeRef} className={styles.select}>
-              <option value="none">선택</option>
-              <option value="2시">2시</option>
-              <option value="3시">3시</option>
-              <option value="4시">4시</option>
-              <option value="5시">5시</option>
-              <option value="6시">6시</option>
-              <option value="7시">7시</option>
-            </select>
-          </div>
-          <div className={styles.contents}>
             <label htmlFor="teacher">선생님</label>
-            <select ref={teacherRef} className={styles.select}>
-              <option value="none">선택</option>
+            <select className={styles.select} onChange={(event) => onChange(event, setTeacher)}>
+              <option value="">선택</option>
               <option value="Anne">Anne</option>
               <option value="Chloe">Chloe</option>
               <option value="Daniel">Daniel</option>
@@ -95,10 +119,7 @@ const CourseAddForm = ({createOrUpdateInformation, student}) => {
             </button>
             <button
               className={`${styles.button} ${styles.grey}`}
-              onClick={(event) => {
-                event.preventDefault();
-                setModalIsOpen(false);
-              }}
+              onClick={onCancel}
             >
               취소
             </button>

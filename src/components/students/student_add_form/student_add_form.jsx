@@ -3,35 +3,64 @@ import Modal from "react-modal";
 import styles from "./student_add_form.module.css";
 
 const StudentAddForm = ({ modalIsOpen, closeModal, createOrUpdateStudent }) => {
-  const [student, setStudent] = useState();
-  const [phoneNumber, setPhoneNumber] = useState();
+  const [name, setName] = useState();
+  const [grade, setGrade] = useState();
+  const [address, setAddress] = useState();
+  const [phone, setPhone] = useState();
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
 
-  const onClick = event => {
+  const onClick = (event) => {
     event.preventDefault();
-    const newStudent = { ...student, id: Date.now() };
-    createOrUpdateStudent(newStudent);
+    const regex = /^\d{3}-\d{3,4}-\d{4}$/;
+    if (name == null || name.length === 0){
+      alert('이름을 입력하세용');
+      return;
+    }
+    if (grade == null || grade.length === 0 ){
+      alert('학년을 선택하세용');
+      return;
+    }
+    if (phone != null && phone.length !== 0 && phone.match(regex) == null){
+      alert('전화번호 형식이 올바르지 않습니당');
+      return;
+    }
+    createOrUpdateStudent({
+      id: Date.now(),
+      name, grade,
+      address: address || '',
+      phone: phone || '',
+      startDate: startDate || '',
+      endDate: endDate || '',
+    });
+    setName();
+    setGrade();
+    setAddress();
+    setPhone();
+    setStartDate();
+    setEndDate();
     closeModal();
   };
-  const onChange = event => {
+
+  const onChange = (event, setFn) => {
     if (event.currentTarget == null) {
       return;
     }
     event.preventDefault();
-    if (event.currentTarget.name === "phone"){
+    if (event.currentTarget.name === "phone") {
       event.currentTarget.value = autoHypenPhone(event.currentTarget.value);
     }
-    setStudent({ ...student, [event.currentTarget.name]: event.currentTarget.value });
-  }
+    setFn(event.currentTarget.value);
+  };
 
-  const onCancel = event => {
+  const onCancel = (event) => {
     event.preventDefault();
     closeModal();
-  }
+  };
 
   useEffect(() => {
-    phoneNumber && setPhoneNumber(autoHypenPhone(phoneNumber))
-  }, [phoneNumber]);
-
+    phone && setPhone(autoHypenPhone(phone));
+  }, [phone]);
 
   return (
     <Modal
@@ -59,12 +88,23 @@ const StudentAddForm = ({ modalIsOpen, closeModal, createOrUpdateStudent }) => {
         <h3 className={styles.title}>학생 정보 수정</h3>
         <div className={styles.contents}>
           <label htmlFor="name">이름</label>
-          <input name="name" id="name" type="text" className={styles.input} onChange={onChange}/>
+          <input
+            name="name"
+            id="name"
+            type="text"
+            className={styles.input}
+            onChange={(event) => onChange(event, setName)}
+          />
         </div>
         <div className={styles.contents}>
           <label htmlFor="grade">학년</label>
-          <select name="grade" id="grade" className={styles.input} onChange={onChange}>
-            <option value="none">선택</option>
+          <select
+            name="grade"
+            id="grade"
+            className={styles.input}
+            onChange={(event) => onChange(event, setGrade)}
+          >
+            <option value="">선택</option>
             <option value="초1">초1</option>
             <option value="초2">초2</option>
             <option value="초3">초3</option>
@@ -78,25 +118,53 @@ const StudentAddForm = ({ modalIsOpen, closeModal, createOrUpdateStudent }) => {
         </div>
         <div className={styles.contents}>
           <label htmlFor="address">주소 </label>
-          <input name="address" id="address" type="text" className={styles.input} onChange={onChange} />
+          <input
+            name="address"
+            id="address"
+            type="text"
+            className={styles.input}
+            onChange={(event) => onChange(event, setAddress)}
+          />
         </div>
         <div className={styles.contents}>
           <label htmlFor="phone">전화번호</label>
-          <input name="phone" id="phone" type="text" className={styles.input} placeholder="010-1234-1234" onChange={onChange} />
+          <input
+            name="phone"
+            id="phone"
+            type="text"
+            className={styles.input}
+            placeholder="010-1234-1234"
+            onChange={(event) => onChange(event, setPhone)}
+          />
         </div>
         <div className={styles.contents}>
           <label htmlFor="startDate">등록일</label>
-          <input name="startDate" id="startDate" type="date" className={styles.input} onChange={onChange} />
+          <input
+            name="startDate"
+            id="startDate"
+            type="date"
+            className={styles.input}
+            onChange={(event) => onChange(event, setStartDate)}
+          />
         </div>
         <div className={styles.contents}>
           <label htmlFor="endDate">퇴원일</label>
-          <input name="endDate" id="endDate" type="date" className={styles.input} onChange={onChange} />
+          <input
+            name="endDate"
+            id="endDate"
+            type="date"
+            className={styles.input}
+            onChange={(event) => onChange(event, setEndDate)}
+          />
         </div>
         <div className={styles.buttons}>
           <button className={styles.button} onClick={onClick}>
             저장
           </button>
-          <button className={`${styles.button} ${styles.grey}`} onClick={onCancel}>
+          <button
+            className={`${styles.button} ${styles.grey}`}
+            onClick={onCancel}
+          >
             취소
           </button>
         </div>
@@ -107,29 +175,29 @@ const StudentAddForm = ({ modalIsOpen, closeModal, createOrUpdateStudent }) => {
 
 export default StudentAddForm;
 
-function autoHypenPhone(str){
-  str = str.replace(/[^0-9]/g, '');
-  var tmp = '';
-  if( str.length < 4){
-      return str;
-  }else if(str.length < 7){
-      tmp += str.substr(0, 3);
-      tmp += '-';
-      tmp += str.substr(3);
-      return tmp;
-  }else if(str.length < 11){
-      tmp += str.substr(0, 3);
-      tmp += '-';
-      tmp += str.substr(3, 3);
-      tmp += '-';
-      tmp += str.substr(6);
-      return tmp;
-  }else{              
-      tmp += str.substr(0, 3);
-      tmp += '-';
-      tmp += str.substr(3, 4);
-      tmp += '-';
-      tmp += str.substr(7, 4);
-      return tmp;
+function autoHypenPhone(str) {
+  str = str.replace(/[^0-9]/g, "");
+  var tmp = "";
+  if (str.length < 4) {
+    return str;
+  } else if (str.length < 7) {
+    tmp += str.substr(0, 3);
+    tmp += "-";
+    tmp += str.substr(3);
+    return tmp;
+  } else if (str.length < 11) {
+    tmp += str.substr(0, 3);
+    tmp += "-";
+    tmp += str.substr(3, 3);
+    tmp += "-";
+    tmp += str.substr(6);
+    return tmp;
+  } else {
+    tmp += str.substr(0, 3);
+    tmp += "-";
+    tmp += str.substr(3, 4);
+    tmp += "-";
+    tmp += str.substr(7, 4);
+    return tmp;
   }
 }

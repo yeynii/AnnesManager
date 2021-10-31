@@ -3,42 +3,35 @@
 .book{
   background-color: #f0f0f0;
   display: flex;
-  padding: 0.2em 1em;
+  padding: 0.2em;
   margin: 0.5em;
   border-radius: 1em;
-  flex-wrap: wrap;
   transition: ease-in-out 50ms;
+  position: relative;
+  align-items: center;
 }
-.name{
+.title{
   display: flex;
-  flex: 1 1 60%;
+  align-items: center;
+  margin: 0em 1em;
 }
 
 .delete{
   font-size: 1rem;
   border-style: none;
-  display: flex;
   color: annesNavy;
   background-color: #ffffff00;
-  flex: 1 1 10%;
-  justify-content: flex-end;
-}
-
-.button:hover{
-  color: red;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0.5em;
 }
 
 .status{
+  margin-left: 0.5em;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  flex: 1 1 10%;
-}
-.buttons{
-  display: flex;
-  align-items: center;
-  flex-basis: 10%;
-  justify-content: flex-end;
 }
 
 .paid, .completed, .unpaid, .uncompleted{
@@ -48,7 +41,7 @@
   color: white;
 }
 .paid, .completed{
-  background-color: green;
+  background-color:mediumturquoise;
   
 }
 .unpaid, .uncompleted{
@@ -56,22 +49,12 @@
 }
 
 @media all and (max-width:768px) {
-  .status{
-    flex: 1 1 100%;
-    justify-content: center;
-  }
-  .name{
-    flex: 1 1 100%;
-    margin-top:0.4em;
-    justify-content: center;
-  }
-  .buttons{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 0.5em;
-  }
-  .book{
-    position: relative;
-  }
+  .statusText{display: none;}
+  
+  .paid, .completed, .unpaid, .uncompleted{
+  border-radius: 1em;
+  width:1em;
+  height: 1em;
+  border-style: none;
+}
 }

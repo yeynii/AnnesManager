@@ -9,12 +9,17 @@ const BookAddForm = ({ createOrUpdateInformation, student }) => {
 
   const onClick = (event) => {
     event.preventDefault();
+    if (title == null || title.length === 0) {
+      alert("책 제목을 입력하지 않았습니다");
+      return;
+    }
     createOrUpdateInformation(student, {
       id: Date.now(),
       title,
       payment: false,
       completion: false,
     },'book');
+    setTitle();
     setModalIsOpen(false);
   };
 
