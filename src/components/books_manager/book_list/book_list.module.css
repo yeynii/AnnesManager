@@ -1,0 +1,30 @@
+@value annesPink, annesGrey,annesBabyPink, annesNavy, annesNavyBlack from '../../../common/colors.css';
+
+.book{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+}
+.title, .price{
+  width: 50%;
+  border-bottom: annesNavy solid 1px;
+  padding:0.2em 1em;
+}
+
+.title{
+  border-right: annesGrey dashed 1px;
+}
+.button{
+  position: absolute;
+  right: 0.1em;
+  height: 100%;
+  background-color: transparent;
+  border:none;
+  opacity: 0.2;
+}
+
+.button:hover{
+  opacity: 1;
+}

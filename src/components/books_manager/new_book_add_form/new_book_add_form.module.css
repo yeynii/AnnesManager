@@ -1,0 +1,19 @@
+@value annesPink, annesLightGrey,annesBabyPink, annesNavy, annesNavyBlack from '../../../common/colors.css';
+
+.addForm{
+  display: flex;
+  flex-direction: row   ;
+}
+.title, .price{
+  text-align: center;
+  margin:0.1em 0 0.1em 1em;
+  width: 80%;
+}
+.button{
+  min-width:4em;
+  width: 20%;
+  margin:0.1em 1em 0.1em 0;
+  background-color: annesBabyPink;
+  border:none;
+  border-radius: 0.5em;
+}

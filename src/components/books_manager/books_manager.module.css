@@ -1,0 +1,31 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 4px;
+  margin: 1em;
+  padding: 1em;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+}
+.title{
+  text-align: center;
+  margin: 0;
+}
+.return{
+  position: absolute;
+  left: 1em;
+  top: 1em;
+  border:none;
+  outline: none;
+  border-radius: 1em;
+  padding:0.5em;
+  background-color: transparent;
+  font-weight: bold;
+  opacity: 0.5;
+}
+
+.return:hover{
+  opacity: 1;
+}

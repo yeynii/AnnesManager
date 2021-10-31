@@ -77,7 +77,7 @@ const Manager = ({ authService, studentRepository }) => {
 
   return (
     <section className={styles.manager}>
-      <Header logOut={logOut}/>
+      <Header logOut={logOut} userId={userId}/>
       <div className={styles.container}>
         <Students
           createOrUpdateStudent={createOrUpdateStudent}
