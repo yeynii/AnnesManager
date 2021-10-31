@@ -18,25 +18,32 @@
   justify-content: center;
   display: flex;
   margin:0;
-  font-size: 0.9em;
+  font-size:1em;
   color: annesNavy;
   background-color: annesBabyPink;
   padding:0.7em;
 }
 
 .studentList{
-  display: flex;
+  display: block;
   flex-direction: column;
   overflow-y:scroll;
-  margin: 1em;
+  margin: 0;
+  padding: 4px;
+  padding-right: 0px;
+  width: 100%;
+
 }
+
 .studentList::-webkit-scrollbar{
-  width:8px;
+  width:4px;
 }
 
 .studentList::-webkit-scrollbar-thumb{
   border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.11);
+}
+.studentList::-webkit-scrollbar-thumb:hover{
+  background-color: rgba(0, 0, 0, 0.144);
 }
 .addStudents{
   position:absolute;
@@ -47,11 +54,13 @@
   height: 3rem;
   border-style: none;
   background-color: annesNavy;
-  font-size: 1em;
+  font-size: 1.5em;
   color:white;
   cursor: pointer;
+  opacity: 0.5;
+  transition: ease-in 100ms;
 }
 
 .addStudents:hover{
-  opacity: 0.8;
+  opacity: 1;
 }

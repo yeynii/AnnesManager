@@ -19,13 +19,13 @@
 
 .book{
   border-radius: 0.5em;
-  color: white;
+  color: annesNavyBlack;
   padding: 0.2em 0.5em;
   border-style: none;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: white;
 }
 .book:hover{
-  transform: scale(1.1);
+  background-color: lightgrey;
 }
 
 .logout{
