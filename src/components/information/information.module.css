@@ -93,7 +93,7 @@
   overflow-y: scroll;
   display: block;
 }
-@media all and (max-width:768px) {
+@media all and (max-width:576px) {
   .infoBox {
     flex-direction: column;
   }

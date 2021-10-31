@@ -2,7 +2,6 @@
 
 
 .book{
-  background-color: #ffffff;
   border: 2px dashed grey;
   display: flex;
   justify-content:center;
@@ -12,10 +11,12 @@
   color: annesNavy;
   transition: ease-in-out 50ms;
   cursor: pointer;
+  align-items: center;
+  height: 2em;
 }
 
 .book:hover{
-  transform: scale(1.01);
+  background-color: annesBabyPink;
 }
 
 .plus{

@@ -7,7 +7,7 @@ const Courses = ({ createOrUpdateInformation, student, removeInformation }) => {
   return (
     <ul className={styles.courses}>
     <CourseAddForm student={student} createOrUpdateInformation={createOrUpdateInformation} />
-      {student.courses &&
+       {student.courses &&
         Object.keys(student.courses).map((key) => (
           <Course
             student={student}
@@ -15,7 +15,7 @@ const Courses = ({ createOrUpdateInformation, student, removeInformation }) => {
             course={student.courses[key]}
             removeInformation={removeInformation}
           />
-        ))}
+        ))} 
     </ul>
   );
 };

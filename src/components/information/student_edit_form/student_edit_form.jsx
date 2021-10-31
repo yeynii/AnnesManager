@@ -59,24 +59,23 @@ const StudentEditForm = ({ student, modalIsOpen, closeModal, createOrUpdateStude
           top: "50%",
           left: "50%",
           transform: "translate(-50%,-50%)",
-          width: "500px",
-          height: "300px",
           background: "white",
           overflow: "auto",
           WebkitOverflowScrolling: "touch",
-          borderRadius: "4px",
-          padding: "20px",
+          padding: "1em",
+          'min-width': "300px",
+          height: "300px"
         },
       }}
     >
       <form className={styles.form}>
         <h3 className={styles.title}>학생 정보 수정</h3>
         <div className={styles.contents}>
-          <label htmlFor="name">이름</label>
+          <label htmlFor="name" className={styles.label}>이름</label>
           <input defaultValue={name} name="name" id="name" type="text" className={styles.input} onChange={(event) => onChange(event, setName)} />
         </div>
         <div className={styles.contents}>
-          <label htmlFor="grade">학년</label>
+          <label htmlFor="grade" className={styles.label}>학년</label>
           <select defaultValue={grade} name="grade" id="grade" className={styles.input} onChange={(event) => onChange(event, setGrade)}>
             <option value="">선택</option>
             <option value="초1">초1</option>
@@ -91,19 +90,19 @@ const StudentEditForm = ({ student, modalIsOpen, closeModal, createOrUpdateStude
           </select>
         </div>
         <div className={styles.contents}>
-          <label htmlFor="address">주소 </label>
+          <label htmlFor="address" className={styles.label}>주소 </label>
           <input defaultValue={address} name="address" id="address" type="text" className={styles.input} onChange={(event) => onChange(event, setAddress)}/>
         </div>
         <div className={styles.contents}>
-          <label htmlFor="phone">전화번호</label>
+          <label htmlFor="phone" className={styles.label}>전화번호</label>
           <input defaultValue={phone} name="phone" id="phone" className={styles.input} type="text" onChange={(event) => onChange(event, setPhone)}/>
         </div>
         <div className={styles.contents}>
-          <label htmlFor="startDate">등록일</label>
+          <label htmlFor="startDate" className={styles.label}>등록일</label>
           <input defaultValue={startDate} name="startDate" id="startDate" type="date" className={styles.input} onChange={(event) => onChange(event, setStartDate)}/>
         </div>
         <div className={styles.contents}>
-          <label htmlFor="endDate">퇴원일</label>
+          <label htmlFor="endDate" className={styles.label}>퇴원일</label>
           <input defaultValue={endDate} name="endDate" id="endDate" type="date" className={styles.input} onChange={(event) => onChange(event, setEndDate)}/>
         </div>
         <div className={styles.buttons}>

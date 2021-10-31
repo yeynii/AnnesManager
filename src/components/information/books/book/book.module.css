@@ -28,6 +28,7 @@
 }
 
 .status{
+  margin-left: 0.5em;
   display: flex;
   align-items: center;
 }

@@ -74,20 +74,19 @@ const StudentAddForm = ({ modalIsOpen, closeModal, createOrUpdateStudent }) => {
           top: "50%",
           left: "50%",
           transform: "translate(-50%,-50%)",
-          width: "500px",
-          height: "300px",
           background: "white",
           overflow: "auto",
           WebkitOverflowScrolling: "touch",
-          borderRadius: "4px",
-          padding: "20px",
+          padding: "1em",
+          'min-width': "300px",
+          height: "300px"
         },
       }}
     >
       <form className={styles.form}>
-        <h3 className={styles.title}>학생 정보 수정</h3>
+        <h3 className={styles.title}>학생 정보 입력</h3>
         <div className={styles.contents}>
-          <label htmlFor="name">이름</label>
+          <label htmlFor="name" className={styles.label}>이름</label>
           <input
             name="name"
             id="name"
@@ -97,7 +96,7 @@ const StudentAddForm = ({ modalIsOpen, closeModal, createOrUpdateStudent }) => {
           />
         </div>
         <div className={styles.contents}>
-          <label htmlFor="grade">학년</label>
+          <label htmlFor="grade" className={styles.label}>학년</label>
           <select
             name="grade"
             id="grade"
@@ -117,7 +116,7 @@ const StudentAddForm = ({ modalIsOpen, closeModal, createOrUpdateStudent }) => {
           </select>
         </div>
         <div className={styles.contents}>
-          <label htmlFor="address">주소 </label>
+          <label htmlFor="address" className={styles.label}>주소 </label>
           <input
             name="address"
             id="address"
@@ -127,7 +126,7 @@ const StudentAddForm = ({ modalIsOpen, closeModal, createOrUpdateStudent }) => {
           />
         </div>
         <div className={styles.contents}>
-          <label htmlFor="phone">전화번호</label>
+          <label htmlFor="phone" className={styles.label}>전화번호</label>
           <input
             name="phone"
             id="phone"
@@ -138,7 +137,7 @@ const StudentAddForm = ({ modalIsOpen, closeModal, createOrUpdateStudent }) => {
           />
         </div>
         <div className={styles.contents}>
-          <label htmlFor="startDate">등록일</label>
+          <label htmlFor="startDate" className={styles.label}>등록일</label>
           <input
             name="startDate"
             id="startDate"
@@ -148,7 +147,7 @@ const StudentAddForm = ({ modalIsOpen, closeModal, createOrUpdateStudent }) => {
           />
         </div>
         <div className={styles.contents}>
-          <label htmlFor="endDate">퇴원일</label>
+          <label htmlFor="endDate" className={styles.label}>퇴원일</label>
           <input
             name="endDate"
             id="endDate"

@@ -20,7 +20,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding:0 4em;
+  padding:0 2em;
   align-items: center;
   margin:0.2rem;
 }
@@ -33,12 +33,12 @@
 }
 
 .subject{
-  width: 20%;
+  width: 100%;
 }
 .subjects{
   display: flex;
   flex-direction: row;
-  width:80%;
+  width:100%;
   justify-content: center;
 }
 
@@ -67,7 +67,7 @@
   opacity: 0.8;
 }
 
-label{
+.label{
   width: 20%;
   min-width: 4em;
 }

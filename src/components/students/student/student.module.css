@@ -23,6 +23,7 @@
 .grade {
   width: 20%;
   font-size: 0.3em;
+  min-width: 5em;
 }
 
 .name {
@@ -31,7 +32,7 @@
   justify-content: center;
 }
 
-@media all and (max-width:768px) {
+@media all and (max-width:576px) {
   .name {
     width: 100%;
     display: flex;
