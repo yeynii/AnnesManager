@@ -5,7 +5,7 @@ import styles from "./book_add_form.module.css";
 
 const BookAddForm = ({ createOrUpdateInformation, student }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [title, setTitle] = useState();
+  const [title, setTitle] = useState('');
 
   const onClick = (event) => {
     event.preventDefault();
@@ -61,8 +61,8 @@ const BookAddForm = ({ createOrUpdateInformation, student }) => {
       >
         <form className={styles.form}>
           <div className={styles.contents}>
-            <label htmlFor="title">책 이름</label>
-            <input name="title" className={styles.title} onChange={onChange} required>
+            <label htmlFor="title">책 제목</label>
+            <input name="title" className={styles.title} onChange={onChange}>
             </input>
           </div>
           <div className={styles.buttons}>

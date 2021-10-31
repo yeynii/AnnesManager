@@ -22,7 +22,7 @@ const ConsultingAddForm = ({ createOrUpdateInformation, student }) => {
 
   useEffect(() => {
     dateRef.current.value = todayDate;
-  },[]);
+  },[todayDate]);
 
   return (
     <div className={styles.container}>

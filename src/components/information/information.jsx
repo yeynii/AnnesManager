@@ -11,7 +11,7 @@ import Memos from "./memos/memos";
 const Information = ({ student, createOrUpdateStudent,
   removeStudent, createOrUpdateInformation, removeInformation }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const { name, grade, address, date, hp } = student;
+  const { name, grade, address, startDate, endDate, phone } = student;
 
   const closeModal = () => {
     setModalIsOpen(false);
@@ -43,9 +43,9 @@ const Information = ({ student, createOrUpdateStudent,
             <div className={styles.name}>{name}</div>
             <div className={styles.grade}>{grade}</div>
             <div className={styles.address}>주소 : {address}</div>
-            <div className={styles.hp}>전화번호: {hp}</div>
-            <div className={styles.date}>등록일 : {date}</div>
-            <div className={styles.date}>퇴원일 : { }</div>
+            <div className={styles.hp}>전화번호: {phone}</div>
+            <div className={styles.date}>등록일 : {startDate}</div>
+            <div className={styles.date}>퇴원일 : {endDate}</div>
           </div>
         </div>
       </section>

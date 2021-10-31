@@ -10,8 +10,10 @@
 }
 
 .title{
-  margin: 0em;
+  display: flex;
+  align-items: center;
   height: 100%;
+  margin:0;
 }
 
 .contents{
@@ -20,10 +22,11 @@
   justify-content: space-between;
   padding:0 4em;
   align-items: center;
-  margin:0.1rem;
+  margin:0.2rem;
 }
 .input{
   width:80%;
+  height: 1.5em;
   flex-direction: row;
   padding: 0.1em 0.3em 0.1em 0.3em;
   border: 1px solid annesNavyBlack;

@@ -5,6 +5,10 @@ import Student from "./student/student";
 
 const Students = ({ createOrUpdateStudent, students, openInformation, selectedId }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const closeModal = () => {
+    setModalIsOpen(false);
+  }
+
   return (
     <section className={styles.students}>
       <h1 className={styles.title}>학생 목록</h1>
@@ -26,7 +30,7 @@ const Students = ({ createOrUpdateStudent, students, openInformation, selectedId
       </button>
       <StudentAddForm
         modalIsOpen={modalIsOpen}
-        setModalIsOpen={setModalIsOpen}
+        closeModal={closeModal}
         createOrUpdateStudent={createOrUpdateStudent}
       />
     </section>

@@ -14,7 +14,7 @@ const Memo = ({ student, memo, removeInformation, createOrUpdateInformation }) =
       return;
     }
     event.preventDefault();
-    setUpdated({...updated, content:event.currentTarget.value});
+    setUpdated({...updated, content : event.currentTarget.value});
     createOrUpdateInformation(student, updated, 'memo');
   }
   return (

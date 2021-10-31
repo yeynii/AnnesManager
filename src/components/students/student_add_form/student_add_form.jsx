@@ -1,45 +1,37 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import styles from "./student_add_form.module.css";
 
-const StudentAddForm = ({ modalIsOpen, setModalIsOpen, createOrUpdateStudent }) => {
-  const nameRef = useRef();
-  const gradeRef = useRef();
-  const addressRef = useRef();
-  const dateRef = useRef();
-  const [hp, setHp] = useState();
+const StudentAddForm = ({ modalIsOpen, closeModal, createOrUpdateStudent }) => {
+  const [student, setStudent] = useState();
+  const [phoneNumber, setPhoneNumber] = useState();
 
   const onClick = event => {
     event.preventDefault();
-    const newStudent = {
-      id: Date.now(),
-      name: nameRef.current.value || '',
-      grade: gradeRef.current.value || '',
-      address: addressRef.current.value || '',
-      date: dateRef.current.value || '',
-      hp: hp || ''
-    };
+    const newStudent = { ...student, id: Date.now() };
     createOrUpdateStudent(newStudent);
-    setModalIsOpen(false);
-    setHp();
+    closeModal();
   };
-
-  const handleChange = (e) => {
-    const regex = /^[0-9\b -]{0,13}$/;
-    if (regex.test(e.target.value)) {
-      setHp(e.target.value);
+  const onChange = event => {
+    if (event.currentTarget == null) {
+      return;
     }
+    event.preventDefault();
+    if (event.currentTarget.name === "phone"){
+      event.currentTarget.value = autoHypenPhone(event.currentTarget.value);
+    }
+    setStudent({ ...student, [event.currentTarget.name]: event.currentTarget.value });
+  }
+
+  const onCancel = event => {
+    event.preventDefault();
+    closeModal();
   }
 
   useEffect(() => {
-    var hpLen = hp && hp.length;
-    if ( hpLen === 10 ) {
-      setHp(hp.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
-    }
-    if ( hpLen === 13) {
-      setHp(hp.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'));
-    }
-  }, [hp]);
+    phoneNumber && setPhoneNumber(autoHypenPhone(phoneNumber))
+  }, [phoneNumber]);
+
 
   return (
     <Modal
@@ -54,7 +46,7 @@ const StudentAddForm = ({ modalIsOpen, setModalIsOpen, createOrUpdateStudent }) 
           left: "50%",
           transform: "translate(-50%,-50%)",
           width: "500px",
-          height: "250px",
+          height: "300px",
           background: "white",
           overflow: "auto",
           WebkitOverflowScrolling: "touch",
@@ -64,16 +56,14 @@ const StudentAddForm = ({ modalIsOpen, setModalIsOpen, createOrUpdateStudent }) 
       }}
     >
       <form className={styles.form}>
-        <h3 className={styles.title}>학생 정보 입력</h3>
+        <h3 className={styles.title}>학생 정보 수정</h3>
         <div className={styles.contents}>
-          <label htmlFor="name">
-            이름
-          </label>
-          <input ref={nameRef} id="name" type="text" className={styles.input} />
+          <label htmlFor="name">이름</label>
+          <input name="name" id="name" type="text" className={styles.input} onChange={onChange}/>
         </div>
         <div className={styles.contents}>
           <label htmlFor="grade">학년</label>
-          <select ref={gradeRef} className={styles.input}>
+          <select name="grade" id="grade" className={styles.input} onChange={onChange}>
             <option value="none">선택</option>
             <option value="초1">초1</option>
             <option value="초2">초2</option>
@@ -88,29 +78,25 @@ const StudentAddForm = ({ modalIsOpen, setModalIsOpen, createOrUpdateStudent }) 
         </div>
         <div className={styles.contents}>
           <label htmlFor="address">주소 </label>
-          <input
-            ref={addressRef}
-            id="address"
-            type="text"
-            className={styles.input}
-          />
+          <input name="address" id="address" type="text" className={styles.input} onChange={onChange} />
         </div>
         <div className={styles.contents}>
-          <label htmlFor="date">등록일</label>
-          <input ref={dateRef} id="date" type="date" className={styles.input} />
+          <label htmlFor="phone">전화번호</label>
+          <input name="phone" id="phone" type="text" className={styles.input} placeholder="010-1234-1234" onChange={onChange} />
         </div>
         <div className={styles.contents}>
-          <label htmlFor="hp">전화번호</label>
-          <input value={hp} id="hp" className={styles.input} type='text' onChange={handleChange}/>
+          <label htmlFor="startDate">등록일</label>
+          <input name="startDate" id="startDate" type="date" className={styles.input} onChange={onChange} />
+        </div>
+        <div className={styles.contents}>
+          <label htmlFor="endDate">퇴원일</label>
+          <input name="endDate" id="endDate" type="date" className={styles.input} onChange={onChange} />
         </div>
         <div className={styles.buttons}>
-          <button className={styles.button} onClick={onClick} >
+          <button className={styles.button} onClick={onClick}>
             저장
           </button>
-          <button
-            className={`${styles.button} ${styles.grey}`}
-            onClick={event => {event.preventDefault(); setModalIsOpen(false);}}
-          >
+          <button className={`${styles.button} ${styles.grey}`} onClick={onCancel}>
             취소
           </button>
         </div>
@@ -120,3 +106,30 @@ const StudentAddForm = ({ modalIsOpen, setModalIsOpen, createOrUpdateStudent }) 
 };
 
 export default StudentAddForm;
+
+function autoHypenPhone(str){
+  str = str.replace(/[^0-9]/g, '');
+  var tmp = '';
+  if( str.length < 4){
+      return str;
+  }else if(str.length < 7){
+      tmp += str.substr(0, 3);
+      tmp += '-';
+      tmp += str.substr(3);
+      return tmp;
+  }else if(str.length < 11){
+      tmp += str.substr(0, 3);
+      tmp += '-';
+      tmp += str.substr(3, 3);
+      tmp += '-';
+      tmp += str.substr(6);
+      return tmp;
+  }else{              
+      tmp += str.substr(0, 3);
+      tmp += '-';
+      tmp += str.substr(3, 4);
+      tmp += '-';
+      tmp += str.substr(7, 4);
+      return tmp;
+  }
+}
