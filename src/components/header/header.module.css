@@ -1,0 +1,42 @@
+@value annesNavy,annesPink,annesBabyPink,annesNavyBlack from '../../common/colors.css';
+
+.header{
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  background-color: annesNavy;
+  padding: 0.5em;
+  text-align: center;
+  color: white;
+  justify-content: space-between;
+  z-index: 2;
+  font-size: 1em;
+  align-items: center;
+}
+
+.headerText{
+  width: 50%;
+}
+
+.book{
+  border-radius: 0.5em;
+  color: white;
+  padding: 0.2em 0.5em;
+  border-style: none;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.book:hover{
+  transform: scale(1.1);
+}
+
+.logout{
+  border-style: none;
+  font-family: 'Montserrat', sans-serif;
+  background-color: rgba(255, 255, 255, 0);
+  color: rgba(255, 255, 255, 0.466);
+  font-size: 0.5em;
+}
+
+.logout:hover{
+  color: white;
+  opacity:1;
+}
