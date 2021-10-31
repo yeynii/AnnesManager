@@ -1,35 +1,33 @@
 @value annesPink, annesLightGrey,annesBabyPink, annesNavy, annesNavyBlack from '../../../../common/colors.css';
 
 .book{
+  height: 2em;
   background-color: #f0f0f0;
   display: flex;
-  padding: 0.2em;
+  padding: 0.2em 0.5em;
   margin: 0.5em;
   border-radius: 1em;
   transition: ease-in-out 50ms;
-  position: relative;
   align-items: center;
+  justify-content: space-between;
 }
 .title{
   display: flex;
   align-items: center;
   margin: 0em 1em;
+  width: 100%;
 }
 
 .delete{
-  font-size: 1rem;
+  font-size: 1em;
   border-style: none;
   color: annesNavy;
   background-color: #ffffff00;
   display: flex;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 0.5em;
+  align-items: center;
 }
 
 .status{
-  margin-left: 0.5em;
   display: flex;
   align-items: center;
 }
@@ -37,24 +35,30 @@
 .paid, .completed, .unpaid, .uncompleted{
   margin: 0 0.3em;
   border-radius: 1em;
+  -webkit-border-radius:1em;
   border-style: none;
   color: white;
 }
 .paid, .completed{
   background-color:mediumturquoise;
+  min-width: 6em;
   
 }
 .unpaid, .uncompleted{
   background-color: annesPink;
+  min-width: 4em;
 }
 
-@media all and (max-width:768px) {
+@media all and (max-width:576px) {
   .statusText{display: none;}
   
   .paid, .completed, .unpaid, .uncompleted{
   border-radius: 1em;
-  width:1em;
-  height: 1em;
+  -webkit-border-radius:1em;
+  min-width: 1em;
+  min-height: 1em;
+  width:100%;
+  height:100%;
   border-style: none;
 }
 }

@@ -2,25 +2,20 @@
 
 
 .course{
+  height: 2em;
   background-color: #f0f0f0;
   display: flex;
-  padding: 0.2em;
+  padding: 0.2em 0.5em;
   margin: 0.5em;
   border-radius: 1em;
   transition: ease-in-out 50ms;
-  position: relative;
   align-items: center;
+  justify-content: space-between;
 }
 .info{
   margin-left: 0.5em;
   display: flex;
   align-items: center;
-}
-.buttons{
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-basis: 10%;
 }
 .subject, .time, .teacher{
   margin-left: 0.5em;
@@ -29,15 +24,12 @@
 }
 
 .delete{
-  font-size: 1rem;
+  font-size: 1em;
   border-style: none;
   color: annesNavy;
   background-color: #ffffff00;
   display: flex;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 0.5em;
+  align-items: center;
 }
 
 button:hover{
