@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './app.jsx';
 import AuthService from './service/auth_service';
-import StudentRepository from './service/student_repository';
+import StudentRepository from './service/students_repository';
 
 const authService = new AuthService();
 const studentRepository = new StudentRepository();

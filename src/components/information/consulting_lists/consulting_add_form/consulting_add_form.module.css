@@ -3,7 +3,7 @@
 }
 .date{
   display: flex;
-  padding: 0.2em 0.5em;
+  padding: 0 0.5em;
 }
 
 .dateInput{

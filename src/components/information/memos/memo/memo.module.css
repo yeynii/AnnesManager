@@ -2,7 +2,7 @@
   width:200px;
   height:200px;
   background-color:rgb(255, 196, 196);
-  margin: 0.5em;
+  margin: 0em 0.5em 0.5em 0;
   padding: 1em;
   position: relative;
 }

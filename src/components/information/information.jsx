@@ -54,8 +54,7 @@ const Information = ({
           </div>
         </div>
       </section>
-      <div className={styles.tabs}>
-        <Tabs>
+        <Tabs className={styles.tabs} selectedTabPanelClassName={styles.selectedPanel}>
           <TabList>
             <Tab>수업</Tab>
             <Tab>책</Tab>
@@ -91,7 +90,6 @@ const Information = ({
             />
           </TabPanel>
         </Tabs>
-      </div>
       {modalIsOpen && (
         <StudentEditForm
           student={student}

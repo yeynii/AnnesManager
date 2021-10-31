@@ -7,7 +7,7 @@ const ConsultingAddForm = ({ createOrUpdateInformation, student }) => {
   const dateRef = useRef();
   const today = new Date();
   const todayDate =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+    today.getFullYear() + "-" + ("0" + (today.getMonth() + 1)).slice(-2) + "-" + ("0" + today.getDate()).slice(-2);
 
   const onClick = (event) => {
     event.preventDefault();
@@ -22,7 +22,7 @@ const ConsultingAddForm = ({ createOrUpdateInformation, student }) => {
 
   useEffect(() => {
     dateRef.current.value = todayDate;
-  },[todayDate]);
+  });
 
   return (
     <div className={styles.container}>

@@ -6,24 +6,35 @@
   background-color: white;
   padding: 1em;
   flex-direction: column;
-  overflow-y: scroll;
 }
 
-.information::-webkit-scrollbar{
-  width:8px;
-}
-
-.information::-webkit-scrollbar-thumb{
-  border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.11);
-}
 .profile{
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 0.51em;
+  height: 30%;
+}
+.tabs{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 70%;
+}
+.selectedPanel::-webkit-scrollbar{
+  width:8px;
 }
 
+.selectedPanel::-webkit-scrollbar-thumb{
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.11);
+}
+
+.selectedPanel{
+  height: 100%;
+  display: flex;
+  overflow-y: scroll;
+  padding: 0 0.5em;
+}
 .buttons{
   display: flex;
   flex-direction: row;
@@ -87,12 +98,6 @@
   color: grey;
   margin-bottom: 0.1rem;
 }
-.tabs{
-}
-.myselected{
-  overflow-y: scroll;
-  display: block;
-}
 @media all and (max-width:576px) {
   .infoBox {
     flex-direction: column;
@@ -103,5 +108,23 @@
   }
   .profile{
     flex-direction: column;
+    height: auto;
+  }
+  .information {
+    overflow-y: scroll;
+  }
+  .information::-webkit-scrollbar{
+    width:8px;  
+  }
+  .taps{
+    height: auto;
+  }
+  .information::-webkit-scrollbar-thumb{
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.11);
+}
+  .selectedPanel{
+    overflow:visible;
+    height:auto;
   }
 }
