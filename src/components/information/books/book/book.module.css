@@ -27,6 +27,9 @@
   align-items: center;
 }
 
+.delete:hover{
+  color:red;
+}
 .status{
   margin-left: 0.5em;
   display: flex;

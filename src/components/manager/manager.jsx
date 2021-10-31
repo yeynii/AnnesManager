@@ -4,6 +4,7 @@ import styles from "./manager.module.css";
 import Students from "./../students/students";
 import Information from "../information/information";
 import useConfirm from "../use_confirme";
+import Header from './../header/header';
 
 const Manager = ({ authService, studentRepository }) => {
   const historyState = useHistory().state;
@@ -76,12 +77,7 @@ const Manager = ({ authService, studentRepository }) => {
 
   return (
     <section className={styles.manager}>
-      <header className={styles.header}>
-        <div className={styles.headerText}>Annes Manager</div>
-        <button className={styles.logOut} onClick={logOut}>
-          logout
-        </button>
-      </header>
+      <Header logOut={logOut}/>
       <div className={styles.container}>
         <Students
           createOrUpdateStudent={createOrUpdateStudent}

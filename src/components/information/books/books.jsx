@@ -17,6 +17,7 @@ const Books = ({ student, createOrUpdateInformation, removeInformation }) => {
             createOrUpdateInformation={createOrUpdateInformation}
           />
         ))}
+        
     </ul>
   );
 };

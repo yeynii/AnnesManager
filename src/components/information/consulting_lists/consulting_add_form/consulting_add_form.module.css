@@ -1,3 +1,5 @@
+@value annesNavyBlack from '../../../../common/colors.css';
+
 .container{
   margin-bottom: 0.5em;
 }
@@ -45,5 +47,5 @@
 }
 
 .plus:hover{
-  opacity: 0.8;
+  color:annesNavyBlack;
 }

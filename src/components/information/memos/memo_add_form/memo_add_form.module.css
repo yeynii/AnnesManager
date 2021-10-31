@@ -1,7 +1,10 @@
+@value annesBabyPink,annesNavyBlack from '../../../../common/colors.css';
+
+
 .memo{
   width:200px;
   height:200px;
-  background-color:rgb(255, 196, 196);
+  background-color:annesBabyPink;
   display: flex;
   justify-content: center;
   align-items: center;

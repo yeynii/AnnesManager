@@ -1,7 +1,10 @@
+@value annesBabyPink,annesNavyBlack from '../../../../common/colors.css';
+
+
 .memo{
   width:200px;
   height:200px;
-  background-color:rgb(255, 196, 196);
+  background-color:annesBabyPink;
   margin: 0em 0.5em 0.5em 0;
   padding: 1em;
   position: relative;
@@ -13,6 +16,9 @@
   background-color: #00000000;
   border: none;
   color: white;
+}
+.delete:hover{
+  color: annesNavyBlack;
 }
 .content{
   width: 100%;
