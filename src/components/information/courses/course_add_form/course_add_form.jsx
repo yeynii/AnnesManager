@@ -23,7 +23,7 @@ const CourseAddForm = ({ createOrUpdateInformation, student }) => {
       alert("시간을 입력하지 않았습니다");
       return;
     }
-    if (time in student.courses){
+    if (student.courses && time in student.courses){
       alert("해당 시간에 배정된 수업이 있습니다");
       return;
     }
