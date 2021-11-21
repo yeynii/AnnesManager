@@ -1,19 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./students.module.css";
 import StudentAddForm from "./student_add_form/student_add_form";
 import Student from "./student/student";
+import SearchBar from "../search_bar/SearchBar";
 
-const Students = ({ createOrUpdateStudent, students, openInformation, selectedId }) => {
+const Students = ({ createOrUpdateStudent, students, openInformation, selectedId, search }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [searchedStudents, setSearchedStudents] = useState();
+  const [onSearch, setOnSearch] = useState(false);
   const closeModal = () => {
     setModalIsOpen(false);
+    setOnSearch(false);
+  }
+
+  const getSearchedStudents = (keyword, searched) => {
+    if (keyword.length == 0){
+      setOnSearch(false);
+      return
+    }
+    setOnSearch(true);
+    setSearchedStudents(searched);
   }
 
   return (
     <section className={styles.students}>
       <h1 className={styles.title}>학생 목록</h1>
+      <SearchBar search={search} getSearchedStudents={getSearchedStudents}/>
       <ul className={styles.studentList}>
-        {Object.keys(students).map((key) => (
+        {onSearch && searchedStudents && Object.keys(searchedStudents).map((key) => (
+          <Student
+            key={key}
+            student={searchedStudents[key]}
+            openInformation={openInformation}
+            selectedId={selectedId}
+          />
+        ))}
+        {!onSearch && Object.keys(students).map((key) => (
           <Student
             key={key}
             student={students[key]}
@@ -33,6 +55,7 @@ const Students = ({ createOrUpdateStudent, students, openInformation, selectedId
         closeModal={closeModal}
         createOrUpdateStudent={createOrUpdateStudent}
       />
+      
     </section>
   );
 };
