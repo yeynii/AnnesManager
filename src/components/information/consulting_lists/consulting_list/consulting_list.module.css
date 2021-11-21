@@ -16,6 +16,7 @@
 .textarea{
   font-family: 'Nanum Gothic', sans-serif;
   width: 100%;
+  height: 80px;
   margin-bottom: 0.5em;
   border: 1px solid gray;
   font-size: 0.8em;
@@ -26,8 +27,8 @@
     repeating-linear-gradient(rgb(255, 249, 218), rgb(255, 249, 218) 30px, grey 31px,rgb(255, 249, 218) 32px);
   line-height:32px;
   padding: 8px 10px;
-  resize: none;    
-  overflow: visible;
+  resize: none;
+  overflow: hidden;
 }
 
 .delete{

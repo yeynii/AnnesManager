@@ -8,7 +8,15 @@ const ConsultingAddForm = ({ createOrUpdateInformation, student }) => {
   const today = new Date();
   const todayDate =
     today.getFullYear() + "-" + ("0" + (today.getMonth() + 1)).slice(-2) + "-" + ("0" + today.getDate()).slice(-2);
-
+  const onChange = (event) => {
+    if (event.currentTarget == null) {
+      return;
+    }
+    event.preventDefault();
+    event.currentTarget.style.height = "80px";
+    event.currentTarget.style.height = event.currentTarget.scrollHeight + "px";
+  };
+  
   const onClick = (event) => {
     event.preventDefault();
     createOrUpdateInformation(student, {
@@ -29,7 +37,7 @@ const ConsultingAddForm = ({ createOrUpdateInformation, student }) => {
       <div className={styles.date}>
         <input ref={dateRef} type="date" className={styles.dateInput} />
       </div>
-      <textarea ref={contentRef} className={styles.textarea} />{" "}
+      <textarea onChange={onChange} ref={contentRef} className={styles.textarea} />{" "}
       <div className={styles.plus} onClick={onClick}>
         <BsPlusLg />
       </div>
