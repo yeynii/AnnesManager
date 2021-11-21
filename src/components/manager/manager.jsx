@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 import styles from "./manager.module.css";
 import Students from "./../students/students";
 import Information from "../information/information";
-import useConfirm from "../use_confirme";
+import useConfirm from "../../common/use_confirme";
 import Header from './../header/header';
 
 const Manager = ({ authService, studentRepository }) => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./memo.module.css";
-import useConfirm from "../../../use_confirme";
+import useConfirm from "../../../../common/use_confirme";
 
 const Memo = ({ student, memo, removeInformation, createOrUpdateInformation }) => {
   const {content} = memo;

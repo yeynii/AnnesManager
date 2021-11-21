@@ -7,7 +7,7 @@ import Courses from "./courses/courses";
 import ConsultingLists from "./consulting_lists/consulting_lists";
 import StudentEditForm from "./student_edit_form/student_edit_form";
 import Memos from "./memos/memos";
-import useConfirm from "../use_confirme";
+import useConfirm from "../../common/use_confirme";
 
 const Information = ({
   student,
