@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { BsPlusLg } from "react-icons/bs";
 import Modal from "react-modal";
 import styles from "./book_add_form.module.css";
-import BooksRepository from "../../../../service/books_repository";
 
 const BookAddForm = ({ createOrUpdateInformation, student, booksRepository }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [books, setBooks] = useState([]);
+  const [keywords, setKeywords] =useState([]);
 
   const onClick = (e) => {
     e.preventDefault();
@@ -41,6 +41,15 @@ const BookAddForm = ({ createOrUpdateInformation, student, booksRepository }) =>
     e.preventDefault();
     setModalIsOpen(false);
   };
+
+  useEffect(()=>{
+    if (title == null)
+      return;
+    if (title.includes(' '))
+      setKeywords(title.split(' '))
+    else
+      setKeywords([title])
+  }, [title]);
 
   useEffect(() => {
     const stopSync = booksRepository.syncBooks((_books) =>
@@ -91,7 +100,7 @@ const BookAddForm = ({ createOrUpdateInformation, student, booksRepository }) =>
             <datalist id="booklist">
               {books &&
                 Object.keys(books)
-                  .filter((key) => title.split(' ').some(t => books[key].title.includes(t)))
+                  .filter((key) => keywords.some(t => books[key].title.includes(t)))
                   .sort((a, b) => (books[a].title > books[b].title ? 1 : -1))
                   .map((key) => <option key={key} value={books[key].title} />)}
             </datalist>
