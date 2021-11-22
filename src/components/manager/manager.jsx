@@ -6,7 +6,7 @@ import Information from "../information/information";
 import useConfirm from "../../common/use_confirme";
 import Header from './../header/header';
 
-const Manager = ({ authService, studentRepository, search }) => {
+const Manager = ({ authService, studentRepository, search, booksRepository }) => {
   const historyState = useHistory().state;
   const [students, setStudents] = useState({});
   const [studentId, setStudentId] = useState();
@@ -94,6 +94,7 @@ const Manager = ({ authService, studentRepository, search }) => {
             createOrUpdateInformation={createOrUpdateInformation}
             removeInformation={removeInformation}
             search={search}
+            booksRepository={booksRepository}
           />
         )}
       </div>

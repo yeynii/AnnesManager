@@ -5,7 +5,7 @@ import Login from "./components/login/login";
 import Manager from "./components/manager/manager";
 import BooksManager from "./components/books_manager/books_manager";
 
-function App({ authService, studentRepository, booksRepository, search }) {
+function App({ authService, studentRepository, booksRepository }) {
   return (
     <BrowserRouter>
       <Switch>
@@ -16,7 +16,7 @@ function App({ authService, studentRepository, booksRepository, search }) {
           <Manager
             authService={authService}
             studentRepository={studentRepository}
-            search={search}
+            booksRepository={booksRepository}
           />
         </Route>
         <Route path="/books">

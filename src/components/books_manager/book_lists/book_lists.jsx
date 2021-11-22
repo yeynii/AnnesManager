@@ -11,7 +11,8 @@ const BookLists = ({ books, removeBook }) => {
       </div>
       <div className={styles.bookLists}>
       {books &&
-        Object.keys(books).sort((a, b) => books[a].title > books[b].title? 1: -1)
+        Object.keys(books)
+        .sort((a, b) => books[a].title > books[b].title? 1: -1)
         .map(key => (
           <BookList key={key} book={books[key]} removeBook={removeBook}/>
         ))}
