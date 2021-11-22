@@ -93,6 +93,7 @@ const Manager = ({ authService, studentRepository, search }) => {
             removeStudent={removeStudent}
             createOrUpdateInformation={createOrUpdateInformation}
             removeInformation={removeInformation}
+            search={search}
           />
         )}
       </div>

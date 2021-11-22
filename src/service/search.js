@@ -16,6 +16,19 @@ class Search{
     });
     return searched;
   }
+
+  async books(title) {
+    const dbRef = ref(this.db, 'books')
+    const searched = [];
+    onValue(dbRef, (snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        const value = childSnapshot.val();
+        if (value.title.includes(title))
+          searched.push(value);
+      });
+    });
+    return searched;
+  }
 } 
 
 export default Search;

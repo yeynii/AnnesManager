@@ -15,6 +15,7 @@ const Information = ({
   removeStudent,
   createOrUpdateInformation,
   removeInformation,
+  search,
 }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const { name, grade, address, startDate, endDate, phone } = student;
@@ -73,6 +74,7 @@ const Information = ({
               student={student}
               createOrUpdateInformation={createOrUpdateInformation}
               removeInformation={removeInformation}
+              search={search}
             />
           </TabPanel>
           <TabPanel>

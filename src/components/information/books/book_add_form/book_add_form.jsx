@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BsPlusLg } from "react-icons/bs";
 import Modal from "react-modal";
 import styles from "./book_add_form.module.css";
 
-const BookAddForm = ({ createOrUpdateInformation, student }) => {
+const BookAddForm = ({ createOrUpdateInformation, student, search }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [title, setTitle] = useState('');
+  const [books, setBooks] = useState([]);
 
-  const onClick = (event) => {
-    event.preventDefault();
+  const onClick = e => {
+    e.preventDefault();
     if (title == null || title.length === 0) {
       alert("책 제목을 입력하지 않았습니다");
       return;
@@ -23,18 +24,24 @@ const BookAddForm = ({ createOrUpdateInformation, student }) => {
     setModalIsOpen(false);
   };
 
-  const onChange = event => {
-    if (event.currentTarget == null) {
+  const onChange = e => {
+    if (e.currentTarget == null) {
       return;
     }
-    event.preventDefault();
-    setTitle(event.currentTarget.value);
+    e.preventDefault();
+    search.books(e.target.value).then(result => setBooks(result));
+    setTitle(e.currentTarget.value);
   }
 
-  const closeModal = event => {
-    event.preventDefault();
+  const closeModal = e => {
+    e.preventDefault();
     setModalIsOpen(false);
   }
+  useEffect(() => {
+    if (!title || title.length == 0) {
+      search.books('').then(result => setBooks(result));
+    }
+  }, []);
 
   return (
     <>
@@ -67,8 +74,12 @@ const BookAddForm = ({ createOrUpdateInformation, student }) => {
         <form className={styles.form}>
           <div className={styles.contents}>
             <label htmlFor="title">책 제목</label>
-            <input name="title" className={styles.title} onChange={onChange}>
-            </input>
+            <input list="booklist" name="title" className={styles.title} id="title" onChange={onChange}/>
+            <datalist id="booklist">
+              {books && Object.keys(books).map(key => (
+                <option key={key} value={books[key].title}/>
+              ))}
+            </datalist>
           </div>
           <div className={styles.buttons}>
             <button className={styles.button} onClick={onClick}>

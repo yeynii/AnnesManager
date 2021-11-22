@@ -3,10 +3,10 @@ import styles from "./books.module.css";
 import Book from './book/book';
 import BookAddForm from './book_add_form/book_add_form';
 
-const Books = ({ student, createOrUpdateInformation, removeInformation }) => {
+const Books = ({ student, createOrUpdateInformation, removeInformation, search }) => {
   return (
     <ul className={styles.books}>
-      <BookAddForm student={student} createOrUpdateInformation={createOrUpdateInformation} />
+      <BookAddForm student={student} createOrUpdateInformation={createOrUpdateInformation} search={search} />
       {student.books &&
         Object.keys(student.books).reverse().map((key) => (
           <Book
