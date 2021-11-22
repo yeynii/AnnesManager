@@ -56,6 +56,7 @@ const BookAddForm = ({ createOrUpdateInformation, student, search }) => {
         style={{
           overlay: {
             backgroundColor: "rgba(0, 0, 0, 0.5)",
+            "z-index":"10"
           },
           content: {
             top: "50%",
