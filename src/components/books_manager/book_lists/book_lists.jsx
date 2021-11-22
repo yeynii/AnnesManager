@@ -7,7 +7,7 @@ const BookLists = ({ books, removeBook }) => {
     <ul className={styles.books}>
       <div className={styles.fields}>
         <div className={styles.title}>제목</div>
-        <div className={styles.price}>가격</div>
+        <div className={styles.price}>교재비</div>
       </div>
       <div className={styles.bookLists}>
       {books &&

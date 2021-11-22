@@ -6,14 +6,19 @@ const NewBookAddForm = ({ createOrUpdateBook }) => {
   const titleRef = useRef();
   const priceRef = useRef();
 
-  const onChange = (event) => {
-    if (event.currentTarget == null) {
+  const onKeyPress = e => {
+    if (e.key == 'Enter') {
+      onClick(e);
+    }
+  }
+  const onChange = e => {
+    if (e.currentTarget == null) {
       return;
     }
-    event.preventDefault();
+    e.preventDefault();
   };
-  const onClick = (event) => {
-    event.preventDefault();
+  const onClick = e => {
+    e.preventDefault();
     if (titleRef.current.value.length === 0) {
       alert("책 제목을 입력하지 않았습니다");
       return;
@@ -34,6 +39,7 @@ const NewBookAddForm = ({ createOrUpdateBook }) => {
         ref={titleRef}
         className={styles.title}
         onChange={onChange}
+        onKeyPress={onKeyPress}
         placeholder="제목"
       />
       <input
@@ -41,6 +47,7 @@ const NewBookAddForm = ({ createOrUpdateBook }) => {
         ref={priceRef}
         className={styles.price}
         onChange={onChange}
+        onKeyPress={onKeyPress}
         placeholder="가격"
       /></div>
       <button className={styles.button} onClick={onClick}>

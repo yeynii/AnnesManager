@@ -1,7 +1,8 @@
 @value annesPink, annesLightGrey, annesNavy from '../../../../common/colors.css';
 
 .book{
-  height: 2em;
+  height: auto;
+  min-height: 2em;
   background-color: annesLightGrey;
   display: flex;
   padding: 0.2em 0.5em;

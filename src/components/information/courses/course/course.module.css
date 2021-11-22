@@ -2,6 +2,8 @@
 
 
 .course{
+  height: auto;
+  min-height: 2em;
   height: 2em;
   background-color: annesLightGrey;
   display: flex;
