@@ -11,9 +11,11 @@ const BookLists = ({ books, removeBook }) => {
       </div>
       <div className={styles.bookLists}>
       {books &&
-        Object.keys(books).map((key) => (
+        Object.keys(books).sort((a, b) => books[a].title > books[b].title? 1: -1)
+        .map(key => (
           <BookList key={key} book={books[key]} removeBook={removeBook}/>
-        ))}</div>
+        ))}
+      </div>
     </ul>
   );
 };

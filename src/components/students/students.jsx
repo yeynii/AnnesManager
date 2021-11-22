@@ -27,7 +27,9 @@ const Students = ({ createOrUpdateStudent, students, openInformation, selectedId
       <h1 className={styles.title}>학생 목록</h1>
       <SearchBar search={search} getSearchedStudents={getSearchedStudents}/>
       <ul className={styles.studentList}>
-        {onSearch && searchedStudents && Object.keys(searchedStudents).map((key) => (
+        {onSearch && searchedStudents && Object.keys(searchedStudents)
+        .sort((a, b) => searchedStudents[a].name > searchedStudents[b].name? 1: -1)
+        .map((key) => (
           <Student
             key={key}
             student={searchedStudents[key]}
@@ -35,7 +37,9 @@ const Students = ({ createOrUpdateStudent, students, openInformation, selectedId
             selectedId={selectedId}
           />
         ))}
-        {!onSearch && Object.keys(students).map((key) => (
+        {!onSearch && Object.keys(students)
+        .sort((a, b) => students[a].name > students[b].name? 1: -1)
+        .map((key) => (
           <Student
             key={key}
             student={students[key]}

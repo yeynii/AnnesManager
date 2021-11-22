@@ -1,4 +1,4 @@
-import { getDatabase, ref, query, equalTo, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, orderByChild, query } from "firebase/database";
 import { firebaseApp } from "./firebase";
 
 class Search{
@@ -18,7 +18,7 @@ class Search{
   }
 
   async books(title) {
-    const dbRef = ref(this.db, 'books')
+    const dbRef = query(ref(this.db, 'books'), orderByChild('title'));
     const searched = [];
     onValue(dbRef, (snapshot) => {
       snapshot.forEach((childSnapshot) => {

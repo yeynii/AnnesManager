@@ -3,9 +3,9 @@
 .book{
   display: flex;
   flex-direction: row;
-  width: 100%;
   justify-content: space-between;
   position: relative;
+  margin: 1px;
 }
 .title, .price{
   width: 50%;
