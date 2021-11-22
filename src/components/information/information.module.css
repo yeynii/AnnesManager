@@ -1,6 +1,7 @@
 @value annesNavy,annesPink,annesBabyPink,annesNavyBlack from '../../common/colors.css';
 
 .information{
+  min-width: 60%;
   width: 100%;
   display: flex;
   background-color: white;

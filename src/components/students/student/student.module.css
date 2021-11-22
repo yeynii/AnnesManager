@@ -4,7 +4,7 @@
   align-items: center;
   display: flex;
   justify-content: space-around;
-  padding: 0.3em;
+  padding: 0.5em;
   cursor: pointer;
   border-bottom: 1px solid annesLightGrey;
   width: 100%;
@@ -21,22 +21,13 @@
 }
 
 .grade {
-  width: 20%;
+  width: 30%;
   font-size: 0.3em;
   text-align: center;
 }
 
 .name { 
   font-size:1em;
-  width: 90%;
+  width: 70%;
   text-align: center;
-}
-
-@media all and (max-width:576px) {
-  .name {
-    justify-content: center;
-  }
-  .grade{
-    display: none;
-}
 }
