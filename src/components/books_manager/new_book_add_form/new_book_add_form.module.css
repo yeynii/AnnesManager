@@ -1,6 +1,9 @@
 @value annesPink, annesLightGrey,annesBabyPink, annesNavy, annesNavyBlack from '../../../common/colors.css';
 
 .addForm{
+  height: 10%;
+  max-height: 50px;
+  margin-top: 1em;
   display: flex;
   flex-direction: row   ;
 }

@@ -7,10 +7,16 @@
   position: relative;
   margin: 1px;
 }
-.title, .price{
-  width: 50%;
+.title {
+  width: 70%;
   border-bottom: annesNavy solid 1px;
   padding:0.2em 1em;
+}
+.price{
+  width: 30%;
+  border-bottom: annesNavy solid 1px;
+  padding:0.2em 1em;
+
 }
 
 .title{
