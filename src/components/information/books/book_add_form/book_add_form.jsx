@@ -7,7 +7,7 @@ const BookAddForm = ({ createOrUpdateInformation, student, booksRepository }) =>
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [books, setBooks] = useState([]);
-  const [keywords, setKeywords] =useState([]);
+  const [keywords, setKeywords] = useState([]);
 
   const onClick = (e) => {
     e.preventDefault();
@@ -56,7 +56,7 @@ const BookAddForm = ({ createOrUpdateInformation, student, booksRepository }) =>
     setBooks(_books)
     );
     return () => stopSync();
-  },[]);
+  },[booksRepository]);
 
   return (
     <>
@@ -71,7 +71,7 @@ const BookAddForm = ({ createOrUpdateInformation, student, booksRepository }) =>
         style={{
           overlay: {
             backgroundColor: "rgba(0, 0, 0, 0.5)",
-            "z-index": "10",
+            zIndex: "10",
           },
           content: {
             top: "50%",

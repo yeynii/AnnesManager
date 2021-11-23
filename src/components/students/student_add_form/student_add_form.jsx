@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import styles from "./student_add_form.module.css";
 
-const StudentAddForm = ({ modalIsOpen, closeModal, createOrUpdateStudent }) => {
+const StudentAddForm = ({ isModalOpen, closeModal, createOrUpdateStudent }) => {
   const [name, setName] = useState();
   const [grade, setGrade] = useState();
   const [address, setAddress] = useState();
@@ -64,12 +64,12 @@ const StudentAddForm = ({ modalIsOpen, closeModal, createOrUpdateStudent }) => {
 
   return (
     <Modal
-      isOpen={modalIsOpen}
+      isOpen={isModalOpen}
       ariaHideApp={false}
       style={{
         overlay: {
           backgroundColor: "rgba(0, 0, 0, 0.5)",
-          "z-index":"10"
+          zIndex: "10"
         },
         content: {
           top: "50%",
@@ -79,7 +79,7 @@ const StudentAddForm = ({ modalIsOpen, closeModal, createOrUpdateStudent }) => {
           overflow: "auto",
           WebkitOverflowScrolling: "touch",
           padding: "1em",
-          'min-width': "300px",
+          minWidth: "300px",
           height: "300px"
         },
       }}

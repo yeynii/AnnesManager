@@ -66,7 +66,7 @@ const Students = ({
 };
 
 function getDrawerstyle(isDrawerOn) {
-  if (isDrawerOn == true){
+  if (isDrawerOn === true){
     return styles.onDrawer;
   } 
   else
@@ -74,7 +74,7 @@ function getDrawerstyle(isDrawerOn) {
 
 } 
 function getStudentsstyle(isDrawerOn) {
-  if (isDrawerOn == true){
+  if (isDrawerOn === true){
     return styles.studentsOn;
   } 
   else

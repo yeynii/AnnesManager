@@ -54,7 +54,7 @@ const StudentEditForm = ({ student, modalIsOpen, closeModal, createOrUpdateStude
       style={{
         overlay: {
           backgroundColor: "rgba(0, 0, 0, 0.5)",
-          "z-index":"10"
+          zIndex:"10"
         },
         content: {
           top: "50%",
@@ -64,7 +64,7 @@ const StudentEditForm = ({ student, modalIsOpen, closeModal, createOrUpdateStude
           overflow: "auto",
           WebkitOverflowScrolling: "touch",
           padding: "1em",
-          'min-width': "300px",
+          minWidth: "300px",
           height: "300px"
         },
       }}

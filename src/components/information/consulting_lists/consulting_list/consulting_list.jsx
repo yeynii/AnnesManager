@@ -1,4 +1,4 @@
-import React, {useRef, useCallback} from "react";
+import React, { useRef } from "react";
 import styles from "./consulting_list.module.css";
 import { BiX } from "react-icons/bi";
 import useConfirm from "../../../../common/use_confirme";
