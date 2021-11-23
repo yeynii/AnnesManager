@@ -4,7 +4,7 @@ import Books from "./books/books";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Courses from "./courses/courses";
-import ConsultingLists from "./consulting_lists/consulting_lists";
+import Consulting from "./consulting/Consulting";
 import StudentEditForm from "./student_edit_form/student_edit_form";
 import Memos from "./memos/memos";
 import useConfirm from "../../common/use_confirme";
@@ -78,7 +78,7 @@ const Information = ({
             />
           </TabPanel>
           <TabPanel>
-            <ConsultingLists
+            <Consulting
               student={student}
               createOrUpdateInformation={createOrUpdateInformation}
               removeInformation={removeInformation}

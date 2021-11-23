@@ -1,0 +1,7 @@
+.consultingLists{
+  width: 100%;
+  min-height: 0;
+  height: 100%;
+  overflow-y: auto;
+  margin:0;
+}

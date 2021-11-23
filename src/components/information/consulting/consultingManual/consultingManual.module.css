@@ -1,0 +1,47 @@
+@value annesNavy, annesNavyBlack, annesBabyPink from '../../../../common/colors.css';
+
+.manual{
+    display: fixed;
+    width: 400px;
+    background-color: annesBabyPink;
+    padding: 0em 1em 1em 1em;
+    margin: 1em 0 1em 1em;
+    overflow-y: auto;
+}
+.manual::-webkit-scrollbar{
+    width:6px;
+  }
+  .manual::-webkit-scrollbar-thumb{
+    background-color:rgba(0, 0, 0, 0.075) ;
+    border-radius: 6px;
+  }
+  .manual::-webkit-scrollbar-thumb:hover{
+    background-color: rgba(0, 0, 0, 0.144);
+  }
+  
+
+.mention{
+    white-space: pre-wrap;
+    font-size: 0.8rem;
+    color:rgb(19, 19, 19);
+}
+.title{
+    color: annesNavyBlack;
+    text-align: center;
+}
+
+.openingTitle, .closingTitle, .contentTitle{
+    font-size: 1rem;
+    margin: 1em 0 0.5em 0;
+}
+
+.mentList{
+    list-style:circle;
+    margin-bottom: 0.5em;
+}
+
+@media all and (max-width:576px) {
+    .manual {
+      display: none;
+    }
+}

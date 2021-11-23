@@ -1,4 +1,4 @@
-@value annesNavyBlack, annesLightGrey from '../../../../common/colors.css';
+@value annesNavyBlack, annesLightGrey from '../../../../../common/colors.css';
 
 .container{
   margin-bottom: 0.5em;
