@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./courses.module.css";
-import Course from "./course/course";
-import CourseAddForm from "./course_add_form/course_add_form";
+import Course from "./Course/Course";
+import CourseAddForm from "./CourseAddForm/CourseAddForm";
 
 const Courses = ({ createOrUpdateInformation, student, removeInformation }) => {
   return (

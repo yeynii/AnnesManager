@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./memo_add_form.module.css";
+import styles from "./memoAddForm.module.css";
 
 const MemoAddForm = ({student, createOrUpdateInformation}) => {
   const onClick = event => {

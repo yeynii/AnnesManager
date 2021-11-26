@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
-import styles from "./student_add_form.module.css";
+import styles from "./studentAddform.module.css";
 
 const StudentAddForm = ({ isModalOpen, closeModal, createOrUpdateStudent }) => {
   const [name, setName] = useState();

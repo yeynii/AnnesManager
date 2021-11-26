@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BsPlusLg } from "react-icons/bs";
 import Modal from "react-modal";
-import styles from "./book_add_form.module.css";
+import styles from "./bookAddForm.module.css";
 
 const BookAddForm = ({ createOrUpdateInformation, student, booksRepository }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);

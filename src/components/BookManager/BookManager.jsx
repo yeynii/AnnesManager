@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
-import styles from "./books_manager.module.css";
-import BookLists from "./book_lists/book_lists";
-import NewBookAddForm from "./new_book_add_form/new_book_add_form";
+import styles from "./bookManager.module.css";
+import BookLists from "./BookLists/BookLists";
+import BookStorageAddForm from "./BookStorageAddForm/BookStorageAddForm";
 
 const BooksManager = ({ authService, booksRepository }) => {
   const historyState = useHistory().state;
@@ -55,7 +55,7 @@ const BooksManager = ({ authService, booksRepository }) => {
       <h2 className={styles.title}>책 목록</h2>
       <button className={styles.return} onClick={goHome}>돌아가기 💨 💨</button>
       <BookLists books={books} removeBook={removeBook}/>
-      <NewBookAddForm createOrUpdateBook={createOrUpdateBook}/>
+      <BookStorageAddForm createOrUpdateBook={createOrUpdateBook}/>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./course_add_form.module.css";
+import styles from "./courseAddForm.module.css";
 import { BsPlusLg } from "react-icons/bs";
 import Modal from "react-modal";
 

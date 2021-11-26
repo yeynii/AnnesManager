@@ -1,6 +1,6 @@
 import React from "react";
-import BookList from "../book_list/book_list";
-import styles from "./book_lists.module.css";
+import BookList from "../BookList/BookList";
+import styles from "./bookLists.module.css";
 
 const BookLists = ({ books, removeBook }) => {
   return (

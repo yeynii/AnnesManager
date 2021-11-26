@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import styles from "./information.module.css";
-import Books from "./books/books";
+import Books from "./Books/Books";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import Courses from "./courses/courses";
-import Consulting from "./consulting/Consulting";
-import StudentEditForm from "./student_edit_form/student_edit_form";
-import Memos from "./memos/memos";
-import useConfirm from "../../common/use_confirme";
+import Courses from "./Courses/Courses";
+import Consulting from "./Consulting/Consulting";
+import StudentEditForm from "./StudentEditForm/StudentEditForm";
+import Memos from "./Memos/Memos";
+import useConfirm from "../../common/useConfirm";
 
 const Information = ({
   student,

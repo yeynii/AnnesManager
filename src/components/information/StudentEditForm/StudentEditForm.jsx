@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
-import styles from "./student_edit_form.module.css";
+import styles from "./studentEditForm.module.css";
 
 const StudentEditForm = ({ student, modalIsOpen, closeModal, createOrUpdateStudent }) => {
   const [name, setName] = useState(student.name);

@@ -1,9 +1,9 @@
 import React from "react";
 import "./app.module.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Login from "./components/login/login";
-import Manager from "./components/manager/manager";
-import BooksManager from "./components/books_manager/books_manager";
+import Login from "./components/Login/Login";
+import Manager from "./components/Manager/Manager";
+import BookManager from "./components/BookManager/BookManager";
 
 function App({ authService, studentRepository, booksRepository }) {
   return (
@@ -20,7 +20,7 @@ function App({ authService, studentRepository, booksRepository }) {
           />
         </Route>
         <Route path="/books">
-          <BooksManager
+          <BookManager
             authService={authService}
             booksRepository={booksRepository}
           />

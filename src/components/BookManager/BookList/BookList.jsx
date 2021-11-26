@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./book_list.module.css";
-import useConfirm from "../../../common/use_confirme"
+import styles from "./bookList.module.css";
+import useConfirm from "../../../common/useConfirm";
 
 const BookList = ({ book, removeBook }) => {
   const { title, price } = book;

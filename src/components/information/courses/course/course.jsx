@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./course.module.css";
 import { AiFillDelete } from "react-icons/ai";
-import useConfirm from "../../../../common/use_confirme";
+import useConfirm from "../../../../common/useConfirm";
 
 const Course = ({ student, course, removeInformation }) => {
   const {time, subject, teacher} = course;

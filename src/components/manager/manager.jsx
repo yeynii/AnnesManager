@@ -1,10 +1,10 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import styles from "./manager.module.css";
-import Students from "./../students/students";
-import Information from "../information/information";
-import useConfirm from "../../common/use_confirme";
-import Header from './../header/header';
+import Students from "../Students/Students";
+import Information from "../Information/Information";
+import useConfirm from "../../common/useConfirm";
+import Header from '../Header/Header';
 
 const Manager = ({ authService, studentRepository, search, booksRepository }) => {
   const historyState = useHistory().state;

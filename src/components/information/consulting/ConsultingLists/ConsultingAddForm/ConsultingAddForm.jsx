@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import styles from "./consulting_add_form.module.css";
+import styles from "./consultingAddForm.module.css";
 import { BsPlusLg } from "react-icons/bs";
 
 const ConsultingAddForm = ({ createOrUpdateInformation, student }) => {

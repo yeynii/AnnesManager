@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styles from "./students.module.css";
-import StudentAddForm from "./student_add_form/student_add_form";
-import Student from "./student/student";
-import SearchBar from "../search_bar/SearchBar";
+import StudentAddForm from "./StudentAddForm/StudentAddForm";
+import Student from "./Student/Student";
+import SearchBar from "../SearchBar/SearchBar";
 import { HiMenu } from "react-icons/hi";
 
 const Students = ({

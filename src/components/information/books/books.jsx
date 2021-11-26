@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./books.module.css";
-import Book from "./book/book";
-import BookAddForm from "./book_add_form/book_add_form";
+import Book from "./Book/Book";
+import BookAddForm from "./BookAddForm/BookAddForm";
 
 const Books = ({
   student,

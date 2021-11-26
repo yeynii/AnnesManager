@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./memos.module.css";
-import Memo from "./memo/memo";
-import MemoAddForm from "./memo_add_form/memo_add_form";
+import Memo from "./Memo/Memo";
+import MemoAddForm from "./MemoAddForm/MemoAddForm";
 
 const Memos = ({student, createOrUpdateInformation, removeInformation}) => {
   return (

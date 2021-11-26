@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './consulting.module.css';
-import ConsultingLists from './consulting_lists/consulting_lists';
+import ConsultingLists from './ConsultingLists/ConsultingLists';
 import ConsultingManual from './consultingManual/ConsultingManual';
 
 const Consulting = ({student, createOrUpdateInformation, removeInformation}) => {

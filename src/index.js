@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./app.jsx";
+import App from "./App.jsx";
 import AuthService from "./service/auth_service";
 import StudentRepository from "./service/students_repository";
 import BooksRepository from "./service/books_repository";

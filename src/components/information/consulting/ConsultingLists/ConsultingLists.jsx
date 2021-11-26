@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./consulting_lists.module.css";
-import ConsultingList from "./consulting_list/consulting_list";
-import ConsultingAddForm from "./consulting_add_form/consulting_add_form";
+import styles from "./consultingLists.module.css";
+import ConsultingList from "./ConsultingList/ConsultingList";
+import ConsultingAddForm from "./ConsultingAddForm/ConsultingAddForm";
 
 const ConsultingLists = ({ student, createOrUpdateInformation, removeInformation }) => {
   return (
