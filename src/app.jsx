@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Login from "./components/Login/Login";
 import Manager from "./components/Manager/Manager";
 import BookManager from "./components/BookManager/BookManager";
+import Cloud from "./components/Cloud/Cloud";
 
 function App({ authService, studentRepository, booksRepository }) {
   return (
@@ -24,6 +25,9 @@ function App({ authService, studentRepository, booksRepository }) {
             authService={authService}
             booksRepository={booksRepository}
           />
+        </Route>
+        <Route path="/cloud">
+          <Cloud authService={authService}/>
         </Route>
       </Switch>
     </BrowserRouter>

@@ -1,6 +1,7 @@
 @value annesNavy,annesPink,annesBabyPink,annesNavyBlack from '../../common/colors.css';
 
 .header{
+  position: relative;
   font-family: 'Montserrat', sans-serif;
   display: flex;
   background-color: annesNavy;
@@ -14,17 +15,20 @@
 }
 
 .headerText{
-  width: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.book{
+.book, .cloud{
   border-radius: 0.5em;
   color: annesNavyBlack;
   padding: 0.2em 0.5em;
   border-style: none;
   background-color: white;
+  margin-right: 1em;
 }
-.book:hover{
+.book:hover, .cloud:hover{
   background-color: lightgrey;
 }
 
