@@ -29,9 +29,9 @@ const Students = ({
 
   return (
     <>
-      <button className={`${styles.drawer} ${getDrawerstyle(isDrawerOn)}`} onClick={handleDrawer} >
+      <div className={`${styles.drawer} ${getDrawerstyle(isDrawerOn)}`} onClick={handleDrawer} >
         <HiMenu />
-      </button>
+      </div>
       <section className={`${styles.students} ${getStudentsstyle(isDrawerOn)}`}>
         <h1 className={styles.title}>학생 목록</h1>
         <SearchBar getSearchedStudents={getSearchedStudents} />
