@@ -67,10 +67,25 @@
 .profileimg{
   width: 130px;
   height: 130px;
-  background-color: annesPink;
   border-radius: 50%;
   margin: 0em 2em;
+}
+.anne{
+  background-color: annesPink;
   border: 3px solid annesPink;
+}
+
+.gilbert{
+  background-color: mediumturquoise;
+  border: 3px solid mediumturquoise;
+}
+
+.anneText{
+  color:annesPink;
+}
+
+.gilbertText{
+  color:mediumturquoise;
 }
 
 .profileInfo{
@@ -87,9 +102,8 @@
   margin-bottom: 0.5rem;
 }
 
-.grade {
+.gradeSex {
   font-size: 1em;
-  color: annesPink;
   margin-bottom: 0.1rem;
 
 }

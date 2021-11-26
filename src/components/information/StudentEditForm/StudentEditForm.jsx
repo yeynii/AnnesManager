@@ -9,6 +9,8 @@ const StudentEditForm = ({ student, modalIsOpen, closeModal, createOrUpdateStude
   const [phone, setPhone] = useState(student.phone);
   const [startDate, setStartDate] = useState(student.startDate);
   const [endDate, setEndDate] = useState(student.endDate); 
+  const [sex, setSex] = useState(student.sex);
+
   const onChange = (event, setFn) => {
     if (event.currentTarget == null) {
       return;
@@ -22,19 +24,23 @@ const StudentEditForm = ({ student, modalIsOpen, closeModal, createOrUpdateStude
   const onClick = event => {
     event.preventDefault();
     const regex = /^\d{3}-\d{3,4}-\d{4}$/;
-    if (name == null || name.length === 0){
-      alert('이름을 입력하세용');
+    if (name == null || name.length === 0) {
+      alert("이름을 입력하세요");
       return;
     }
-    if (grade == null || grade.length === 0 ){
-      alert('학년을 선택하세용');
+    if (grade == null || grade.length === 0) {
+      alert("학년을 선택하세요");
       return;
     }
-    if (phone != null && phone.length !== 0 && phone.match(regex) == null){
-      alert('전화번호 형식이 올바르지 않습니당');
+    if (sex == null || sex.length === 0) {
+      alert("성별을 선택하세요");
       return;
     }
-    createOrUpdateStudent({...student, name, grade, address, phone, startDate,endDate});
+    if (phone != null && phone.length !== 0 && phone.match(regex) == null) {
+      alert("전화번호 형식이 올바르지 않습니다");
+      return;
+    }
+    createOrUpdateStudent({...student, name, grade, sex, address, phone, startDate,endDate});
     closeModal();
   };
 
@@ -90,6 +96,26 @@ const StudentEditForm = ({ student, modalIsOpen, closeModal, createOrUpdateStude
             <option value="중3">중3</option>
           </select>
         </div>
+        <div className={styles.contents}>
+          <label className={styles.label}>성별</label>
+          <div className={styles.radios}>
+          <input
+            checked={sex == "f" ? true : false}
+            name="sex"
+            type="radio"
+            value="f"
+            onChange={(event) => onChange(event, setSex)}
+          />
+          여
+          <input
+            checked={sex == "m" ? true : false}
+            name="sex"
+            type="radio"
+            value="m"
+            onChange={(event) => onChange(event, setSex)}
+          />
+          남
+        </div></div>
         <div className={styles.contents}>
           <label htmlFor="address" className={styles.label}>주소 </label>
           <input defaultValue={address} name="address" id="address" type="text" className={styles.input} onChange={(event) => onChange(event, setAddress)}/>

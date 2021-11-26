@@ -18,7 +18,7 @@ const Information = ({
   booksRepository
 }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const { name, grade, address, startDate, endDate, phone } = student;
+  const { name, grade, sex, address, startDate, endDate, phone } = student;
 
   const closeModal = () => {
     setModalIsOpen(false);
@@ -40,14 +40,17 @@ const Information = ({
         <div className={styles.infoBox}>
           <div className={styles.imgbox}>
             <img
-              className={styles.profileimg}
-              src="/apple-icon.png"
+              className={`${styles.profileimg} ${getImgStyles(sex)}`}
+              src={sex == "f" ? "anne.png" : "gilbert.png"}
               alt="profile"
             />
           </div>
           <div className={styles.profileInfo}>
             <div className={styles.name}>{name}</div>
-            <div className={styles.grade}>{grade}</div>
+            <div className={`${styles.gradeSex} ${getTextStyles(sex)}`}>
+            <span>{grade}</span>
+            <span>{sex == "f" ? " 여" : " 남"}</span>
+            </div>
             <div className={styles.address}>주소 : {address}</div>
             <div className={styles.hp}>전화번호: {phone}</div>
             <div className={styles.date}>등록일 : {startDate}</div>
@@ -103,5 +106,23 @@ const Information = ({
     </div>
   );
 };
+
+function getImgStyles(sex){
+  switch (sex) {
+    case "f":
+      return styles.anne;
+    case "m":
+      return styles.gilbert;
+  }
+}
+
+function getTextStyles(sex){
+  switch (sex) {
+    case "f":
+      return styles.anneText;
+    case "m":
+      return styles.gilbertText;
+  }
+}
 
 export default Information;

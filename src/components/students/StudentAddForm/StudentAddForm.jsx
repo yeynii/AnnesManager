@@ -9,29 +9,36 @@ const StudentAddForm = ({ isModalOpen, closeModal, createOrUpdateStudent }) => {
   const [phone, setPhone] = useState();
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
+  const [sex, setSex] = useState();
 
   const onClick = (event) => {
     event.preventDefault();
     const regex = /^\d{3}-\d{3,4}-\d{4}$/;
-    if (name == null || name.length === 0){
-      alert('이름을 입력하세용');
+    if (name == null || name.length === 0) {
+      alert("이름을 입력하세요");
       return;
     }
-    if (grade == null || grade.length === 0 ){
-      alert('학년을 선택하세용');
+    if (grade == null || grade.length === 0) {
+      alert("학년을 선택하세요");
       return;
     }
-    if (phone != null && phone.length !== 0 && phone.match(regex) == null){
-      alert('전화번호 형식이 올바르지 않습니당');
+    if (sex == null || sex.length === 0) {
+      alert("성별을 선택하세요");
+      return;
+    }
+    if (phone != null && phone.length !== 0 && phone.match(regex) == null) {
+      alert("전화번호 형식이 올바르지 않습니다");
       return;
     }
     createOrUpdateStudent({
       id: Date.now(),
-      name, grade,
-      address: address || '',
-      phone: phone || '',
-      startDate: startDate || '',
-      endDate: endDate || '',
+      name,
+      grade,
+      sex,
+      address: address || "",
+      phone: phone || "",
+      startDate: startDate || "",
+      endDate: endDate || "",
     });
     setName();
     setGrade();
@@ -39,6 +46,7 @@ const StudentAddForm = ({ isModalOpen, closeModal, createOrUpdateStudent }) => {
     setPhone();
     setStartDate();
     setEndDate();
+    setSex();
     closeModal();
   };
 
@@ -69,7 +77,7 @@ const StudentAddForm = ({ isModalOpen, closeModal, createOrUpdateStudent }) => {
       style={{
         overlay: {
           backgroundColor: "rgba(0, 0, 0, 0.5)",
-          zIndex: "10"
+          zIndex: "10",
         },
         content: {
           top: "50%",
@@ -80,14 +88,16 @@ const StudentAddForm = ({ isModalOpen, closeModal, createOrUpdateStudent }) => {
           WebkitOverflowScrolling: "touch",
           padding: "1em",
           minWidth: "300px",
-          height: "300px"
+          height: "300px",
         },
       }}
     >
       <form className={styles.form}>
         <h3 className={styles.title}>학생 정보 입력</h3>
         <div className={styles.contents}>
-          <label htmlFor="name" className={styles.label}>이름</label>
+          <label htmlFor="name" className={styles.label}>
+            이름
+          </label>
           <input
             name="name"
             id="name"
@@ -97,7 +107,9 @@ const StudentAddForm = ({ isModalOpen, closeModal, createOrUpdateStudent }) => {
           />
         </div>
         <div className={styles.contents}>
-          <label htmlFor="grade" className={styles.label}>학년</label>
+          <label htmlFor="grade" className={styles.label}>
+            학년
+          </label>
           <select
             name="grade"
             id="grade"
@@ -117,7 +129,27 @@ const StudentAddForm = ({ isModalOpen, closeModal, createOrUpdateStudent }) => {
           </select>
         </div>
         <div className={styles.contents}>
-          <label htmlFor="address" className={styles.label}>주소 </label>
+          <label className={styles.label}>성별</label>
+          <div className={styles.radios}>
+          <input
+            name="sex"
+            type="radio"
+            value="f"
+            onChange={(event) => onChange(event, setSex)}
+          />
+          여
+          <input
+            name="sex"
+            type="radio"
+            value="m"
+            onChange={(event) => onChange(event, setSex)}
+          />
+          남
+        </div></div>
+        <div className={styles.contents}>
+          <label htmlFor="address" className={styles.label}>
+            주소{" "}
+          </label>
           <input
             name="address"
             id="address"
@@ -127,7 +159,9 @@ const StudentAddForm = ({ isModalOpen, closeModal, createOrUpdateStudent }) => {
           />
         </div>
         <div className={styles.contents}>
-          <label htmlFor="phone" className={styles.label}>전화번호</label>
+          <label htmlFor="phone" className={styles.label}>
+            전화번호
+          </label>
           <input
             name="phone"
             id="phone"
@@ -138,7 +172,9 @@ const StudentAddForm = ({ isModalOpen, closeModal, createOrUpdateStudent }) => {
           />
         </div>
         <div className={styles.contents}>
-          <label htmlFor="startDate" className={styles.label}>등록일</label>
+          <label htmlFor="startDate" className={styles.label}>
+            등록일
+          </label>
           <input
             name="startDate"
             id="startDate"
@@ -148,7 +184,9 @@ const StudentAddForm = ({ isModalOpen, closeModal, createOrUpdateStudent }) => {
           />
         </div>
         <div className={styles.contents}>
-          <label htmlFor="endDate" className={styles.label}>퇴원일</label>
+          <label htmlFor="endDate" className={styles.label}>
+            퇴원일
+          </label>
           <input
             name="endDate"
             id="endDate"
