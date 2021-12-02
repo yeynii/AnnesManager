@@ -1,8 +1,9 @@
-import React, { useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { useHistory } from "react-router";
 import styles from "./consultingAddForm.module.css";
 import { BsPlusLg } from "react-icons/bs";
 
-const ConsultingAddForm = ({ createOrUpdateInformation, student }) => {
+const ConsultingAddForm = ({ createOrUpdateInformation, student, userName }) => {
   const contentRef = useRef();
   const dateRef = useRef();
   const today = new Date();
@@ -23,21 +24,22 @@ const ConsultingAddForm = ({ createOrUpdateInformation, student }) => {
       id: Date.now(),
       date: dateRef.current.value,
       content: contentRef.current.value,
+      teacher: userName
     },'consulting');
     contentRef.current.value='';
     dateRef.current.value = todayDate;
   };
 
   useEffect(() => {
-    dateRef.current.value = todayDate;
-  });
+    dateRef.current.value = todayDate;}
+    ,[]);
 
   return (
     <div className={styles.container}>
       <div className={styles.date}>
         <input ref={dateRef} type="date" className={styles.dateInput} />
       </div>
-      <textarea onChange={onChange} ref={contentRef} className={styles.textarea} />{" "}
+      <textarea onChange={onChange} ref={contentRef} className={styles.textarea} />
       <div className={styles.plus} onClick={onClick}>
         <BsPlusLg />
       </div>

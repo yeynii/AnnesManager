@@ -3,10 +3,10 @@ import styles from "./courses.module.css";
 import Course from "./Course/Course";
 import CourseAddForm from "./CourseAddForm/CourseAddForm";
 
-const Courses = ({ createOrUpdateInformation, student, removeInformation }) => {
+const Courses = ({ createOrUpdateInformation, student, removeInformation, teacherRepository }) => {
   return (
     <ul className={styles.courses}>
-    <CourseAddForm student={student} createOrUpdateInformation={createOrUpdateInformation} />
+    <CourseAddForm student={student} createOrUpdateInformation={createOrUpdateInformation} teacherRepository={teacherRepository}/>
        {student.courses &&
         Object.keys(student.courses).map((key) => (
           <Course

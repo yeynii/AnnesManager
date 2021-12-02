@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./courseAddForm.module.css";
 import { BsPlusLg } from "react-icons/bs";
 import Modal from "react-modal";
 
-const CourseAddForm = ({ createOrUpdateInformation, student }) => {
+const CourseAddForm = ({
+  createOrUpdateInformation,
+  student,
+  teacherRepository,
+}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [subject, setSubject] = useState();
   const [teacher, setTeacher] = useState();
+  const [teachers, setTeachers] = useState();
   const [time, setTime] = useState();
 
   const onClick = (event) => {
@@ -23,11 +28,15 @@ const CourseAddForm = ({ createOrUpdateInformation, student }) => {
       alert("시간을 입력하지 않았습니다");
       return;
     }
-    if (student.courses && time in student.courses){
+    if (student.courses && time in student.courses) {
       alert("해당 시간에 배정된 수업이 있습니다");
       return;
     }
-    createOrUpdateInformation(student, { id: time, subject, teacher, time }, "course");
+    createOrUpdateInformation(
+      student,
+      { id: time, subject, teacher, time },
+      "course"
+    );
     setSubject();
     setTeacher();
     setTime();
@@ -47,6 +56,13 @@ const CourseAddForm = ({ createOrUpdateInformation, student }) => {
     setModalIsOpen(false);
   };
 
+  useEffect(() => {
+    const stopSync = teacherRepository.syncTeachers((teachers) =>
+      setTeachers(teachers)
+    );
+    return () => stopSync();
+  }, [teacherRepository]);
+
   return (
     <>
       <li className={styles.course} onClick={() => setModalIsOpen(true)}>
@@ -60,7 +76,7 @@ const CourseAddForm = ({ createOrUpdateInformation, student }) => {
         style={{
           overlay: {
             backgroundColor: "rgba(0, 0, 0, 0.5)",
-            zIndex:"10"
+            zIndex: "10",
           },
           content: {
             top: "50%",
@@ -79,7 +95,10 @@ const CourseAddForm = ({ createOrUpdateInformation, student }) => {
         <form className={styles.form}>
           <div className={styles.contents}>
             <label htmlFor="time">시간</label>
-            <select className={styles.select} onChange={(event) => onChange(event, setTime)}>
+            <select
+              className={styles.select}
+              onChange={(event) => onChange(event, setTime)}
+            >
               <option value="">선택</option>
               <option value="2">2시</option>
               <option value="3">3시</option>
@@ -91,7 +110,10 @@ const CourseAddForm = ({ createOrUpdateInformation, student }) => {
           </div>
           <div className={styles.contents}>
             <label htmlFor="subject">과목</label>
-            <select className={styles.select} onChange={(event) => onChange(event, setSubject)}>
+            <select
+              className={styles.select}
+              onChange={(event) => onChange(event, setSubject)}
+            >
               <option value="">선택</option>
               <option value="국어">국어</option>
               <option value="수학">수학</option>
@@ -102,20 +124,15 @@ const CourseAddForm = ({ createOrUpdateInformation, student }) => {
           </div>
           <div className={styles.contents}>
             <label htmlFor="teacher">선생님</label>
-            <select className={styles.select} onChange={(event) => onChange(event, setTeacher)}>
+            <select
+              className={styles.select}
+              onChange={(event) => onChange(event, setTeacher)}
+            >
               <option value="">선택</option>
-              <option value="Anne">Anne</option>
-              <option value="Chloe">Chloe</option>
-              <option value="Daniel">Daniel</option>
-              <option value="Diana">Diana</option>
-              <option value="Ella">Ella</option>
-              <option value="Eva">Eva</option>
-              <option value="Lina">Lina</option>
-              <option value="Luby">Luby</option>
-              <option value="Paul">Paul</option>
-              <option value="Sherion">Sherion</option>
-              <option value="Sophie">Sophie</option>
-              <option value="Tom">Tom</option>
+              {teachers &&
+                Object.keys(teachers).map((key) => (
+                  <option key={key} value={teachers[key]}>{teachers[key]}</option>
+                ))}
             </select>
           </div>
           <div className={styles.buttons}>

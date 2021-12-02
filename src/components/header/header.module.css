@@ -20,6 +20,16 @@
   transform: translateX(-50%);
 }
 
+.userTools{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.userName{
+  font-size: 0.7em;
+  font-weight: bold;
+}
+
 .book, .cloud{
   border-radius: 0.5em;
   color: annesNavyBlack;

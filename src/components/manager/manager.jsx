@@ -6,10 +6,11 @@ import Information from "../Information/Information";
 import useConfirm from "../../common/useConfirm";
 import Header from '../Header/Header';
 
-const Manager = ({ authService, studentRepository, search, booksRepository }) => {
+const Manager = ({ authService, studentRepository, search, booksRepository, teacherRepository }) => {
   const historyState = useHistory().state;
   const [students, setStudents] = useState({});
   const [studentId, setStudentId] = useState();
+  const [userName, setUserName] =useState();
   const [userId, setUserId] = useState(historyState && historyState.id);
 
   const history = useHistory();
@@ -75,9 +76,17 @@ const Manager = ({ authService, studentRepository, search, booksRepository }) =>
     return () => stopSync();
   }, [userId, studentRepository]);
 
+  useEffect(() =>{
+    if (!userId) {
+      return;
+    }
+    const stopSync = teacherRepository.getTeacherName(userId, (userId) => setUserName(userId));
+    return () => stopSync();
+  }, [userId, teacherRepository]);
+
   return (
     <section className={styles.manager}>
-      <Header logOut={logOut} userId={userId}/>
+      <Header logOut={logOut} userId={userId} userName={userName}/>
       <div className={styles.container}>
         <Students
           createOrUpdateStudent={createOrUpdateStudent}
@@ -94,7 +103,9 @@ const Manager = ({ authService, studentRepository, search, booksRepository }) =>
             createOrUpdateInformation={createOrUpdateInformation}
             removeInformation={removeInformation}
             search={search}
+            userName={userName}
             booksRepository={booksRepository}
+            teacherRepository={teacherRepository}
           />
         )}
       </div>

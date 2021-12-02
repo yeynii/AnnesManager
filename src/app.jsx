@@ -6,7 +6,7 @@ import Manager from "./components/Manager/Manager";
 import BookManager from "./components/BookManager/BookManager";
 import Cloud from "./components/Cloud/Cloud";
 
-function App({ authService, studentRepository, booksRepository, docsRepository }) {
+function App({ authService, studentRepository, booksRepository, docsRepository,teacherRepository }) {
   return (
     <BrowserRouter>
       <Switch>
@@ -18,6 +18,7 @@ function App({ authService, studentRepository, booksRepository, docsRepository }
             authService={authService}
             studentRepository={studentRepository}
             booksRepository={booksRepository}
+            teacherRepository={teacherRepository}
           />
         </Route>
         <Route path="/books">

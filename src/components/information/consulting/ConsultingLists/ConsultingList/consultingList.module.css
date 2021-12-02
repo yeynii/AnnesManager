@@ -1,12 +1,16 @@
 .note{
   margin:0.5 0em;
 }
-.date{
+.info{
   display: flex;
   justify-content: space-between;
   padding: 0 0.5em;
 }
-
+.teacher{
+  font-size: 0.7em;
+  display: flex;
+  align-items: center;
+}
 .dateInput{
   border-style: none;
   font-family: 'Nanum Gothic', sans-serif;

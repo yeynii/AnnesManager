@@ -4,7 +4,7 @@ import { BiX } from "react-icons/bi";
 import useConfirm from "../../../../../common/useConfirm";
 
 const ConsultingList = ({ student, consulting, removeInformation, createOrUpdateInformation }) => {
-  const { date, content } = consulting;
+  const { date, content, teacher } = consulting;
   const textareaRef = useRef();
   const onChange = (event) => {
     if (event.currentTarget == null) {
@@ -32,8 +32,9 @@ const ConsultingList = ({ student, consulting, removeInformation, createOrUpdate
   
   return (
     <li className={styles.note}>
-      <div className={styles.date}>
+      <div className={styles.info}>
         <input defaultValue={date} name="date" type="date" className={styles.dateInput} onChange={onChange} />
+        <span className={styles.teacher}>{teacher? teacher:'anonymous'}</span>
         <button className={styles.delete} onClick={onRemove}>
           <BiX />
         </button>
