@@ -1,0 +1,33 @@
+
+.doc{
+    list-style-type:decimal;
+    margin-bottom: 0.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.docBox{
+    display: flex;
+    flex-direction: row;
+}
+
+.link{
+    display: flex;
+    align-items: center;
+}
+
+.button{
+    margin-left: 1em;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button:hover{
+    background-color:black;
+}

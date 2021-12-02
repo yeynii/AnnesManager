@@ -1,41 +1,79 @@
-import React, {useState, useEffect} from 'react'
-import { useHistory } from 'react-router';
-import styles from './cloud.module.css';
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router";
+import styles from "./cloud.module.css";
+import CloudAddForm from "./CloudAddForm/CloudAddForm";
+import DocList from "./DocList/DocList";
 
-const Cloud = ({authService}) => {
-    const history = useHistory();
-    const historyState = useHistory().state;
-    const [userId, setUserId] = useState(historyState && historyState.id);
-    const goHome = () => {
-      history.push({ pathname: "/home", state: { id: userId } });
-    };
+const Cloud = ({ authService, docsRepository }) => {
+  const history = useHistory();
+  const historyState = useHistory().state;
+  const [userId, setUserId] = useState(historyState && historyState.id);
+  const [docs, setDocs] = useState();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const goHome = () => {
+    history.push({ pathname: "/home", state: { id: userId } });
+  };
 
-    useEffect(() => {
-        authService.onAuthChange((user) => {
-          if (user) {
-            setUserId(user.uid);
-          } else {
-            history.push("/");
-          }
-        });
-      }, [history, authService]);
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
-    return (
-        <>
-        <button className={styles.return} onClick={goHome}>돌아가기 💨 💨</button>
-        <div className={styles.cloud}>
-            <h1>앤즈 문서</h1>
-            <div className={styles.docs}>
-                <li className={styles.doc}><a href="https://drive.google.com/u/0/uc?id=1VOvcCPLRHAhFx8gALDuNEfIFIyEmMqJE&export=download">수학 평가표</a></li>
-                <li className={styles.doc}><a href="">영어 평가표</a></li>
-                <li className={styles.doc}><a href="">오답노트</a></li>
-                <li className={styles.doc}><a href="">개념노트</a></li>
-                <li className={styles.doc}><a href="">수업 진행표</a></li>
-                <li className={styles.doc}><a href="">도장판</a></li>
-            </div>
+  const createOrUpdateDoc = doc => {
+    setDocs(() => {
+      const updated = {...docs};
+      updated[doc.id] = doc;
+      return updated;
+    });
+    docsRepository.saveDoc(doc);
+  }
+  const removeDoc = (doc) => {
+    setDocs(() => {
+      const updated = { ...docs };
+      delete updated[doc.id];
+      return updated;
+    });
+    docsRepository.removeDoc(doc);
+  };
+  useEffect(() => {
+    authService.onAuthChange((user) => {
+      if (user) {
+        setUserId(user.uid);
+      } else {
+        history.push("/");
+      }
+    });
+  }, [history, authService]);
+
+  useEffect(() => {
+    if (!userId) {
+      return;
+    }
+    const stopSync = docsRepository.syncDocs((docs) => setDocs(docs));
+    return () => stopSync();
+  }, [userId, docsRepository]);
+
+  return (
+    <div className={styles.container}>
+      <button className={styles.return} onClick={goHome}>
+        돌아가기 💨 💨
+      </button>
+      <h2 className={styles.title}>앤즈 문서</h2>
+      <div className={styles.cloud}>
+        <div className={styles.docs}>
+          {docs &&
+          Object.keys(docs).map(key => (<DocList key={key} doc={docs[key]} removeDoc={removeDoc}/>))}
         </div>
-        </>
-    )
-}
 
-export default Cloud
+        <button
+          className={styles.addDoc}
+          onClick={() => setIsModalOpen(true)}
+        >
+          +
+        </button>
+        <CloudAddForm isModalOpen={isModalOpen} closeModal={closeModal} createOrUpdateDoc={createOrUpdateDoc}/>
+      </div>
+    </div>
+  );
+};
+
+export default Cloud;
