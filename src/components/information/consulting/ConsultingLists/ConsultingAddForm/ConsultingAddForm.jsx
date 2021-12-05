@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useHistory } from "react-router";
+import React, { useRef, useEffect } from "react";
 import styles from "./consultingAddForm.module.css";
 import { BsPlusLg } from "react-icons/bs";
 
@@ -18,6 +17,13 @@ const ConsultingAddForm = ({ createOrUpdateInformation, student, userName }) => 
     event.currentTarget.style.height = event.currentTarget.scrollHeight + "px";
   };
   
+  const onFocus = event =>{
+    if (event.currentTarget == null) {
+      return;
+    }
+    event.currentTarget.style.height = event.currentTarget.scrollHeight + "px";
+  }
+
   const onClick = (event) => {
     event.preventDefault();
     createOrUpdateInformation(student, {
@@ -27,6 +33,7 @@ const ConsultingAddForm = ({ createOrUpdateInformation, student, userName }) => 
       teacher: userName
     },'consulting');
     contentRef.current.value='';
+    contentRef.current.style.height = "80px";
     dateRef.current.value = todayDate;
   };
 
@@ -34,12 +41,19 @@ const ConsultingAddForm = ({ createOrUpdateInformation, student, userName }) => 
     dateRef.current.value = todayDate;}
     ,[]);
 
+    useEffect(() => {
+      contentRef.current.value = "";
+      contentRef.current.style.height = "80px";
+      dateRef.current.value = todayDate;
+    },[student]);
+  
   return (
     <div className={styles.container}>
       <div className={styles.date}>
         <input ref={dateRef} type="date" className={styles.dateInput} />
       </div>
-      <textarea onChange={onChange} ref={contentRef} className={styles.textarea} />
+      <textarea onChange={onChange} 
+        onFocus={onFocus} ref={contentRef} className={styles.textarea} />
       <div className={styles.plus} onClick={onClick}>
         <BsPlusLg />
       </div>

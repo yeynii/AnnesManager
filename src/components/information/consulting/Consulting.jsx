@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './consulting.module.css';
 import ConsultingLists from './ConsultingLists/ConsultingLists';
-import ConsultingManual from './consultingManual/ConsultingManual';
+import ConsultingManual from './ConsultingManual/ConsultingManual';
 
 const Consulting = ({student, userName, createOrUpdateInformation, removeInformation}) => {
     return(
