@@ -22,6 +22,7 @@ const ConsultingLists = ({
           .map((key) => (
             <ConsultingList
               student={student}
+              userName={userName}
               key={key}
               consulting={student.consultings[key]}
               removeInformation={removeInformation}

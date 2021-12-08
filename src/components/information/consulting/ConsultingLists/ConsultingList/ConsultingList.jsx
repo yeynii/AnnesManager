@@ -3,7 +3,7 @@ import styles from "./consultingList.module.css";
 import { BiX } from "react-icons/bi";
 import useConfirm from "../../../../../common/useConfirm";
 
-const ConsultingList = ({ student, consulting, removeInformation, createOrUpdateInformation }) => {
+const ConsultingList = ({ student, userName, consulting, removeInformation, createOrUpdateInformation }) => {
   const { date, content, teacher } = consulting;
   const textareaRef = useRef();
   const onChange = (event) => {
@@ -27,7 +27,13 @@ const ConsultingList = ({ student, consulting, removeInformation, createOrUpdate
     }
     event.currentTarget.style.height = "80px";
   }
-  const onRemove = useConfirm("삭제하시겠습니까?", () => removeInformation(student, consulting, "consulting"));
+  const onRemove = useConfirm("삭제하시겠습니까?", () => {
+    if (userName != teacher){
+      window.alert('권한이 없습니다');
+      return;
+    }
+    removeInformation(student, consulting, "consulting");
+  });
 
   
   return (
@@ -47,6 +53,7 @@ const ConsultingList = ({ student, consulting, removeInformation, createOrUpdate
         onChange={onChange}
         onFocus={onFocus}
         onBlur={onBlur}
+        readOnly={userName != teacher ? true : false}
       />
     </li>
   );
