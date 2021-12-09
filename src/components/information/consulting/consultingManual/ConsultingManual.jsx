@@ -1,7 +1,9 @@
 import React from "react";
 import styles from "./consultingManual.module.css";
 
-const ConsultingManual = (props) => {
+const ConsultingManual = ({student, userName}) => {
+  const {name} =student;
+
   return (
     <div className={styles.manual}>
       <h3 className={styles.title}>💗 상담 매뉴얼 💗</h3>
@@ -9,11 +11,11 @@ const ConsultingManual = (props) => {
         <div className={styles.opening}>
           <h4 className={styles.openingTitle}>시작</h4>
           <li className={styles.mentList}>
-            안녕하세요 앤즈학원입니다. OO이 OO 가르치고있는 OO선생님이라고
+            안녕하세요 앤즈학원입니다. {name.slice(-2)}(이) (과목) 가르치고있는 {userName}선생님이라고
             합니다.
           </li>
           <li className={styles.mentList}>
-            요즘 OO이가 학원에서 어떻게 공부하고 있는지 궁금 해 하실 것 같아
+            요즘 {name.slice(-2)}(이)가 학원에서 어떻게 공부하고 있는지 궁금 해 하실 것 같아
             전화드렸습니다.
           </li>
           <li className={styles.mentList}>지금 전화통화 혹시 괜찮으실까요?</li>
@@ -21,7 +23,7 @@ const ConsultingManual = (props) => {
         <div className={styles.content}>
           <h4 className={styles.contentTitle}>내용</h4>
           <li className={styles.mentList}>
-            요즘 OO이는 혹시 학원다니기 어떻다고 집에서 이야기하는 부분들이
+            요즘 {name.slice(-2)}(이)는 혹시 학원다니기 어떻다고 집에서 이야기하는 부분들이
             있나요?
           </li>
           <li className={styles.mentList}>혹시 숙제가 많다거나 공부가 어렵다는 이야기는 안하던가요?</li>

@@ -12,14 +12,15 @@
 .profile{
   display: flex;
   flex-direction: column;
-  height: 25%;
+  min-height: 200px;
   width: 100%;
 }
 .tabs{
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 70%;
+  flex: 1;
+  overflow-y: scroll;
 }
 .selectedPanel::-webkit-scrollbar{
   width:8px;

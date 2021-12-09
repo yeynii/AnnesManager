@@ -10,6 +10,9 @@ const Header = ({ logOut, userId, userName }) => {
   const goCloud = () => {
     history.push({ pathname: "/cloud", state: { id: userId } });
   };
+  const goOwner = () => {
+    history.push({ pathname: "/owner", state: { id: userId } });
+  };
   return (
     <header className={styles.header}>
       <div className={styles.buttons}>
@@ -22,6 +25,9 @@ const Header = ({ logOut, userId, userName }) => {
       </div>
       <div className={styles.headerText}>Annes Manager</div>
       <div className={styles.userTools}>
+      <button className={styles.owner} onClick={goOwner}>
+        관리자 메뉴
+      </button>
         <div className={styles.userName}>{userName? userName : 'anonymous'}</div>
         <button className={styles.logout} onClick={logOut}>
           logout

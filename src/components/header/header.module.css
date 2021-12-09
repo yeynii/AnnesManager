@@ -30,7 +30,7 @@
   font-weight: bold;
 }
 
-.book, .cloud{
+.book, .cloud, .owner{
   border-radius: 0.5em;
   color: annesNavyBlack;
   padding: 0.2em 0.5em;
@@ -38,7 +38,7 @@
   background-color: white;
   margin-right: 1em;
 }
-.book:hover, .cloud:hover{
+.book:hover, .cloud:hover, .owner:hover {
   background-color: lightgrey;
 }
 
@@ -56,6 +56,6 @@
 }
 
 @media all and (max-width:576px) {
-  .cloud, .book{display: none;}
+  .cloud, .book, .owner{display: none;}
   
 }

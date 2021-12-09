@@ -17,7 +17,7 @@ const Information = ({
   removeInformation,
   userName,
   booksRepository,
-  teacherRepository
+  teacherRepository,
 }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const { name, grade, sex, address, startDate, endDate, phone } = student;
@@ -26,7 +26,14 @@ const Information = ({
     setModalIsOpen(false);
   };
 
-  const onRemove = useConfirm("삭제하시겠습니까?", () => removeStudent(student));
+  const onRemove = useConfirm("삭제하시겠습니까?", () =>{
+    if (userName != "Anne"){
+      alert('권한이 없습니다.');
+      return;
+    };
+    removeStudent(student)
+  }
+  );
 
   return (
     <div className={styles.information}>
@@ -50,8 +57,8 @@ const Information = ({
           <div className={styles.profileInfo}>
             <div className={styles.name}>{name}</div>
             <div className={`${styles.gradeSex} ${getTextStyles(sex)}`}>
-            <span>{grade}</span>
-            <span>{sex == "f" ? " 여" : " 남"}</span>
+              <span>{grade}</span>
+              <span>{sex == "f" ? " 여" : " 남"}</span>
             </div>
             <div className={styles.address}>주소 : {address}</div>
             <div className={styles.hp}>전화번호: {phone}</div>
@@ -60,46 +67,49 @@ const Information = ({
           </div>
         </div>
       </section>
-        <Tabs className={styles.tabs} selectedTabPanelClassName={styles.selectedPanel}>
-          <TabList>
-            <Tab>수업</Tab>
-            <Tab>책</Tab>
-            <Tab>상담</Tab>
-            <Tab>메모</Tab>
-          </TabList>
-          <TabPanel>
-            <Courses
-              student={student}
-              createOrUpdateInformation={createOrUpdateInformation}
-              removeInformation={removeInformation}
-              teacherRepository={teacherRepository}
-            />
-          </TabPanel>
-          <TabPanel>
-            <Books
-              student={student}
-              userName={userName}
-              createOrUpdateInformation={createOrUpdateInformation}
-              removeInformation={removeInformation}
-              booksRepository={booksRepository}
-            />
-          </TabPanel>
-          <TabPanel>
-            <Consulting
-              student={student}
-              userName={userName}
-              createOrUpdateInformation={createOrUpdateInformation}
-              removeInformation={removeInformation}
-            />
-          </TabPanel>
-          <TabPanel>
-            <Memos
-              student={student}
-              createOrUpdateInformation={createOrUpdateInformation}
-              removeInformation={removeInformation}
-            />
-          </TabPanel>
-        </Tabs>
+      <Tabs
+        className={styles.tabs}
+        selectedTabPanelClassName={styles.selectedPanel}
+      >
+        <TabList>
+          <Tab>수업</Tab>
+          <Tab>책</Tab>
+          <Tab>상담</Tab>
+          <Tab>메모</Tab>
+        </TabList>
+        <TabPanel>
+          <Courses
+            student={student}
+            createOrUpdateInformation={createOrUpdateInformation}
+            removeInformation={removeInformation}
+            teacherRepository={teacherRepository}
+          />
+        </TabPanel>
+        <TabPanel>
+          <Books
+            student={student}
+            userName={userName}
+            createOrUpdateInformation={createOrUpdateInformation}
+            removeInformation={removeInformation}
+            booksRepository={booksRepository}
+          />
+        </TabPanel>
+        <TabPanel>
+          <Consulting
+            student={student}
+            userName={userName}
+            createOrUpdateInformation={createOrUpdateInformation}
+            removeInformation={removeInformation}
+          />
+        </TabPanel>
+        <TabPanel>
+          <Memos
+            student={student}
+            createOrUpdateInformation={createOrUpdateInformation}
+            removeInformation={removeInformation}
+          />
+        </TabPanel>
+      </Tabs>
       {modalIsOpen && (
         <StudentEditForm
           student={student}
@@ -112,7 +122,7 @@ const Information = ({
   );
 };
 
-function getImgStyles(sex){
+function getImgStyles(sex) {
   switch (sex) {
     case "f":
       return styles.anne;
@@ -121,7 +131,7 @@ function getImgStyles(sex){
   }
 }
 
-function getTextStyles(sex){
+function getTextStyles(sex) {
   switch (sex) {
     case "f":
       return styles.anneText;

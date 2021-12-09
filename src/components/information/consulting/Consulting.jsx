@@ -12,7 +12,9 @@ const Consulting = ({student, userName, createOrUpdateInformation, removeInforma
               createOrUpdateInformation={createOrUpdateInformation}
               removeInformation={removeInformation}
             />
-            <ConsultingManual />
+            <ConsultingManual 
+            student={student}
+            userName={userName}/>
         </div>
     );
 }
