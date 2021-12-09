@@ -11,7 +11,7 @@ const Header = ({ logOut, userId, userName }) => {
     history.push({ pathname: "/cloud", state: { id: userId } });
   };
   const goOwner = () => {
-    history.push({ pathname: "/owner", state: { id: userId } });
+    history.push({ pathname: "/owner",state: { id: userId } });
   };
   return (
     <header className={styles.header}>
