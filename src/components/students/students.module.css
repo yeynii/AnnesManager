@@ -32,6 +32,25 @@
   box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.1);
 }
 
+.header{
+  display: flex;
+  flex-direction: column;
+}
+.check{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.checkbox{
+
+}
+.checkLabel{
+  margin: 0.5em;
+  font-size: 0.8em;
+  color: gray;
+}
+
 .studentsOn{
   display:flex
 }
@@ -49,7 +68,6 @@
   background-color: annesBabyPink;
   padding:0.7em;
 }
-
 .studentList{
   display: block;
   flex-direction: column;

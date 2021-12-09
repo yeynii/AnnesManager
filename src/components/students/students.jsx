@@ -14,6 +14,7 @@ const Students = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [keyword, setKeyword] = useState("");
   const [isDrawerOn, setIsDrawerOn] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   const handleDrawer = () => {
     setIsDrawerOn(!isDrawerOn);
@@ -27,18 +28,40 @@ const Students = ({
     setKeyword(word);
   };
 
+  const onChange = e => {
+    setIsChecked(!isChecked);
+  };
+
+
   return (
     <>
-      <div className={`${styles.drawer} ${getDrawerstyle(isDrawerOn)}`} onClick={handleDrawer} >
+      <div
+        className={`${styles.drawer} ${getDrawerstyle(isDrawerOn)}`}
+        onClick={handleDrawer}
+      >
         <HiMenu />
       </div>
       <section className={`${styles.students} ${getStudentsstyle(isDrawerOn)}`}>
-        <h1 className={styles.title}>학생 목록</h1>
-        <SearchBar getSearchedStudents={getSearchedStudents} />
+        <div className={styles.header}>
+          <h1 className={styles.title}>학생 목록</h1>
+          <SearchBar getSearchedStudents={getSearchedStudents} />
+          <div className={styles.check}>
+            <input
+              id="leaveStudents"
+              type="checkbox"
+              className={styles.checkbox}
+              onChange={onChange}
+            />
+            <label htmlFor="leaveStudents" className={styles.checkLabel}>
+              퇴원 학생
+            </label>
+          </div>
+        </div>
         <ul className={styles.studentList}>
           {students &&
             Object.keys(students)
               .filter((key) => students[key].name.includes(keyword))
+              .filter((key) => isChecked ? students[key].endDate.length != 0 : students[key].endDate.length == 0 )
               .sort((a, b) => (students[a].name > students[b].name ? 1 : -1))
               .map((key) => (
                 <Student
@@ -66,19 +89,14 @@ const Students = ({
 };
 
 function getDrawerstyle(isDrawerOn) {
-  if (isDrawerOn === true){
+  if (isDrawerOn === true) {
     return styles.onDrawer;
-  } 
-  else
-    return styles.offDrawer;
-
-} 
+  } else return styles.offDrawer;
+}
 function getStudentsstyle(isDrawerOn) {
-  if (isDrawerOn === true){
+  if (isDrawerOn === true) {
     return styles.studentsOn;
-  } 
-  else
-    return styles.studentsOff;
-} 
+  } else return styles.studentsOff;
+}
 
 export default Students;
