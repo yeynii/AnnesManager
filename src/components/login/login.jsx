@@ -26,12 +26,6 @@ const Login = ({authService}) => {
         <button className={styles.loginButton} onClick={onLogin}>
           <img src="/google.png" alt="google" className={styles.google} />
         </button>
-        <button className={styles.loginButton}>
-          <img src="/facebook.png" alt="facebook" className={styles.facebook} />
-        </button>
-        <button className={styles.loginButton}>
-          <img src="/twitter.png" alt="twitter" className={styles.facebook} />
-        </button>
       </div>
     </div>
   );

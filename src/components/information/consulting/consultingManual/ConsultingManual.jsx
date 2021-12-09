@@ -26,8 +26,8 @@ const ConsultingManual = (props) => {
           </li>
           <li className={styles.mentList}>혹시 숙제가 많다거나 공부가 어렵다는 이야기는 안하던가요?</li>
           <li className={styles.mentList}>
-            (현재 진도, 교재 설명)
-          </li>
+            (현재 진도, 교재 설명, 앞으로의 계획)
+          </li> 
         </div>
         <div className={styles.closing}>
           <h4 className={styles.closingTitle}>마무리</h4>

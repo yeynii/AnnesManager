@@ -106,6 +106,8 @@ const CourseAddForm = ({
               <option value="5">5시</option>
               <option value="6">6시</option>
               <option value="7">7시</option>
+              <option value="8">8시</option>
+              <option value="9">9시</option>
             </select>
           </div>
           <div className={styles.contents}>
@@ -116,9 +118,9 @@ const CourseAddForm = ({
             >
               <option value="">선택</option>
               <option value="국어">국어</option>
+              <option value="국사과">국사과</option>
               <option value="수학">수학</option>
               <option value="영어">영어</option>
-              <option value="역사">역사</option>
               <option value="독서">독서</option>
             </select>
           </div>

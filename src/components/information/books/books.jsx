@@ -5,6 +5,7 @@ import BookAddForm from "./BookAddForm/BookAddForm";
 
 const Books = ({
   student,
+  userName,
   createOrUpdateInformation,
   removeInformation,
   booksRepository,
@@ -22,6 +23,7 @@ const Books = ({
           .map((key) => (
             <Book
               student={student}
+              userName={userName}
               key={key}
               book={student.books[key]}
               removeInformation={removeInformation}

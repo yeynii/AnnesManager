@@ -78,6 +78,7 @@ const Information = ({
           <TabPanel>
             <Books
               student={student}
+              userName={userName}
               createOrUpdateInformation={createOrUpdateInformation}
               removeInformation={removeInformation}
               booksRepository={booksRepository}

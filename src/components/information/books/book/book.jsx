@@ -5,6 +5,7 @@ import useConfirm from "../../../../common/useConfirm";
 
 const Book = ({
   student,
+  userName,
   book,
   removeInformation,
   createOrUpdateInformation,
@@ -12,6 +13,12 @@ const Book = ({
   const { payment, title, completion } = book;
   const changeBookStatus = (event, clicked) => {
     event.preventDefault();
+    if (clicked == "payment"){
+      if(userName != "Anne"){
+        window.alert('권한이 없습니다');
+        return ;
+      }
+    }
     createOrUpdateInformation(
       student,
       { ...book, [clicked]: !book[clicked] },
@@ -19,8 +26,13 @@ const Book = ({
     );
   };
 
-  const onRemove = useConfirm("삭제하시겠습니까?", () =>
+  const onRemove = useConfirm("삭제하시겠습니까?", () =>{
+    if (userName != "Anne"){
+      window.alert('권한이 없습니다');
+      return ;
+    }
     removeInformation(student, book, "book")
+  }
   );
 
   return (
