@@ -13,8 +13,8 @@ const Book = ({
   const { payment, title, completion } = book;
   const changeBookStatus = (event, clicked) => {
     event.preventDefault();
-    if (clicked == "payment"){
-      if(userName != "Anne"){
+    if (clicked === "payment"){
+      if(userName !== "Anne"){
         window.alert('권한이 없습니다');
         return ;
       }
@@ -27,7 +27,7 @@ const Book = ({
   };
 
   const onRemove = useConfirm("삭제하시겠습니까?", () =>{
-    if (userName != "Anne"){
+    if (userName !== "Anne"){
       window.alert('권한이 없습니다');
       return ;
     }

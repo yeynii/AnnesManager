@@ -13,6 +13,9 @@ const Header = ({ logOut, userId, userName }) => {
   const goOwner = () => {
     history.push({ pathname: "/owner", state: { id: userId } });
   };
+  const goHome = () => {
+    history.push({ pathname: "/", state: { id: userId } });
+  };
   return (
     <header className={styles.header}>
       <div className={styles.buttons}>
@@ -23,13 +26,11 @@ const Header = ({ logOut, userId, userName }) => {
           앤즈 클라우드
         </button>
       </div>
-      <div className={styles.headerText}>Annes Manager</div>
+      <div className={styles.headerText} onClick={goHome}>Annes Manager</div>
       <div className={styles.userTools}>
-        {userName && (
           <button className={styles.owner} onClick={goOwner}>
-            관리자 메뉴
+            관리자 도구
           </button>
-        )}
         <div className={styles.userName}>
           {userName ? userName : "anonymous"}
         </div>

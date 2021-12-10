@@ -18,14 +18,14 @@ const Cloud = ({ authService, docsRepository }) => {
     setIsModalOpen(false);
   };
 
-  const createOrUpdateDoc = doc => {
+  const createOrUpdateDoc = (doc) => {
     setDocs(() => {
-      const updated = {...docs};
+      const updated = { ...docs };
       updated[doc.id] = doc;
       return updated;
     });
     docsRepository.saveDoc(doc);
-  }
+  };
   const removeDoc = (doc) => {
     setDocs(() => {
       const updated = { ...docs };
@@ -57,20 +57,23 @@ const Cloud = ({ authService, docsRepository }) => {
       <button className={styles.return} onClick={goHome}>
         돌아가기 💨 💨
       </button>
-      <h2 className={styles.title}>앤즈 문서</h2>
       <div className={styles.cloud}>
+        <h2 className={styles.title}>앤즈 문서</h2>
         <div className={styles.docs}>
           {docs &&
-          Object.keys(docs).map(key => (<DocList key={key} doc={docs[key]} removeDoc={removeDoc}/>))}
+            Object.keys(docs).map((key) => (
+              <DocList key={key} doc={docs[key]} removeDoc={removeDoc} />
+            ))}
         </div>
 
-        <button
-          className={styles.addDoc}
-          onClick={() => setIsModalOpen(true)}
-        >
+        <button className={styles.addDoc} onClick={() => setIsModalOpen(true)}>
           +
         </button>
-        <CloudAddForm isModalOpen={isModalOpen} closeModal={closeModal} createOrUpdateDoc={createOrUpdateDoc}/>
+        <CloudAddForm
+          isModalOpen={isModalOpen}
+          closeModal={closeModal}
+          createOrUpdateDoc={createOrUpdateDoc}
+        />
       </div>
     </div>
   );

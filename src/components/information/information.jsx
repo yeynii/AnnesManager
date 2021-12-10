@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./information.module.css";
 import Books from "./Books/Books";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
@@ -20,20 +20,32 @@ const Information = ({
   teacherRepository,
 }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const { name, grade, sex, address, startDate, endDate, phone } = student;
-
+  const { name, sex, address, startDate, endDate, phone } = student;
+  const [grade, setGrade] = useState();
   const closeModal = () => {
     setModalIsOpen(false);
   };
 
   const onRemove = useConfirm("삭제하시겠습니까?", () =>{
-    if (userName != "Anne"){
+    if (userName !== "Anne"){
       alert('권한이 없습니다.');
       return;
     };
     removeStudent(student)
   }
   );
+
+  useEffect(() => {
+    if (student.grade <= 6 ){
+      setGrade("초"+student.grade);
+    }
+    else if (student.grade <= 9){
+      setGrade("중"+(student.grade-6));
+    }
+    else{
+      setGrade("고등");
+    }
+  }, [student]);
 
   return (
     <div className={styles.information}>
@@ -50,7 +62,7 @@ const Information = ({
           <div className={styles.imgbox}>
             <img
               className={`${styles.profileimg} ${getImgStyles(sex)}`}
-              src={sex == "f" ? "anne.png" : "gilbert.png"}
+              src={sex === "f" ? "anne.png" : "gilbert.png"}
               alt="profile"
             />
           </div>
@@ -58,7 +70,7 @@ const Information = ({
             <div className={styles.name}>{name}</div>
             <div className={`${styles.gradeSex} ${getTextStyles(sex)}`}>
               <span>{grade}</span>
-              <span>{sex == "f" ? " 여" : " 남"}</span>
+              <span>{sex === "f" ? " 여" : " 남"}</span>
             </div>
             <div className={styles.address}>주소 : {address}</div>
             <div className={styles.hp}>전화번호: {phone}</div>
@@ -128,6 +140,8 @@ function getImgStyles(sex) {
       return styles.anne;
     case "m":
       return styles.gilbert;
+    default:
+      return ;
   }
 }
 
@@ -137,6 +151,8 @@ function getTextStyles(sex) {
       return styles.anneText;
     case "m":
       return styles.gilbertText;
+    default:
+      return;
   }
 }
 

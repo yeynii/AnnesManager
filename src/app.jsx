@@ -41,6 +41,7 @@ function App({
           <Owner
             authService={authService}
             studentRepository={studentRepository}
+            teacherRepository={teacherRepository}
           />
         </Route>
       </Switch>

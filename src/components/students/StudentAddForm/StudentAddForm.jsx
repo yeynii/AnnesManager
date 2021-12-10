@@ -117,35 +117,36 @@ const StudentAddForm = ({ isModalOpen, closeModal, createOrUpdateStudent }) => {
             onChange={(event) => onChange(event, setGrade)}
           >
             <option value="">선택</option>
-            <option value="초1">초1</option>
-            <option value="초2">초2</option>
-            <option value="초3">초3</option>
-            <option value="초4">초4</option>
-            <option value="초5">초5</option>
-            <option value="초6">초6</option>
-            <option value="중1">중1</option>
-            <option value="중2">중2</option>
-            <option value="중3">중3</option>
+            <option value="1">초1</option>
+            <option value="2">초2</option>
+            <option value="3">초3</option>
+            <option value="4">초4</option>
+            <option value="5">초5</option>
+            <option value="6">초6</option>
+            <option value="7">중1</option>
+            <option value="8">중2</option>
+            <option value="9">중3</option>
           </select>
         </div>
         <div className={styles.contents}>
           <label className={styles.label}>성별</label>
           <div className={styles.radios}>
-          <input
-            name="sex"
-            type="radio"
-            value="f"
-            onChange={(event) => onChange(event, setSex)}
-          />
-          여
-          <input
-            name="sex"
-            type="radio"
-            value="m"
-            onChange={(event) => onChange(event, setSex)}
-          />
-          남
-        </div></div>
+            <input
+              name="sex"
+              type="radio"
+              value="f"
+              onChange={(event) => onChange(event, setSex)}
+            />
+            여
+            <input
+              name="sex"
+              type="radio"
+              value="m"
+              onChange={(event) => onChange(event, setSex)}
+            />
+            남
+          </div>
+        </div>
         <div className={styles.contents}>
           <label htmlFor="address" className={styles.label}>
             주소{" "}

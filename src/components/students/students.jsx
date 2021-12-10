@@ -61,7 +61,7 @@ const Students = ({
           {students &&
             Object.keys(students)
               .filter((key) => students[key].name.includes(keyword))
-              .filter((key) => isChecked ? students[key].endDate.length != 0 : students[key].endDate.length == 0 )
+              .filter((key) => isChecked ? students[key].endDate.length !== 0 : students[key].endDate.length === 0 )
               .sort((a, b) => (students[a].name > students[b].name ? 1 : -1))
               .map((key) => (
                 <Student

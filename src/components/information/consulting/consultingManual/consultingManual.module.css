@@ -1,6 +1,7 @@
 @value annesNavy, annesNavyBlack, annesBabyPink from '../../../../common/colors.css';
 
 .manual{
+  height: 100%;
     display: fixed;
     width: 400px;
     background-color: annesBabyPink;

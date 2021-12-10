@@ -18,7 +18,6 @@ class TeacherRepository{
     onValue(dbRef, snapshot => {
       const value = snapshot.val();
       value && onUpdate(value);
-      console.log('dd');
     });
     return () => off(dbRef);
   }

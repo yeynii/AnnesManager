@@ -17,13 +17,15 @@
     position: relative;
     padding: 2em;
     background-color: white;
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    max-width: 500px;
+    height: 90%;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     border-radius: 3px;
     justify-content: center;
+    align-items: center;
 }
 
 .docs{

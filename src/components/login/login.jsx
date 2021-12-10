@@ -5,7 +5,9 @@ import { useHistory } from "react-router";
 const Login = ({authService}) => {
   const history = useHistory();
   const onLogin = () => {
-    authService.login().then(data => goHome(data.user.uid));
+    authService.login().then(data => {
+      goHome(data.user.uid);
+    }).catch(error => error);
   };
   const goHome = (userId) =>{
     history.push({pathname: '/home', state: {id:userId}});

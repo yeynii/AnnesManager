@@ -19,8 +19,9 @@
   }
 
 .ownerMenu{
-    width: 800px;
-    height: 600px;
+    width: 100%;
+    max-width: 500px;
+    height: 90%;
     border-radius: 3px;
     background-color: white;
     display: flex;
@@ -41,8 +42,6 @@
     justify-content: center;
     overflow-y: scroll;
     background-color: rgb(228, 228, 228);
-}
-.editorMain{
 }
 .studentList{
     color:black;

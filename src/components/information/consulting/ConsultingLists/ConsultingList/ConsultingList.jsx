@@ -17,8 +17,10 @@ const ConsultingList = ({
       return;
     }
     event.preventDefault();
+    if (event.currentTarget.name === "content"){
     event.currentTarget.style.height = "80px";
     event.currentTarget.style.height = event.currentTarget.scrollHeight + "px";
+    }
     createOrUpdateInformation(
       student,
       { ...consulting, [event.currentTarget.name]: event.currentTarget.value },
@@ -38,8 +40,8 @@ const ConsultingList = ({
     event.currentTarget.style.height = "80px";
   };
   const onRemove = useConfirm("삭제하시겠습니까?", () => {
-    if (userName != teacher) {
-      if (userName != "Anne") {
+    if (userName !== teacher) {
+      if (userName !== "Anne") {
         window.alert("권한이 없습니다.");
         return;
       }
@@ -72,7 +74,7 @@ const ConsultingList = ({
         onChange={onChange}
         onFocus={onFocus}
         onBlur={onBlur}
-        readOnly={(userName != teacher && userName != "Anne") ? true : false}
+        readOnly={(userName !== teacher && userName !== "Anne") ? true : false}
       />
     </li>
   );

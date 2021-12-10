@@ -10,7 +10,6 @@ const BooksManager = ({ authService, booksRepository }) => {
   const [books, setBooks] = useState();
   const [userId, setUserId] = useState(historyState && historyState.id);
 
-
   const goHome = () => {
     history.push({ pathname: "/home", state: { id: userId } });
   };
@@ -52,10 +51,14 @@ const BooksManager = ({ authService, booksRepository }) => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>책 목록</h2>
-      <button className={styles.return} onClick={goHome}>돌아가기 💨 💨</button>
-      <BookLists books={books} removeBook={removeBook}/>
-      <BookStorageAddForm createOrUpdateBook={createOrUpdateBook}/>
+      <div className={styles.bookManager}>
+        <h2 className={styles.title}>책 목록</h2>
+        <button className={styles.return} onClick={goHome}>
+          돌아가기 💨 💨
+        </button>
+        <BookLists books={books} removeBook={removeBook} />
+        <BookStorageAddForm createOrUpdateBook={createOrUpdateBook} />
+      </div>
     </div>
   );
 };
