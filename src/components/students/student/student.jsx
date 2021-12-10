@@ -8,7 +8,10 @@ const Student = ({ student, openInformation, selectedId }) => {
     id && openInformation(id);
   };
   useEffect(() => {
-    if (student.grade <= 6 ){
+    if(student.grade <=0){
+      setGrade("7세");
+    }
+    else if (student.grade <= 6 ){
       setGrade("초"+student.grade);
     }
     else if (student.grade <= 9){

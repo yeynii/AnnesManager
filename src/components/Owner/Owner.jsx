@@ -7,7 +7,7 @@ const Owner = ({ studentRepository, teacherRepository, authService }) => {
   const history = useHistory();
   const historyState = useHistory().state;
   const [userId, setUserId] = useState(historyState && historyState.id);
-  const [userName, setUserName] =useState();
+  const [userName, setUserName] = useState();
   const [students, setStudents] = useState();
   const [checkedList, setCheckedLists] = useState([]);
 
@@ -54,7 +54,7 @@ const Owner = ({ studentRepository, teacherRepository, authService }) => {
       const updated = { ...students };
       checkedList.forEach((key) => {
         delete updated[key];
-        studentRepository.removeStudent({id:key});
+        studentRepository.removeStudent({ id: key });
       });
       return updated;
     });
@@ -104,11 +104,13 @@ const Owner = ({ studentRepository, teacherRepository, authService }) => {
     return () => stopSync();
   }, [userId, studentRepository]);
 
-  useEffect(() =>{
+  useEffect(() => {
     if (!userId) {
       return;
     }
-    const stopSync = teacherRepository.getTeacherName(userId, (userId) => setUserName(userId));
+    const stopSync = teacherRepository.getTeacherName(userId, (userId) =>
+      setUserName(userId)
+    );
     return () => stopSync();
   }, [userId, teacherRepository]);
 
@@ -148,7 +150,9 @@ const Owner = ({ studentRepository, teacherRepository, authService }) => {
                   )
                   .map((key) => {
                     const grade =
-                      students[key].grade <= 6
+                      students[key].grade <= 0
+                        ? "7세"
+                        : students[key].grade <= 6
                         ? "초" + students[key].grade
                         : students[key].grade <= 9
                         ? "중" + (students[key].grade - 6)

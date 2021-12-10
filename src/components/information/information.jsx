@@ -36,7 +36,10 @@ const Information = ({
   );
 
   useEffect(() => {
-    if (student.grade <= 6 ){
+    if(student.grade <=0){
+      setGrade("7세");
+    }
+    else if (student.grade <= 6 ){
       setGrade("초"+student.grade);
     }
     else if (student.grade <= 9){
@@ -120,7 +123,7 @@ const Information = ({
             createOrUpdateInformation={createOrUpdateInformation}
             removeInformation={removeInformation}
           />
-        </TabPanel>
+        </TabPanel>   
       </Tabs>
       {modalIsOpen && (
         <StudentEditForm

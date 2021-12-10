@@ -117,6 +117,7 @@ const StudentEditForm = ({
             onChange={(event) => onChange(event, setGrade)}
           >
             <option value="">선택</option>
+            <option value="0">7세</option>
             <option value="1">초1</option>
             <option value="2">초2</option>
             <option value="3">초3</option>
@@ -126,6 +127,7 @@ const StudentEditForm = ({
             <option value="7">중1</option>
             <option value="8">중2</option>
             <option value="9">중3</option>
+            <option value="10">고등</option>
           </select>
         </div>
         <div className={styles.contents}>
