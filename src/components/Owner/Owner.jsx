@@ -120,7 +120,7 @@ const Owner = ({ studentRepository, teacherRepository, authService }) => {
         돌아가기 💨 💨
       </button>
       <div className={styles.ownerMenu}>
-        <h2>관리자 도구(Beta)</h2>
+        <h2>관리자 도구</h2>
         <div className={styles.buttons}>
           <button className={styles.button} onClick={increaseGrade}>
             학년증가
