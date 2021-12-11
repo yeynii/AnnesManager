@@ -1,12 +1,15 @@
 import React from "react";
 import styles from "./memoAddForm.module.css";
 
-const MemoAddForm = ({student, createOrUpdateInformation}) => {
+const MemoAddForm = ({userName, student, createOrUpdateInformation}) => {
   const onClick = event => {
     event.preventDefault();
+    const today = Date.now();
     createOrUpdateInformation(student, {
-      id: Date.now(),
-      content: ''
+      id: today,
+      content: '',
+      name: userName,
+      date: today
     },'memo');
   };
 

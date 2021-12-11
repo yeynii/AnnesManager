@@ -3,13 +3,14 @@ import styles from "./memos.module.css";
 import Memo from "./Memo/Memo";
 import MemoAddForm from "./MemoAddForm/MemoAddForm";
 
-const Memos = ({student, createOrUpdateInformation, removeInformation}) => {
+const Memos = ({userName, student, createOrUpdateInformation, removeInformation}) => {
   return (
     <>
       <ul className={styles.memos}>
       {student.memos &&
         Object.keys(student.memos).map((key) => (
           <Memo
+            userName={userName}
             student={student}
             key={key}
             memo={student.memos[key]}
@@ -17,7 +18,7 @@ const Memos = ({student, createOrUpdateInformation, removeInformation}) => {
             createOrUpdateInformation={createOrUpdateInformation}
           />
         ))}
-        <MemoAddForm student={student} createOrUpdateInformation={createOrUpdateInformation}/>
+        <MemoAddForm userName={userName} student={student} createOrUpdateInformation={createOrUpdateInformation}/>
       </ul>
     </>
   );

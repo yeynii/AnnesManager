@@ -120,6 +120,7 @@ const Information = ({
         <TabPanel>
           <Memos
             student={student}
+            userName={userName}
             createOrUpdateInformation={createOrUpdateInformation}
             removeInformation={removeInformation}
           />
