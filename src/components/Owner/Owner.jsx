@@ -81,7 +81,7 @@ const Owner = ({ studentRepository, teacherRepository, authService }) => {
         setCheckedLists(checkedList.filter((el) => el !== key));
       }
     },
-    [checkedList]
+    [checkedList] 
   );
 
   useEffect(() => {
