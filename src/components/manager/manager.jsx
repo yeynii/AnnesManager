@@ -94,6 +94,7 @@ const Manager = ({ authService, studentRepository, search, booksRepository, teac
           openInformation={openInformation}
           selectedId={studentId}
           search={search}
+          userName={userName}
         />
         {studentId && (
           <Information
