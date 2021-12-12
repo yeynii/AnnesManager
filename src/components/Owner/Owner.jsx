@@ -91,9 +91,9 @@ const Owner = ({ studentRepository, teacherRepository, authService }) => {
       } else {
         history.push("/");
       }
-      if (userName !== "Anne")
-        history.push("/");
     });
+    if (userName && userName != "Anne")
+      history.push("/");
   }, [history, authService, userName]);
 
   useEffect(() => {
