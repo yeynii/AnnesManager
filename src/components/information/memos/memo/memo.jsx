@@ -27,12 +27,6 @@ const Memo = ({
   };
 
   const onRemove = useConfirm("삭제하시겠습니까?", () => {
-    if (userName !== name) {
-      if (userName !== "Anne") {
-        window.alert("권한이 없습니다.");
-        return;
-      }
-    }
     removeInformation(student, memo, "memo");
   });
 
