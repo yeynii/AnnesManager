@@ -24,6 +24,12 @@
   align-items: center;
   margin:0.2rem;
 }
+
+.radios{
+  width: 100%;
+  text-align: center;
+}
+
 .input{
   width:80%;
   height: 1.5em;
