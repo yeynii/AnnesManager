@@ -153,7 +153,7 @@ const StudentEditForm = ({
         </div>
         <div className={styles.contents}>
           <label htmlFor="address" className={styles.label}>
-            주소{" "}
+            학교
           </label>
           <input
             defaultValue={address}

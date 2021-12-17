@@ -151,7 +151,7 @@ const StudentAddForm = ({ isModalOpen, closeModal, createOrUpdateStudent }) => {
         </div>
         <div className={styles.contents}>
           <label htmlFor="address" className={styles.label}>
-            주소{" "}
+            학교
           </label>
           <input
             name="address"

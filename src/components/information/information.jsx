@@ -75,7 +75,7 @@ const Information = ({
               <span>{grade}</span>
               <span>{sex === "f" ? " 여" : " 남"}</span>
             </div>
-            <div className={styles.address}>주소 : {address}</div>
+            <div className={styles.address}>학교 : {address}</div>
             <div className={styles.hp}>전화번호: {phone}</div>
             <div className={styles.date}>등록일 : {startDate}</div>
             <div className={styles.date}>퇴원일 : {endDate}</div>
