@@ -23,7 +23,6 @@ const Memo = ({
       name: userName,
       date: Date.now(),
     });
-    createOrUpdateInformation(student, updated, "memo");
   };
 
   const onRemove = useConfirm("삭제하시겠습니까?", () => {
@@ -36,7 +35,9 @@ const Memo = ({
       `${_date.getFullYear()}/${_date.getMonth() + 1}/${_date.getDate()}`
     );
   }, [date]);
-
+  useEffect(() => {
+    createOrUpdateInformation(student, updated, "memo");
+  },[updated]);
   return (
     <li className={styles.memo}>
       <button className={styles.delete} onClick={onRemove}>
